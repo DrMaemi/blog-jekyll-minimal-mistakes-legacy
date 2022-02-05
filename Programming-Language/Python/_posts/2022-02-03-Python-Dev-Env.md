@@ -11,7 +11,7 @@ tags:
 author_profile: true
 sidebar:
   nav: "main"
-image_path: "../resources"
+resources_path: "/Programming-Language/Python/resources"
 ---
 # 파이썬 환경 설정
 
@@ -114,7 +114,7 @@ conda create --name [새로운 가상환경 명] --clone [기존 가상환경 �
 
 <p><div align="center">
   <figure>
-    <img src="../resources/1/가상환경 커널이 아직 존재하지 않는다.png" alt="가상환경 커널이 아직 존재하지 않는다">
+    <img src="{{ resource_path }}/1/가상환경 커널이 아직 존재하지 않는다.png" alt="가상환경 커널이 아직 존재하지 않는다">
     <div align="center"><figcation>가상환경 커널이 아직 존재하지 않는다</figcation></div>
   </figure>
 </div></p>
