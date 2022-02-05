@@ -1,0 +1,661 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.24.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>  파이썬 개발 환경 설정 - Site Title</title>
+<meta name="description" content="파이썬 환경 설정">
+
+
+  <meta name="author" content="DrMaemi">
+  
+  <meta property="article:author" content="DrMaemi">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Site Title">
+<meta property="og:title" content="  파이썬 개발 환경 설정">
+<meta property="og:url" content="http://localhost:4000/programming-language/python/Python-Dev-Env/">
+
+
+  <meta property="og:description" content="파이썬 환경 설정">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2022-02-03T00:00:00+09:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/programming-language/python/Python-Dev-Env/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Dr.Maemi",
+      "url": "http://localhost:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Site Title Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          Site Title
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/Programming-Language/">Programming-Language</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person" class="h-card">
+
+  
+    <div class="author__avatar">
+      <a href="http://localhost:4000/">
+        <img src="/assets/images/profile/2022-01-21.jpg" alt="DrMaemi" itemprop="image" class="u-photo">
+      </a>
+    </div>
+  
+
+  <div class="author__content">
+    <h3 class="author__name p-name" itemprop="name">
+      <a class="u-url" rel="me" href="http://localhost:4000/" itemprop="url">DrMaemi</a>
+    </h3>
+    
+      <div class="author__bio p-note" itemprop="description">
+        <p>Interested in * in Computer Science, Software Engineering.</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+
+      
+        
+          
+            <li><a href="mailto:dev.maemi@gmail.com" rel="nofollow noopener noreferrer me"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span></a></li>
+          
+        
+          
+            <li><a href="https://github.com/drmaemi" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+            <li><a href="https://www.instagram.com/drmaemi__/" rel="nofollow noopener noreferrer me"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i><span class="label">Instagram</span></a></li>
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+  
+    
+      
+      
+      
+      
+    
+    
+      
+
+<nav class="nav__list">
+  
+  <input id="ac-toc" name="accordion-toc" type="checkbox" />
+  <label for="ac-toc">Toggle menu</label>
+  <ul class="nav__items">
+    
+      <li>
+        
+          <a href="/Programming-Language/"><span class="nav__sub-title">Programming-Language</span></a>
+        
+
+        
+        <ul>
+          
+            <li><a href="/Programming-Language/C++">C++</a></li>
+          
+            <li><a href="/Programming-Language/Python">Python</a></li>
+          
+        </ul>
+        
+      </li>
+    
+  </ul>
+</nav>
+
+    
+  
+  </div>
+
+
+
+  <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="  파이썬 개발 환경 설정">
+    <meta itemprop="description" content="파이썬 환경 설정">
+    <meta itemprop="datePublished" content="2022-02-03T00:00:00+09:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title p-name" itemprop="headline">
+            <a href="http://localhost:4000/programming-language/python/Python-Dev-Env/" class="u-url" itemprop="url"><ol>
+  <li>파이썬 개발 환경 설정</li>
+</ol>
+</a>
+          </h1>
+          
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          1 minute read
+        
+      </span>
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content e-content" itemprop="text">
+        
+        <h1 id="파이썬-환경-설정">파이썬 환경 설정</h1>
+
+<p><br /></p>
+
+<h2 id="목차">목차</h2>
+<ul>
+  <li><a href="#1-아나콘다">1. 아나콘다</a><br />
+    <ul>
+      <li><a href="#11-설치">1.1. 설치</a><br /></li>
+      <li><a href="#12-가상환경-생성">1.2. 가상환경 생성</a><br /></li>
+      <li><a href="#13-패키지-설치">1.3. 패키지 설치</a><br /></li>
+      <li><a href="#14-설치된-패키지-삭제">1.4. 설치된 패키지 삭제</a><br /></li>
+      <li><a href="#15-가상환경-복제">1.5. 가상환경 복제</a></li>
+    </ul>
+  </li>
+  <li><a href="#2-주피터-노트북---가상-환경-연동">2. 주피터 노트북 - 가상 환경 연동</a></li>
+  <li><a href="3-vs-code---가상환경-연동">3. VS Code - 가상환경 연동</a></li>
+</ul>
+
+<p><br /><br /></p>
+
+<h2 id="1-아나콘다">1. 아나콘다</h2>
+<h3 id="11-설치">1.1. 설치</h3>
+<p><a href="https://www.anaconda.com/products/individual">https://www.anaconda.com/products/individual</a> - 공식 배포 버전<br />
+<a href="https://repo.anaconda.com/archive/">https://repo.anaconda.com/archive/</a> - 버전 별 다운, 쉘 명령어 <code class="language-plaintext highlighter-rouge">wget</code> 혹은 <code class="language-plaintext highlighter-rouge">curl</code>로 다운 가능</p>
+<p>
+i386 은 Intel 의 80386 CPU 계열의 CPU
+i586 은 Intel 의 80586 CPU 계열의 Pentium CPU
+i686 은 Intel 의 80686 CPU 계열의 Pentium Pro 이상의 CPU
+</p>
+<p>
+x86  - 위에 언급한 CPU들을 의미
+</p>
+<p>리눅스의 여러 패키지를 다운 받을 때 i386, i586, i686, x86, x86_64 등 여러가지가 표시되어 있는데, 이것들의 의미는 해당 코드가 타겟 CPU에 적합하게 컴파일되어 있다는 것을 의미</p>
+<p>
+그러므로 x86 은 i386, i586, i686 의 모든 플랫폼에서 동작할 수 있고, x86_64 는 i386, i586, i686 의 64bit 환경에서 동작하는 것을 의미
+</p>
+
+<p><br /></p>
+
+<h3 id="12-가상환경-생성">1.2. 가상환경 생성</h3>
+<p>다음과 같이 가상환경을 생성할 수 있다.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>conda create --name(-n) [가상환경명] [설치할패키지]
+</code></pre></div></div>
+<p>예시<br /></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>conda create -n testenv python=3.6
+</code></pre></div></div>
+<p>이후 다음과 같이 가상환경 활성화, 비활성화할 수 있다.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>conda activate testenv
+conda deactivate
+</code></pre></div></div>
+<p>가상환경 삭제 - base(root) 계정으로 활성화(activate) 후 삭제하는 게 좋음</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>conda activate root
+conda remove --name [가상환경명] --all
+</code></pre></div></div>
+
+<p><br /></p>
+
+<h3 id="13-패키지-설치">1.3. 패키지 설치</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>conda activate [가상환경 명]
+conda install [패키지 명]
+pip install [패키지 명]
+</code></pre></div></div>
+
+<p>
+
+다음과 같이 패키지 버전을 명시하여 설치할 수 있다.<br />
+
+```
+pip install numpy==1.19.4
+```
+
+</p>
+
+<p><br /></p>
+
+<h3 id="14-설치된-패키지-삭제">1.4. 설치된 패키지 삭제</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>conda uninstall [패키지 명]
+</code></pre></div></div>
+
+<p><br /></p>
+
+<h3 id="15-가상환경-복제">1.5. 가상환경 복제</h3>
+<p>기존에 세팅해둔 가상환경에서 약간의 변경 후 사용하고 싶을 때 사용한다.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>conda create --name [새로운 가상환경 명] --clone [기존 가상환경 명]
+</code></pre></div></div>
+
+<p><br /><br /></p>
+
+<h2 id="2-주피터-노트북---가상-환경-연동">2. 주피터 노트북 - 가상 환경 연동</h2>
+<p><div align="center">
+  <figure>
+    <img src="/Programming-Language/Python/resources/1/파이썬 파일 생성.png" alt="파이썬 파일 생성" />
+    <div align="center"><figcation>파이썬 파일 생성</figcation></div>
+  </figure>
+</div></p>
+
+<p><div align="center">
+  <figure>
+    <img src="../resources/1/가상환경 커널이 아직 존재하지 않는다.png" alt="가상환경 커널이 아직 존재하지 않는다" />
+    <div align="center"><figcation>가상환경 커널이 아직 존재하지 않는다</figcation></div>
+  </figure>
+</div></p>
+
+<p><div align="center">
+  <figure>
+    <img src="../resources/1/testenv라는 가상환경이 존재.png" alt="testenv라는 가상환경이 존재" />
+    <div align="center"><figcation>testenv라는 가상환경이 존재</figcation></div>
+  </figure>
+</div></p>
+
+<p>이 상태에서 testenv를 활성화하고 `jupyter --version`를 커맨드로 입력하면 ipykernel이 설치되어 있음을 확인한다.</p>
+<p>
+
+만약 그렇지 않다면 활성화한 가상환경에서 `pip install jupyter`로 설치한다.</p>
+
+<p>확인했다면 비활성화 후 가상환경 커널을 생성한다.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>conda deactivate
+python -m ipykernel install --user --name [가상환경명] --display-name [커널명]
+</code></pre></div></div>
+<p>예시<br /></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python -m ipykernel install --user --name testenv --display-name testenv
+</code></pre></div></div>
+
+<p><div align="center">
+  <figure>
+    <img src="../resources/1/ipykernel 명령어 입력.png" alt="ipykernel 명령어 입력" />
+    <div align="center"><figcation>ipykernel 명령어 입력</figcation></div>
+  </figure>
+</div></p>
+
+<p><div align="center">
+  <figure>
+    <img src="../resources/1/주피터 노트북 새로고침 후 가상환경 확인.png" alt="주피터 노트북 새로고침 후 가상환경 확인" />
+    <div align="center"><figcation>주피터 노트북 새로고침 후 가상환경 확인</figcation></div>
+  </figure>
+</div></p>
+
+<p><br /><br /></p>
+
+<h2 id="3-vs-code---가상환경-연동">3. VS Code - 가상환경 연동</h2>
+<p>[Ctrl] + [Shift] + [P]를 입력하면 command pallet가 나타난다.</p>
+<p>나타난 창에 'Python: Select Interpreter'을 입력하면, 원하는 파이썬 버전의 가상환경을 선택할 수 있다.</p>
+<p>만약 Select Interpreter를 검색했음에도 나타나지 않는다면, VS Code의 Python extension을 설치해야 한다.</p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/tags/#anaconda" class="page__taxonomy-item p-category" rel="tag">Anaconda</a><span class="sep">, </span>
+    
+      <a href="/tags/#jupyter-notebook" class="page__taxonomy-item p-category" rel="tag">Jupyter Notebook</a><span class="sep">, </span>
+    
+      <a href="/tags/#vscode" class="page__taxonomy-item p-category" rel="tag">VSCode</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/categories/#programming-language" class="page__taxonomy-item p-category" rel="tag">Programming-Language</a><span class="sep">, </span>
+    
+      <a href="/categories/#python" class="page__taxonomy-item p-category" rel="tag">Python</a>
+    
+    </span>
+  </p>
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time class="dt-published" datetime="2022-02-03T00:00:00+09:00">February 3, 2022</time></p>
+
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=1.+%ED%8C%8C%EC%9D%B4%EC%8D%AC+%EA%B0%9C%EB%B0%9C+%ED%99%98%EA%B2%BD+%EC%84%A4%EC%A0%95%20http%3A%2F%2Flocalhost%3A4000%2Fprogramming-language%2Fpython%2FPython-Dev-Env%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fprogramming-language%2Fpython%2FPython-Dev-Env%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fprogramming-language%2Fpython%2FPython-Dev-Env%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/c++/post-standard/" class="pagination--pager" title="Post: Standard
+">Previous</a>
+    
+    
+      <a href="#" class="pagination--pager disabled">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h2 class="page__related-title">You may also enjoy</h2>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/c++/post-standard/" rel="permalink">Post: Standard
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          4 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">All children, except one, grow up. They soon know that they will grow up, and the way Wendy knew was this. One day when she was two years old she was playing...</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+          <li><a href="mailto:dev.maemi@gmail.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> Email</a></li>
+        
+      
+        
+          <li><a href="https://github.com/drmaemi" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+        
+          <li><a href="https://www.instagram.com/drmaemi__/" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-instagram" aria-hidden="true"></i> Instagram</a></li>
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2022 Dr.Maemi. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>
