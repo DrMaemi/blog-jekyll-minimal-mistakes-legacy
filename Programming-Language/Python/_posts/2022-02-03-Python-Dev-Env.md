@@ -1,7 +1,5 @@
 ---
 title: "1. 파이썬 개발 환경 설정"
-url: "127.0.0.1:4000"
-baseurl: "Programming-Language/Python"
 categories:
   - Python
 tags:
@@ -11,6 +9,7 @@ tags:
 author_profile: true
 sidebar:
   nav: "main"
+resource_path: "/Programming-Language/Python/resources"
 ---
 # 파이썬 환경 설정
 
@@ -140,19 +139,19 @@ python -m ipykernel install --user --name [가상환경명] --display-name [커�
 python -m ipykernel install --user --name testenv --display-name testenv
 ```
 
-<p><div align="center">
-  <figure>
-    <img src="/Programming-Language/Python/resources/1/ipykernel 명령어 입력.png" alt="ipykernel 명령어 입력">
-    <div align="center"><figcation>ipykernel 명령어 입력</figcation></div>
+<p>
+  <figure style="text-align:center">
+    <img src="{{ page.resource_path }}/1/ipykernel 명령어 입력.png" style="width: 75%" alt="ipykernel 명령어 입력">
+    <figcation style="text-align:center">ipykernel 명령어 입력</figcation>
   </figure>
-</div></p>
+</p>
 
-<p><div align="center">
-  <figure>
-    <img src="/Programming-Language/Python/resources/1/주피터 노트북 새로고침 후 가상환경 확인.png" alt="주피터 노트북 새로고침 후 가상환경 확인">
-    <div align="center"><figcation>주피터 노트북 새로고침 후 가상환경 확인</figcation></div>
+<p>
+  <figure style="text-align:center">
+    <img src="{{ page.resource_path }}/1/주피터 노트북 새로고침 후 가상환경 확인.png" alt="주피터 노트북 새로고침 후 가상환경 확인">
+    <figcation style="text-align:center">주피터 노트북 새로고침 후 가상환경 확인</figcation>
   </figure>
-</div></p>
+</p>
 
 <br><br>
 
