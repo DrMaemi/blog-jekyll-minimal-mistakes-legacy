@@ -11,7 +11,6 @@ tags:
 author_profile: true
 sidebar:
   nav: "main"
-resource_path: "/Programming-Language/Python/resources"
 ---
 # 파이썬 환경 설정
 
@@ -107,21 +106,21 @@ conda create --name [새로운 가상환경 명] --clone [기존 가상환경 �
 ## 2. 주피터 노트북 - 가상 환경 연동
 <p><div align="center">
   <figure>
-    <img src="{{ resource_path }}/1/파이썬 파일 생성.png" alt="파이썬 파일 생성">
+    <img src="/Programming-Language/Python/resources/1/파이썬 파일 생성.png" alt="파이썬 파일 생성">
     <div align="center"><figcation>파이썬 파일 생성</figcation></div>
   </figure>
 </div></p>
 
 <p><div align="center">
   <figure>
-    <img src="{{ resource_path }}/1/가상환경 커널이 아직 존재하지 않는다.png" alt="가상환경 커널이 아직 존재하지 않는다">
+    <img src="/Programming-Language/Python/resources/1/가상환경 커널이 아직 존재하지 않는다.png" alt="가상환경 커널이 아직 존재하지 않는다">
     <div align="center"><figcation>가상환경 커널이 아직 존재하지 않는다</figcation></div>
   </figure>
 </div></p>
 
 <p><div align="center">
   <figure>
-    <img src="../resources/1/testenv라는 가상환경이 존재.png" alt="testenv라는 가상환경이 존재">
+    <img src="/Programming-Language/Python/resources/1/testenv라는 가상환경이 존재.png" alt="testenv라는 가상환경이 존재">
     <div align="center"><figcation>testenv라는 가상환경이 존재</figcation></div>
   </figure>
 </div></p>
@@ -143,14 +142,14 @@ python -m ipykernel install --user --name testenv --display-name testenv
 
 <p><div align="center">
   <figure>
-    <img src="../resources/1/ipykernel 명령어 입력.png" alt="ipykernel 명령어 입력">
+    <img src="/Programming-Language/Python/resources/1/ipykernel 명령어 입력.png" alt="ipykernel 명령어 입력">
     <div align="center"><figcation>ipykernel 명령어 입력</figcation></div>
   </figure>
 </div></p>
 
 <p><div align="center">
   <figure>
-    <img src="../resources/1/주피터 노트북 새로고침 후 가상환경 확인.png" alt="주피터 노트북 새로고침 후 가상환경 확인">
+    <img src="/Programming-Language/Python/resources/1/주피터 노트북 새로고침 후 가상환경 확인.png" alt="주피터 노트북 새로고침 후 가상환경 확인">
     <div align="center"><figcation>주피터 노트북 새로고침 후 가상환경 확인</figcation></div>
   </figure>
 </div></p>
