@@ -140,16 +140,16 @@ python -m ipykernel install --user --name testenv --display-name testenv
 ```
 
 <p>
-  <figure style="text-align:center">
+  <figure style="text-align:center;">
     <img src="{{ page.resource_path }}/1/ipykernel 명령어 입력.png" style="width: 75%" alt="ipykernel 명령어 입력">
-    <figcation style="text-align:center">ipykernel 명령어 입력</figcation>
+    <figcation style="text-align:center;">ipykernel 명령어 입력</figcation>
   </figure>
 </p>
 
 <p>
-  <figure style="text-align:center">
+  <figure style="text-align:center;">
     <img src="{{ page.resource_path }}/1/주피터 노트북 새로고침 후 가상환경 확인.png" alt="주피터 노트북 새로고침 후 가상환경 확인">
-    <figcation style="text-align:center">주피터 노트북 새로고침 후 가상환경 확인</figcation>
+    <figcation style="text-align:center;">주피터 노트북 새로고침 후 가상환경 확인</figcation>
   </figure>
 </p>
 
