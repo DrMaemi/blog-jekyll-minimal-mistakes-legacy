@@ -103,12 +103,12 @@ conda create --name [새로운 가상환경 명] --clone [기존 가상환경 �
 <br><br>
 
 ## 2. 주피터 노트북 - 가상 환경 연동
-<p><div align="center">
-  <figure>
+<p>
+  <figure class="align-center">
     <img src="/Programming-Language/Python/resources/1/파이썬 파일 생성.png" alt="파이썬 파일 생성">
-    <div align="center"><figcation>파이썬 파일 생성</figcation></div>
+    <figcation>파이썬 파일 생성</figcation>
   </figure>
-</div></p>
+</p>
 
 <p><div align="center">
   <figure>
@@ -140,9 +140,9 @@ python -m ipykernel install --user --name testenv --display-name testenv
 ```
 
 <p>
-  <figure style="text-align:center;">
+  <figure class="align-center">
     <img src="{{ page.resource_path }}/1/ipykernel 명령어 입력.png" style="width: 75%" alt="ipykernel 명령어 입력">
-    <figcation style="text-align:center;">ipykernel 명령어 입력</figcation>
+    <figcation>ipykernel 명령어 입력</figcation>
   </figure>
 </p>
 
