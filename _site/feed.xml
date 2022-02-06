@@ -1,15 +1,114 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-02-06T02:09:51+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Site Title</title><author><name>DrMaemi</name></author><entry><title type="html">1. 파이썬 개발 환경 설정</title><link href="http://localhost:4000/programming-language/python/Python-Dev-Env/" rel="alternate" type="text/html" title="1. 파이썬 개발 환경 설정" /><published>2022-02-03T00:00:00+09:00</published><updated>2022-02-03T00:00:00+09:00</updated><id>http://localhost:4000/programming-language/python/Python-Dev-Env</id><content type="html" xml:base="http://localhost:4000/programming-language/python/Python-Dev-Env/"><![CDATA[<h1 id="파이썬-환경-설정">파이썬 환경 설정</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-02-07T04:21:23+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Maemi’s devlog</title><author><name>Dr.Maemi</name></author><entry><title type="html">Markdown 사용법</title><link href="http://localhost:4000/programming-language/markdown/how-to-use-markdown/" rel="alternate" type="text/html" title="Markdown 사용법" /><published>2022-02-06T00:00:00+09:00</published><updated>2022-02-06T00:00:00+09:00</updated><id>http://localhost:4000/programming-language/markdown/how-to-use-markdown</id><content type="html" xml:base="http://localhost:4000/programming-language/markdown/how-to-use-markdown/"><![CDATA[<h1 id="markdown-사용법">Markdown 사용법</h1>
+
+<h2 id="목차">목차</h2>
+<ul>
+  <li><a href="#1-마크다운이란">1. 마크다운이란?</a></li>
+  <li><a href="#2-기본-문법">2. 기본 문법</a></li>
+  <li><a href="#3-같은-문서-내-헤더로-링크-걸기">3. 같은 문서 내 헤더로 링크 걸기</a></li>
+  <li><a href="#4-중첩된-목록">4. 중첩된 목록</a></li>
+</ul>
+
+<p><br /></p>
+
+<h2 id="1-마크다운이란">1. 마크다운이란?</h2>
+<p>마크다운은 평문(plain-text) 편집기를 사용하는 정형화된(formatted) 텍스트를 위한 경량 마크업 언어다. 마크다운은 블로그나 즉석 메시지(instant messaging), 온라인 포럼, 협업 소프트웨어 그리고 리드미(REAMDE) 파일 등에 널리 사용된다.
+<br /></p>
+
+<h2 id="2-기본-문법">2. 기본 문법</h2>
+<p>마크다운의 기본 문법은 두레이의 마크다운 가이드 링크 <a href="https://dooray.com/htmls/guides/markdown_ko_KR.html">https://dooray.com/htmls/guides/markdown_ko_KR.html</a>에서 자세히 익힐 수 있다.
+<br /></p>
+
+<h2 id="3-같은-문서-내-헤더로-링크-걸기">3. 같은 문서 내 헤더로 링크 걸기</h2>
+
+<ul>
+  <li><a href="#링크할 헤더">보여줄 텍스트</a> 형식으로 기입</li>
+  <li>스페이스바(띄어쓰기)는 ‘-‘로 대체</li>
+  <li>’.’, ‘-‘, ‘:’, ‘(‘, ‘)’, ‘?’는 무시한다(제거)</li>
+  <li>이모지는 무시한다(제거)</li>
+  <li>대문자는 소문자로 바꿔 쓴다</li>
+  <li>어떤 헤더이든 ‘#’는 한 번만 쓴다
+<br /></li>
+</ul>
+
+<h2 id="4-중첩된-목록">4. 중첩된 목록</h2>
+<p>두 칸을 들여 쓰거나, <code class="language-plaintext highlighter-rouge">tab</code>키를 입력해 중첩된 목록을 만들 수 있다.</p>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">1.</span> 첫 번째 목록
+<span class="p">    1.</span> 첫 번째의 첫 번째 목록
+<span class="p">    2.</span> 첫 번째의 두 번째 목록
+<span class="p">2.</span> 2
+<span class="p">    -</span> 2 1
+<span class="p">    -</span> 2 2
+<span class="p">        -</span> 2 2 1
+<span class="p">        -</span> 2 2 2
+<span class="p">    -</span> 2 3
+</code></pre></div></div>
+<p><br />
+결과</p>
+<ol>
+  <li>첫 번째 목록
+    <ol>
+      <li>첫 번째의 첫 번째 목록</li>
+      <li>첫 번째의 두 번째 목록</li>
+    </ol>
+  </li>
+  <li>2
+    <ul>
+      <li>2 1</li>
+      <li>2 2
+        <ul>
+          <li>2 2 1</li>
+          <li>2 2 2</li>
+        </ul>
+      </li>
+      <li>2 3</li>
+    </ul>
+  </li>
+</ol>
+
+<p><br /></p>
+
+<h2 id="표와-정렬">표와 정렬</h2>
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>왼쪽 정렬 | 가운데 정렬 | 오른쪽 정렬
+:------- | :--------: | -:
+왼쪽 | 가운데 | 오른쪽
+정렬 | 정렬 | 정렬
+</code></pre></div></div>
+<p><br />
+결과</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">왼쪽 정렬</th>
+      <th style="text-align: center">가운데 정렬</th>
+      <th style="text-align: right">오른쪽 정렬</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">왼쪽</td>
+      <td style="text-align: center">가운데</td>
+      <td style="text-align: right">오른쪽</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">정렬</td>
+      <td style="text-align: center">정렬</td>
+      <td style="text-align: right">정렬</td>
+    </tr>
+  </tbody>
+</table>]]></content><author><name>Dr.Maemi</name></author><category term="Programming-Language" /><category term="Markdown" /><category term="Programming-Language" /><summary type="html"><![CDATA[Markdown 사용법]]></summary></entry><entry><title type="html">1. 파이썬 개발 환경 설정</title><link href="http://localhost:4000/github.io/python/align-image/" rel="alternate" type="text/html" title="1. 파이썬 개발 환경 설정" /><published>2022-02-06T00:00:00+09:00</published><updated>2022-02-06T00:00:00+09:00</updated><id>http://localhost:4000/github.io/python/align-image</id><content type="html" xml:base="http://localhost:4000/github.io/python/align-image/"><![CDATA[<h1 id="파이썬-환경-설정">파이썬 환경 설정</h1>
 
 <p><br /></p>
 
 <h2 id="목차">목차</h2>
 <ul>
-  <li><a href="#1-아나콘다">1. 아나콘다</a><br />
+  <li><a href="#1-아나콘다">1. 아나콘다</a>
     <ul>
-      <li><a href="#11-설치">1.1. 설치</a><br /></li>
-      <li><a href="#12-가상환경-생성">1.2. 가상환경 생성</a><br /></li>
-      <li><a href="#13-패키지-설치">1.3. 패키지 설치</a><br /></li>
-      <li><a href="#14-설치된-패키지-삭제">1.4. 설치된 패키지 삭제</a><br /></li>
+      <li><a href="#11-설치">1.1. 설치</a></li>
+      <li><a href="#12-가상환경-생성">1.2. 가상환경 생성</a></li>
+      <li><a href="#13-패키지-설치">1.3. 패키지 설치</a></li>
+      <li><a href="#14-설치된-패키지-삭제">1.4. 설치된 패키지 삭제</a></li>
       <li><a href="#15-가상환경-복제">1.5. 가상환경 복제</a></li>
     </ul>
   </li>
@@ -88,23 +187,32 @@ pip install numpy==1.19.4
 <p><br /><br /></p>
 
 <h2 id="2-주피터-노트북---가상-환경-연동">2. 주피터 노트북 - 가상 환경 연동</h2>
-<p><div align="center">
+<p align="center">
   <figure>
-    <img src="/Programming-Language/Python/resources/1/파이썬 파일 생성.png" alt="파이썬 파일 생성" />
-    <div align="center"><figcation>파이썬 파일 생성</figcation></div>
+    <img src="https://drive.google.com/uc?export=view&amp;id=1FdSXpvQKyCVjyo5JKjEeqNqTCz7RaLVY" alt="파이썬 파일 생성" style="width: 75%" text-align="center" />
+    <figcation align="center">파이썬 파일 생성</figcation>
   </figure>
-</div></p>
+</p>
+
+<p style="text-align: center;"><img src="https://drive.google.com/uc?export=view&amp;id=1FdSXpvQKyCVjyo5JKjEeqNqTCz7RaLVY" alt="파이썬 파일 생성" class="align-center" />
+파이썬 파일 생성</p>
+
+<figure class="align-center">
+  <img src="https://drive.google.com/uc?export=view&amp;id=1FdSXpvQKyCVjyo5JKjEeqNqTCz7RaLVY" alt="파이썬 파일 생성" /><figcaption>
+      파이썬 파일 생성
+
+    </figcaption></figure>
 
 <p><div align="center">
   <figure>
-    <img src="../resources/1/가상환경 커널이 아직 존재하지 않는다.png" alt="가상환경 커널이 아직 존재하지 않는다" />
+    <img src="/Programming-Language/Python/resources/1/가상환경 커널이 아직 존재하지 않는다.png" alt="가상환경 커널이 아직 존재하지 않는다" />
     <div align="center"><figcation>가상환경 커널이 아직 존재하지 않는다</figcation></div>
   </figure>
 </div></p>
 
 <p><div align="center">
   <figure>
-    <img src="../resources/1/testenv라는 가상환경이 존재.png" alt="testenv라는 가상환경이 존재" />
+    <img src="/Programming-Language/Python/resources/1/testenv라는 가상환경이 존재.png" alt="testenv라는 가상환경이 존재" />
     <div align="center"><figcation>testenv라는 가상환경이 존재</figcation></div>
   </figure>
 </div></p>
@@ -122,26 +230,152 @@ python -m ipykernel install --user --name [가상환경명] --display-name [커�
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python -m ipykernel install --user --name testenv --display-name testenv
 </code></pre></div></div>
 
-<p><div align="center">
-  <figure>
-    <img src="../resources/1/ipykernel 명령어 입력.png" alt="ipykernel 명령어 입력" />
-    <div align="center"><figcation>ipykernel 명령어 입력</figcation></div>
+<p>
+  <figure class="align-center">
+    <img src="/Programming-Language/Python/resources/1/ipykernel 명령어 입력.png" style="width: 75%" alt="ipykernel 명령어 입력" />
+    <figcation>ipykernel 명령어 입력</figcation>
   </figure>
-</div></p>
+</p>
 
-<p><div align="center">
-  <figure>
-    <img src="../resources/1/주피터 노트북 새로고침 후 가상환경 확인.png" alt="주피터 노트북 새로고침 후 가상환경 확인" />
-    <div align="center"><figcation>주피터 노트북 새로고침 후 가상환경 확인</figcation></div>
+<p>
+  <figure style="text-align:center;">
+    <img src="/Programming-Language/Python/resources/1/주피터 노트북 새로고침 후 가상환경 확인.png" alt="주피터 노트북 새로고침 후 가상환경 확인" />
+    <figcation style="text-align:center;">주피터 노트북 새로고침 후 가상환경 확인</figcation>
   </figure>
-</div></p>
+</p>
 
 <p><br /><br /></p>
 
 <h2 id="3-vs-code---가상환경-연동">3. VS Code - 가상환경 연동</h2>
 <p>[Ctrl] + [Shift] + [P]를 입력하면 command pallet가 나타난다.</p>
 <p>나타난 창에 'Python: Select Interpreter'을 입력하면, 원하는 파이썬 버전의 가상환경을 선택할 수 있다.</p>
-<p>만약 Select Interpreter를 검색했음에도 나타나지 않는다면, VS Code의 Python extension을 설치해야 한다.</p>]]></content><author><name>DrMaemi</name></author><category term="Programming-Language" /><category term="Python" /><category term="Anaconda" /><category term="Jupyter Notebook" /><category term="VSCode" /><summary type="html"><![CDATA[파이썬 환경 설정]]></summary></entry><entry><title type="html">Post: Standard</title><link href="http://localhost:4000/c++/post-standard/" rel="alternate" type="text/html" title="Post: Standard" /><published>2010-01-07T00:00:00+09:00</published><updated>2010-01-07T00:00:00+09:00</updated><id>http://localhost:4000/c++/post-standard</id><content type="html" xml:base="http://localhost:4000/c++/post-standard/"><![CDATA[<p>All children, except one, grow up. They soon know that they will grow up, and the way Wendy knew was this. One day when she was two years old she was playing in a garden, and she plucked another flower and ran with it to her mother. I suppose she must have looked rather delightful, for Mrs. Darling put her hand to her heart and cried, “Oh, why can’t you remain like this for ever!” This was all that passed between them on the subject, but henceforth Wendy knew that she must grow up. You always know after you are two. Two is the beginning of the end.</p>
+<p>만약 Select Interpreter를 검색했음에도 나타나지 않는다면, VS Code의 Python extension을 설치해야 한다.</p>]]></content><author><name>Dr.Maemi</name></author><category term="Github.io" /><category term="Python" /><category term="Anaconda" /><category term="Jupyter Notebook" /><category term="VSCode" /><summary type="html"><![CDATA[파이썬 환경 설정]]></summary></entry><entry><title type="html">1. 파이썬 개발 환경 설정</title><link href="http://localhost:4000/programming-language/python/Python-Dev-Env/" rel="alternate" type="text/html" title="1. 파이썬 개발 환경 설정" /><published>2022-02-03T00:00:00+09:00</published><updated>2022-02-03T00:00:00+09:00</updated><id>http://localhost:4000/programming-language/python/Python-Dev-Env</id><content type="html" xml:base="http://localhost:4000/programming-language/python/Python-Dev-Env/"><![CDATA[<h1 id="파이썬-환경-설정">파이썬 환경 설정</h1>
+
+<p><br /></p>
+
+<h2 id="목차">목차</h2>
+<ul>
+  <li><a href="#1-아나콘다">1. 아나콘다</a>
+    <ul>
+      <li><a href="#11-설치">1.1. 설치</a></li>
+      <li><a href="#12-가상환경-생성">1.2. 가상환경 생성</a></li>
+      <li><a href="#13-패키지-설치">1.3. 패키지 설치</a></li>
+      <li><a href="#14-설치된-패키지-삭제">1.4. 설치된 패키지 삭제</a></li>
+      <li><a href="#15-가상환경-복제">1.5. 가상환경 복제</a></li>
+    </ul>
+  </li>
+  <li><a href="#2-주피터-노트북---가상-환경-연동">2. 주피터 노트북 - 가상 환경 연동</a></li>
+  <li><a href="3-vs-code---가상환경-연동">3. VS Code - 가상환경 연동</a></li>
+</ul>
+
+<p><br /><br /></p>
+
+<h2 id="1-아나콘다">1. 아나콘다</h2>
+<h3 id="11-설치">1.1. 설치</h3>
+<p><a href="https://www.anaconda.com/products/individual">https://www.anaconda.com/products/individual</a> - 공식 배포 버전<br />
+<a href="https://repo.anaconda.com/archive/">https://repo.anaconda.com/archive/</a> - 버전 별 다운, 쉘 명령어 <code class="language-plaintext highlighter-rouge">wget</code> 혹은 <code class="language-plaintext highlighter-rouge">curl</code>로 다운 가능</p>
+
+<p>
+
+i386 은 Intel 의 80386 CPU 계열의 CPU
+i586 은 Intel 의 80586 CPU 계열의 Pentium CPU
+i686 은 Intel 의 80686 CPU 계열의 Pentium Pro 이상의 CPU
+</p>
+<p>
+
+x86  - 위에 언급한 CPU들을 의미
+</p>
+<p>
+
+리눅스의 여러 패키지를 다운 받을 때 i386, i586, i686, x86, x86_64 등 여러가지가 표시되어 있는데, 이것들의 의미는 해당 코드가 타겟 CPU에 적합하게 컴파일되어 있다는 것을 의미
+</p>
+<p>
+
+그러므로 x86 은 i386, i586, i686 의 모든 플랫폼에서 동작할 수 있고, x86_64 는 i386, i586, i686 의 64bit 환경에서 동작하는 것을 의미
+</p>
+
+<h3 id="12-가상환경-생성">1.2. 가상환경 생성</h3>
+<p>다음과 같이 가상환경을 생성할 수 있다.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>conda create --name(-n) [가상환경명] [설치할패키지]
+</code></pre></div></div>
+<p><br />
+예시</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>conda create -n testenv python=3.6
+</code></pre></div></div>
+
+<p><br />
+이후 다음과 같이 가상환경 활성화, 비활성화할 수 있다.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>conda activate testenv
+conda deactivate
+</code></pre></div></div>
+
+<p><br />
+가상환경 삭제 - base(root) 계정으로 활성화(activate) 후 삭제하는 게 좋음</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>conda activate root
+conda remove --name [가상환경명] --all
+</code></pre></div></div>
+
+<h3 id="13-패키지-설치">1.3. 패키지 설치</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>conda activate [가상환경 명]
+conda install [패키지 명]
+pip install [패키지 명]
+</code></pre></div></div>
+
+<p><br />
+다음과 같이 패키지 버전을 명시하여 설치할 수 있다.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip install numpy==1.19.4
+</code></pre></div></div>
+
+<h3 id="14-설치된-패키지-삭제">1.4. 설치된 패키지 삭제</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>conda uninstall [패키지 명]
+</code></pre></div></div>
+
+<h3 id="15-가상환경-복제">1.5. 가상환경 복제</h3>
+<p>기존에 세팅해둔 가상환경에서 약간의 변경 후 사용하고 싶을 때 사용한다.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>conda create --name [새로운 가상환경 명] --clone [기존 가상환경 명]
+</code></pre></div></div>
+
+<p><br /></p>
+
+<h2 id="2-주피터-노트북---가상-환경-연동">2. 주피터 노트북 - 가상 환경 연동</h2>
+
+<p style="text-align: center;"><img src="https://drive.google.com/uc?export=view&amp;id=1FdSXpvQKyCVjyo5JKjEeqNqTCz7RaLVY" alt="" class="align-center" />
+파이썬 파일 생성</p>
+
+<p style="text-align: center;"><img src="https://drive.google.com/uc?export=view&amp;id=1Z-Qq12cfMYxzpejDN9R4MvuoknsLfbQr" alt="" class="align-center" />
+가상환경 커널이 아직 존재하지 않는다</p>
+
+<p style="text-align: center;"><img src="https://drive.google.com/uc?export=view&amp;id=1EEiCy2I6G3qhx8HQ5L7uDEPnPpgxCLqD" alt="" class="align-center" />
+testenv라는 가상환경이 존재</p>
+
+<p>이 상태에서 testenv를 활성화하고 <code class="language-plaintext highlighter-rouge">jupyter --version</code>를 커맨드로 입력하면 ipykernel이 설치되어 있음을 확인한다.</p>
+
+<p>만약 그렇지 않다면 활성화한 가상환경에서 <code class="language-plaintext highlighter-rouge">pip install jupyter</code>로 설치한다.</p>
+
+<p>확인했다면 비활성화 후 가상환경 커널을 생성한다.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>conda deactivate
+python -m ipykernel install --user --name [가상환경명] --display-name [커널명]
+</code></pre></div></div>
+
+<p><br />
+예시</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python -m ipykernel install --user --name testenv --display-name testenv
+</code></pre></div></div>
+
+<p style="text-align: center;"><img src="https://drive.google.com/uc?export=view&amp;id=1L2cEAmqzgJhX4aGE1bOBYjb4ef8W70yP" alt="" class="align-center" />
+ipykernel 명령어 입력</p>
+
+<p style="text-align: center;"><img src="https://drive.google.com/uc?export=view&amp;id=1jvQqaTjcTknZVBo140tkSC01srO4EaUr" alt="" class="align-center" />
+주피터 노트북 새로고침 후 가상환경 확인</p>
+
+<p><br /></p>
+
+<h2 id="3-vs-code---가상환경-연동">3. VS Code - 가상환경 연동</h2>
+<p>[Ctrl] + [Shift] + [P]를 입력하면 command pallet가 나타난다.</p>
+
+<p>나타난 창에 ‘Python: Select Interpreter’을 입력하면, 원하는 파이썬 버전의 가상환경을 선택할 수 있다.</p>
+
+<p>만약 Select Interpreter를 검색했음에도 나타나지 않는다면, VS Code의 Python extension을 설치해야 한다.</p>]]></content><author><name>Dr.Maemi</name></author><category term="Programming-Language" /><category term="Python" /><category term="Anaconda" /><category term="Jupyter Notebook" /><category term="VSCode" /><summary type="html"><![CDATA[파이썬 환경 설정]]></summary></entry><entry><title type="html">Post: Standard</title><link href="http://localhost:4000/c++/post-standard/" rel="alternate" type="text/html" title="Post: Standard" /><published>2010-01-07T00:00:00+09:00</published><updated>2010-01-07T00:00:00+09:00</updated><id>http://localhost:4000/c++/post-standard</id><content type="html" xml:base="http://localhost:4000/c++/post-standard/"><![CDATA[<p>All children, except one, grow up. They soon know that they will grow up, and the way Wendy knew was this. One day when she was two years old she was playing in a garden, and she plucked another flower and ran with it to her mother. I suppose she must have looked rather delightful, for Mrs. Darling put her hand to her heart and cried, “Oh, why can’t you remain like this for ever!” This was all that passed between them on the subject, but henceforth Wendy knew that she must grow up. You always know after you are two. Two is the beginning of the end.</p>
 
 <p>Mrs. Darling first heard of Peter when she was tidying up her children’s minds. It is the nightly custom of every good mother after her children are asleep to rummage in their minds and put things straight for next morning, repacking into their proper places the many articles that have wandered during the day.</p>
 
@@ -160,4 +394,4 @@ python -m ipykernel install --user --name [가상환경명] --display-name [커�
 
 <p>Of all delectable islands the Neverland is the snuggest and most compact, not large and sprawly, you know, with tedious distances between one adventure and another, but nicely crammed. When you play at it by day with the chairs and table-cloth, it is not in the least alarming, but in the two minutes before you go to sleep it becomes very real. That is why there are night-lights.</p>
 
-<p>Occasionally in her travels through her children’s minds Mrs. Darling found things she could not understand, and of these quite the most perplexing was the word Peter. She knew of no Peter, and yet he was here and there in John and Michael’s minds, while Wendy’s began to be scrawled all over with him. The name stood out in bolder letters than any of the other words, and as Mrs. Darling gazed she felt that it had an oddly cocky appearance.</p>]]></content><author><name>DrMaemi</name></author><category term="C++" /><category term="First" /><summary type="html"><![CDATA[All children, except one, grow up. They soon know that they will grow up, and the way Wendy knew was this. One day when she was two years old she was playing in a garden, and she plucked another flower and ran with it to her mother. I suppose she must have looked rather delightful, for Mrs. Darling put her hand to her heart and cried, “Oh, why can’t you remain like this for ever!” This was all that passed between them on the subject, but henceforth Wendy knew that she must grow up. You always know after you are two. Two is the beginning of the end. Mrs. Darling first heard of Peter when she was tidying up her children’s minds. It is the nightly custom of every good mother after her children are asleep to rummage in their minds and put things straight for next morning, repacking into their proper places the many articles that have wandered during the day.]]></summary></entry></feed>
+<p>Occasionally in her travels through her children’s minds Mrs. Darling found things she could not understand, and of these quite the most perplexing was the word Peter. She knew of no Peter, and yet he was here and there in John and Michael’s minds, while Wendy’s began to be scrawled all over with him. The name stood out in bolder letters than any of the other words, and as Mrs. Darling gazed she felt that it had an oddly cocky appearance.</p>]]></content><author><name>Dr.Maemi</name></author><category term="C++" /><category term="First" /><summary type="html"><![CDATA[All children, except one, grow up. They soon know that they will grow up, and the way Wendy knew was this. One day when she was two years old she was playing in a garden, and she plucked another flower and ran with it to her mother. I suppose she must have looked rather delightful, for Mrs. Darling put her hand to her heart and cried, “Oh, why can’t you remain like this for ever!” This was all that passed between them on the subject, but henceforth Wendy knew that she must grow up. You always know after you are two. Two is the beginning of the end. Mrs. Darling first heard of Peter when she was tidying up her children’s minds. It is the nightly custom of every good mother after her children are asleep to rummage in their minds and put things straight for next morning, repacking into their proper places the many articles that have wandered during the day.]]></summary></entry></feed>

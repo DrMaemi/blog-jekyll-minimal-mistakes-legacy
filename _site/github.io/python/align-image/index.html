@@ -23,7 +23,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="Maemi's devlog">
 <meta property="og:title" content="  파이썬 개발 환경 설정">
-<meta property="og:url" content="http://localhost:4000/programming-language/python/Python-Dev-Env/">
+<meta property="og:url" content="http://localhost:4000/github.io/python/align-image/">
 
 
   <meta property="og:description" content="파이썬 환경 설정">
@@ -34,7 +34,7 @@
 
 
 
-  <meta property="article:published_time" content="2022-02-03T00:00:00+09:00">
+  <meta property="article:published_time" content="2022-02-06T00:00:00+09:00">
 
 
 
@@ -45,7 +45,7 @@
   
 
 
-<link rel="canonical" href="http://localhost:4000/programming-language/python/Python-Dev-Env/">
+<link rel="canonical" href="http://localhost:4000/github.io/python/align-image/">
 
 
 
@@ -291,14 +291,14 @@
   <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
     <meta itemprop="headline" content="  파이썬 개발 환경 설정">
     <meta itemprop="description" content="파이썬 환경 설정">
-    <meta itemprop="datePublished" content="2022-02-03T00:00:00+09:00">
+    <meta itemprop="datePublished" content="2022-02-06T00:00:00+09:00">
     
 
     <div class="page__inner-wrap">
       
         <header>
           <h1 id="page-title" class="page__title p-name" itemprop="headline">
-            <a href="http://localhost:4000/programming-language/python/Python-Dev-Env/" class="u-url" itemprop="url"><ol>
+            <a href="http://localhost:4000/github.io/python/align-image/" class="u-url" itemprop="url"><ol>
   <li>파이썬 개발 환경 설정</li>
 </ol>
 </a>
@@ -354,46 +354,38 @@
 <h3 id="11-설치">1.1. 설치</h3>
 <p><a href="https://www.anaconda.com/products/individual">https://www.anaconda.com/products/individual</a> - 공식 배포 버전<br />
 <a href="https://repo.anaconda.com/archive/">https://repo.anaconda.com/archive/</a> - 버전 별 다운, 쉘 명령어 <code class="language-plaintext highlighter-rouge">wget</code> 혹은 <code class="language-plaintext highlighter-rouge">curl</code>로 다운 가능</p>
-
 <p>
-
 i386 은 Intel 의 80386 CPU 계열의 CPU
 i586 은 Intel 의 80586 CPU 계열의 Pentium CPU
 i686 은 Intel 의 80686 CPU 계열의 Pentium Pro 이상의 CPU
 </p>
 <p>
-
 x86  - 위에 언급한 CPU들을 의미
 </p>
+<p>리눅스의 여러 패키지를 다운 받을 때 i386, i586, i686, x86, x86_64 등 여러가지가 표시되어 있는데, 이것들의 의미는 해당 코드가 타겟 CPU에 적합하게 컴파일되어 있다는 것을 의미</p>
 <p>
-
-리눅스의 여러 패키지를 다운 받을 때 i386, i586, i686, x86, x86_64 등 여러가지가 표시되어 있는데, 이것들의 의미는 해당 코드가 타겟 CPU에 적합하게 컴파일되어 있다는 것을 의미
-</p>
-<p>
-
 그러므로 x86 은 i386, i586, i686 의 모든 플랫폼에서 동작할 수 있고, x86_64 는 i386, i586, i686 의 64bit 환경에서 동작하는 것을 의미
 </p>
+
+<p><br /></p>
 
 <h3 id="12-가상환경-생성">1.2. 가상환경 생성</h3>
 <p>다음과 같이 가상환경을 생성할 수 있다.</p>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>conda create --name(-n) [가상환경명] [설치할패키지]
 </code></pre></div></div>
-<p><br />
-예시</p>
+<p>예시<br /></p>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>conda create -n testenv python=3.6
 </code></pre></div></div>
-
-<p><br />
-이후 다음과 같이 가상환경 활성화, 비활성화할 수 있다.</p>
+<p>이후 다음과 같이 가상환경 활성화, 비활성화할 수 있다.</p>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>conda activate testenv
 conda deactivate
 </code></pre></div></div>
-
-<p><br />
-가상환경 삭제 - base(root) 계정으로 활성화(activate) 후 삭제하는 게 좋음</p>
+<p>가상환경 삭제 - base(root) 계정으로 활성화(activate) 후 삭제하는 게 좋음</p>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>conda activate root
 conda remove --name [가상환경명] --all
 </code></pre></div></div>
+
+<p><br /></p>
 
 <h3 id="13-패키지-설치">1.3. 패키지 설치</h3>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>conda activate [가상환경 명]
@@ -401,60 +393,94 @@ conda install [패키지 명]
 pip install [패키지 명]
 </code></pre></div></div>
 
-<p><br />
-다음과 같이 패키지 버전을 명시하여 설치할 수 있다.</p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip install numpy==1.19.4
-</code></pre></div></div>
+<p>
+
+다음과 같이 패키지 버전을 명시하여 설치할 수 있다.<br />
+
+```
+pip install numpy==1.19.4
+```
+
+</p>
+
+<p><br /></p>
 
 <h3 id="14-설치된-패키지-삭제">1.4. 설치된 패키지 삭제</h3>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>conda uninstall [패키지 명]
 </code></pre></div></div>
+
+<p><br /></p>
 
 <h3 id="15-가상환경-복제">1.5. 가상환경 복제</h3>
 <p>기존에 세팅해둔 가상환경에서 약간의 변경 후 사용하고 싶을 때 사용한다.</p>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>conda create --name [새로운 가상환경 명] --clone [기존 가상환경 명]
 </code></pre></div></div>
 
-<p><br /></p>
+<p><br /><br /></p>
 
 <h2 id="2-주피터-노트북---가상-환경-연동">2. 주피터 노트북 - 가상 환경 연동</h2>
+<p align="center">
+  <figure>
+    <img src="https://drive.google.com/uc?export=view&amp;id=1FdSXpvQKyCVjyo5JKjEeqNqTCz7RaLVY" alt="파이썬 파일 생성" style="width: 75%" text-align="center" />
+    <figcation align="center">파이썬 파일 생성</figcation>
+  </figure>
+</p>
 
-<p style="text-align: center;"><img src="https://drive.google.com/uc?export=view&amp;id=1FdSXpvQKyCVjyo5JKjEeqNqTCz7RaLVY" alt="" class="align-center" />
+<p style="text-align: center;"><img src="https://drive.google.com/uc?export=view&amp;id=1FdSXpvQKyCVjyo5JKjEeqNqTCz7RaLVY" alt="파이썬 파일 생성" class="align-center" />
 파이썬 파일 생성</p>
 
-<p style="text-align: center;"><img src="https://drive.google.com/uc?export=view&amp;id=1Z-Qq12cfMYxzpejDN9R4MvuoknsLfbQr" alt="" class="align-center" />
-가상환경 커널이 아직 존재하지 않는다</p>
+<figure class="align-center">
+  <img src="https://drive.google.com/uc?export=view&amp;id=1FdSXpvQKyCVjyo5JKjEeqNqTCz7RaLVY" alt="파이썬 파일 생성" /><figcaption>
+      파이썬 파일 생성
 
-<p style="text-align: center;"><img src="https://drive.google.com/uc?export=view&amp;id=1EEiCy2I6G3qhx8HQ5L7uDEPnPpgxCLqD" alt="" class="align-center" />
-testenv라는 가상환경이 존재</p>
+    </figcaption></figure>
 
-<p>이 상태에서 testenv를 활성화하고 <code class="language-plaintext highlighter-rouge">jupyter --version</code>를 커맨드로 입력하면 ipykernel이 설치되어 있음을 확인한다.</p>
+<p><div align="center">
+  <figure>
+    <img src="/Programming-Language/Python/resources/1/가상환경 커널이 아직 존재하지 않는다.png" alt="가상환경 커널이 아직 존재하지 않는다" />
+    <div align="center"><figcation>가상환경 커널이 아직 존재하지 않는다</figcation></div>
+  </figure>
+</div></p>
 
-<p>만약 그렇지 않다면 활성화한 가상환경에서 <code class="language-plaintext highlighter-rouge">pip install jupyter</code>로 설치한다.</p>
+<p><div align="center">
+  <figure>
+    <img src="/Programming-Language/Python/resources/1/testenv라는 가상환경이 존재.png" alt="testenv라는 가상환경이 존재" />
+    <div align="center"><figcation>testenv라는 가상환경이 존재</figcation></div>
+  </figure>
+</div></p>
+
+<p>이 상태에서 testenv를 활성화하고 `jupyter --version`를 커맨드로 입력하면 ipykernel이 설치되어 있음을 확인한다.</p>
+<p>
+
+만약 그렇지 않다면 활성화한 가상환경에서 `pip install jupyter`로 설치한다.</p>
 
 <p>확인했다면 비활성화 후 가상환경 커널을 생성한다.</p>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>conda deactivate
 python -m ipykernel install --user --name [가상환경명] --display-name [커널명]
 </code></pre></div></div>
-
-<p><br />
-예시</p>
+<p>예시<br /></p>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python -m ipykernel install --user --name testenv --display-name testenv
 </code></pre></div></div>
 
-<p style="text-align: center;"><img src="https://drive.google.com/uc?export=view&amp;id=1L2cEAmqzgJhX4aGE1bOBYjb4ef8W70yP" alt="" class="align-center" />
-ipykernel 명령어 입력</p>
+<p>
+  <figure class="align-center">
+    <img src="/Programming-Language/Python/resources/1/ipykernel 명령어 입력.png" style="width: 75%" alt="ipykernel 명령어 입력" />
+    <figcation>ipykernel 명령어 입력</figcation>
+  </figure>
+</p>
 
-<p style="text-align: center;"><img src="https://drive.google.com/uc?export=view&amp;id=1jvQqaTjcTknZVBo140tkSC01srO4EaUr" alt="" class="align-center" />
-주피터 노트북 새로고침 후 가상환경 확인</p>
+<p>
+  <figure style="text-align:center;">
+    <img src="/Programming-Language/Python/resources/1/주피터 노트북 새로고침 후 가상환경 확인.png" alt="주피터 노트북 새로고침 후 가상환경 확인" />
+    <figcation style="text-align:center;">주피터 노트북 새로고침 후 가상환경 확인</figcation>
+  </figure>
+</p>
 
-<p><br /></p>
+<p><br /><br /></p>
 
 <h2 id="3-vs-code---가상환경-연동">3. VS Code - 가상환경 연동</h2>
 <p>[Ctrl] + [Shift] + [P]를 입력하면 command pallet가 나타난다.</p>
-
-<p>나타난 창에 ‘Python: Select Interpreter’을 입력하면, 원하는 파이썬 버전의 가상환경을 선택할 수 있다.</p>
-
+<p>나타난 창에 'Python: Select Interpreter'을 입력하면, 원하는 파이썬 버전의 가상환경을 선택할 수 있다.</p>
 <p>만약 Select Interpreter를 검색했음에도 나타나지 않는다면, VS Code의 Python extension을 설치해야 한다.</p>
 
         
@@ -493,7 +519,7 @@ ipykernel 명령어 입력</p>
     <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
     <span itemprop="keywords">
     
-      <a href="/categories/#programming-language" class="page__taxonomy-item p-category" rel="tag">Programming-Language</a><span class="sep">, </span>
+      <a href="/categories/#github-io" class="page__taxonomy-item p-category" rel="tag">Github.io</a><span class="sep">, </span>
     
       <a href="/categories/#python" class="page__taxonomy-item p-category" rel="tag">Python</a>
     
@@ -503,7 +529,7 @@ ipykernel 명령어 입력</p>
 
         
 
-  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time class="dt-published" datetime="2022-02-03T00:00:00+09:00">February 3, 2022</time></p>
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time class="dt-published" datetime="2022-02-06T00:00:00+09:00">February 6, 2022</time></p>
 
       </footer>
 
@@ -512,24 +538,24 @@ ipykernel 명령어 입력</p>
     <h4 class="page__share-title">Share on</h4>
   
 
-  <a href="https://twitter.com/intent/tweet?text=1.+%ED%8C%8C%EC%9D%B4%EC%8D%AC+%EA%B0%9C%EB%B0%9C+%ED%99%98%EA%B2%BD+%EC%84%A4%EC%A0%95%20http%3A%2F%2Flocalhost%3A4000%2Fprogramming-language%2Fpython%2FPython-Dev-Env%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=1.+%ED%8C%8C%EC%9D%B4%EC%8D%AC+%EA%B0%9C%EB%B0%9C+%ED%99%98%EA%B2%BD+%EC%84%A4%EC%A0%95%20http%3A%2F%2Flocalhost%3A4000%2Fgithub.io%2Fpython%2Falign-image%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
-  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fprogramming-language%2Fpython%2FPython-Dev-Env%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fgithub.io%2Fpython%2Falign-image%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
-  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fprogramming-language%2Fpython%2FPython-Dev-Env%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fgithub.io%2Fpython%2Falign-image%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
 </section>
 
 
       
   <nav class="pagination">
     
-      <a href="/c++/post-standard/" class="pagination--pager" title="Post: Standard
+      <a href="/programming-language/python/Python-Dev-Env/" class="pagination--pager" title="
+  파이썬 개발 환경 설정
+
 ">Previous</a>
     
     
-      <a href="/github.io/python/align-image/" class="pagination--pager" title="
-  파이썬 개발 환경 설정
-
+      <a href="/programming-language/markdown/how-to-use-markdown/" class="pagination--pager" title="Markdown 사용법
 ">Next</a>
     
   </nav>
@@ -594,7 +620,7 @@ ipykernel 명령어 입력</p>
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
-        <a href="/github.io/python/align-image/" rel="permalink"><ol>
+        <a href="/programming-language/python/Python-Dev-Env/" rel="permalink"><ol>
   <li>파이썬 개발 환경 설정</li>
 </ol>
 </a>
@@ -614,7 +640,7 @@ ipykernel 명령어 입력</p>
       <span class="page__meta-readtime">
         <i class="far fa-clock" aria-hidden="true"></i>
         
-          2 minute read
+          1 minute read
         
       </span>
     

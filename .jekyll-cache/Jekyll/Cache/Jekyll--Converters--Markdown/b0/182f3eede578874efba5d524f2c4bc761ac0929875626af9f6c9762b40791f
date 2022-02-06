@@ -1,15 +1,15 @@
-I"�<h1 id="파이썬-환경-설정">파이썬 환경 설정</h1>
+I"�<h1 id="파이썬-환경-설정">파이썬 환경 설정</h1>
 
 <p><br /></p>
 
 <h2 id="목차">목차</h2>
 <ul>
-  <li><a href="#1-아나콘다">1. 아나콘다</a><br />
+  <li><a href="#1-아나콘다">1. 아나콘다</a>
     <ul>
-      <li><a href="#11-설치">1.1. 설치</a><br /></li>
-      <li><a href="#12-가상환경-생성">1.2. 가상환경 생성</a><br /></li>
-      <li><a href="#13-패키지-설치">1.3. 패키지 설치</a><br /></li>
-      <li><a href="#14-설치된-패키지-삭제">1.4. 설치된 패키지 삭제</a><br /></li>
+      <li><a href="#11-설치">1.1. 설치</a></li>
+      <li><a href="#12-가상환경-생성">1.2. 가상환경 생성</a></li>
+      <li><a href="#13-패키지-설치">1.3. 패키지 설치</a></li>
+      <li><a href="#14-설치된-패키지-삭제">1.4. 설치된 패키지 삭제</a></li>
       <li><a href="#15-가상환경-복제">1.5. 가상환경 복제</a></li>
     </ul>
   </li>
@@ -88,23 +88,32 @@ pip install numpy==1.19.4
 <p><br /><br /></p>
 
 <h2 id="2-주피터-노트북---가상-환경-연동">2. 주피터 노트북 - 가상 환경 연동</h2>
-<p><div align="center">
+<p align="center">
   <figure>
-    <img src="/Programming-Language/Python/resources/1/%ED%8C%8C%EC%9D%B4%EC%8D%AC%20%ED%8C%8C%EC%9D%BC%20%EC%83%9D%EC%84%B1.png" alt="파이썬 파일 생성" />
-    <div align="center"><figcation>파이썬 파일 생성</figcation></div>
+    <img src="https://drive.google.com/uc?export=view&amp;id=1FdSXpvQKyCVjyo5JKjEeqNqTCz7RaLVY" alt="파이썬 파일 생성" style="width: 75%" text-align="center" />
+    <figcation align="center">파이썬 파일 생성</figcation>
   </figure>
-</div></p>
+</p>
+
+<p style="text-align: center;"><img src="https://drive.google.com/uc?export=view&amp;id=1FdSXpvQKyCVjyo5JKjEeqNqTCz7RaLVY" alt="파이썬 파일 생성" class="align-center" />
+파이썬 파일 생성</p>
+
+<figure class="align-center">
+  <img src="https://drive.google.com/uc?export=view&amp;id=1FdSXpvQKyCVjyo5JKjEeqNqTCz7RaLVY" alt="파이썬 파일 생성" /><figcaption>
+      파이썬 파일 생성
+
+    </figcaption></figure>
 
 <p><div align="center">
   <figure>
-    <img src="../resources/1/가상환경 커널이 아직 존재하지 않는다.png" alt="가상환경 커널이 아직 존재하지 않는다" />
+    <img src="/Programming-Language/Python/resources/1/가상환경 커널이 아직 존재하지 않는다.png" alt="가상환경 커널이 아직 존재하지 않는다" />
     <div align="center"><figcation>가상환경 커널이 아직 존재하지 않는다</figcation></div>
   </figure>
 </div></p>
 
 <p><div align="center">
   <figure>
-    <img src="../resources/1/testenv라는 가상환경이 존재.png" alt="testenv라는 가상환경이 존재" />
+    <img src="/Programming-Language/Python/resources/1/testenv라는 가상환경이 존재.png" alt="testenv라는 가상환경이 존재" />
     <div align="center"><figcation>testenv라는 가상환경이 존재</figcation></div>
   </figure>
 </div></p>
@@ -122,19 +131,19 @@ python -m ipykernel install --user --name [가상환경명] --display-name [커�
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python -m ipykernel install --user --name testenv --display-name testenv
 </code></pre></div></div>
 
-<p><div align="center">
-  <figure>
-    <img src="../resources/1/ipykernel 명령어 입력.png" alt="ipykernel 명령어 입력" />
-    <div align="center"><figcation>ipykernel 명령어 입력</figcation></div>
+<p>
+  <figure class="align-center">
+    <img src="/Programming-Language/Python/resources/1/ipykernel 명령어 입력.png" style="width: 75%" alt="ipykernel 명령어 입력" />
+    <figcation>ipykernel 명령어 입력</figcation>
   </figure>
-</div></p>
+</p>
 
-<p><div align="center">
-  <figure>
-    <img src="../resources/1/주피터 노트북 새로고침 후 가상환경 확인.png" alt="주피터 노트북 새로고침 후 가상환경 확인" />
-    <div align="center"><figcation>주피터 노트북 새로고침 후 가상환경 확인</figcation></div>
+<p>
+  <figure style="text-align:center;">
+    <img src="/Programming-Language/Python/resources/1/주피터 노트북 새로고침 후 가상환경 확인.png" alt="주피터 노트북 새로고침 후 가상환경 확인" />
+    <figcation style="text-align:center;">주피터 노트북 새로고침 후 가상환경 확인</figcation>
   </figure>
-</div></p>
+</p>
 
 <p><br /><br /></p>
 
