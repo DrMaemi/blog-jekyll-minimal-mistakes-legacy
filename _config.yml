@@ -12,11 +12,11 @@
 
 # theme                  : "minimal-mistakes-jekyll"
 # remote_theme           : "mmistakes/minimal-mistakes"
-minimal_mistakes_skin    : "dark" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise", "default"
+minimal_mistakes_skin    : "dirt" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise", "default"
 
 # Site Settings
 locale                   : "en-US"
-title                    : "Site Title"
+title                    : "Maemi's devlog"
 title_separator          : "-"
 subtitle                 : # site tagline that appears below site title in masthead
 name                     : "Dr.Maemi"
@@ -102,7 +102,7 @@ analytics:
 
 # Site Author
 author:
-  name             : "DrMaemi"
+  name             : "Dr.Maemi"
   avatar           : "/assets/images/profile/2022-01-21.jpg" # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
   bio              : "Interested in * in Computer Science, Software Engineering."
   # location         : "Somewhere"
