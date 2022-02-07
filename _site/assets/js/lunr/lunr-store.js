@@ -5,10 +5,10 @@ var store = [{
         "url": "/programming-language/python/Python-Dev-Env/",
         "teaser": null
       },{
-        "title": "1. 파이썬 개발 환경 설정",
-        "excerpt":"파이썬 환경 설정 목차 1. 아나콘다 1.1. 설치 1.2. 가상환경 생성 1.3. 패키지 설치 1.4. 설치된 패키지 삭제 1.5. 가상환경 복제 2. 주피터 노트북 - 가상 환경 연동 3. VS Code - 가상환경 연동 1. 아나콘다 1.1. 설치 https://www.anaconda.com/products/individual - 공식 배포 버전 https://repo.anaconda.com/archive/ - 버전 별 다운, 쉘 명령어...","categories": ["Github.io","Python"],
-        "tags": ["Anaconda","Jupyter Notebook","VSCode"],
-        "url": "/github.io/python/align-image/",
+        "title": "Github.io 이미지 정렬",
+        "excerpt":"이 블로그에 포스트할 때 이미지와 캡션을 가운데 정렬하여 보여주고 싶었다. 그런데 github의 REAMDE를 작성할 때처럼 했더니 적용이 안됐다. 결론부터 말하자면, 다음과 같은 문법을 통해 이미지 정렬을 할 수 있다. ![&lt;alt&gt;](&lt;image link&gt;){: &lt;align code&gt;} &lt;caption&gt; {: &lt;align code&gt;} alt: image link로부터 이미지 업로드에 실패하면 표시될 대체 텍스 image link: 업로드할 이미지...","categories": ["Github.io"],
+        "tags": ["Jekyll","Liquid"],
+        "url": "/github.io/align-image/",
         "teaser": null
       },{
         "title": "Markdown 사용법",
