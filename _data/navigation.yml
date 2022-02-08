@@ -1,5 +1,7 @@
 # main links
 main:
+  - title: "Github.io"
+    url: /Github.io
   - title: "Programming-Language"
     url: /Programming-Language/
     children:
@@ -7,6 +9,9 @@ main:
       url: "/Programming-Language/C++"
     - title: "Python"
       url: "/Programming-Language/Python"
+    - title: "Markdown"
+      url: "/Programming-Language/Markdown"
+  
   # - title: "About"
   #   url: https://mmistakes.github.io/minimal-mistakes/about/
   # - title: "Sample Posts"
