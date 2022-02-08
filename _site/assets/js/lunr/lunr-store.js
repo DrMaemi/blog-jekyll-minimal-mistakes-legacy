@@ -1,6 +1,6 @@
 var store = [{
-        "title": "1. 파이썬 개발 환경 설정",
-        "excerpt":"파이썬 환경 설정 목차 1. 아나콘다 1.1. 설치 1.2. 가상환경 생성 1.3. 패키지 설치 1.4. 설치된 패키지 삭제 1.5. 가상환경 복제 2. 주피터 노트북 - 가상 환경 연동 3. VS Code - 가상환경 연동 1. 아나콘다 1.1. 설치 https://www.anaconda.com/products/individual - 공식 배포 버전 https://repo.anaconda.com/archive/ - 버전 별 다운, 쉘 명령어...","categories": ["Programming-Language","Python"],
+        "title": "파이썬 개발 환경 설정",
+        "excerpt":"문법이 간단해서 비전공자도 쉽고 재미있게 배울 수 있는 파이썬, 본문을 통해 어떻게 시작할 수 있는지 알아보자. 필자는 AI 엔진을 개발하거나 백엔드 서버에서 일부 비즈니스 로직을 다루는데 파이썬을 사용하는데, 아나콘다와 주피터 노트북, VS Code를 이용해서 개발하는게 편했다. 본문의 내용은 이와 관련된 내용으로 구성되어 있다. 목차 1. 아나콘다 1.1. 설치 1.2. 가상환경...","categories": ["Programming-Language","Python"],
         "tags": ["Anaconda","Jupyter Notebook","VSCode"],
         "url": "/programming-language/python/Python-Dev-Env/",
         "teaser": null
