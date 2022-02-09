@@ -1,0 +1,14 @@
+I"�<p>자료를 조사할 때 내가 찾은 자료가 언제 작성된 것인지 한 번쯤 궁금히 여겨본 적 있을 것이다. 필자도 그러했는데, 검색된 자료가 최신 자료일 수록 더 믿음이 가며 특히 논문 등에 참조 문헌으로 인용할 때에는 작성 날짜가 중요한 의미를 가진다.</p>
+
+<p>따라서 블로그 포스팅을 할 때에도 작성 날짜에 관련된 정보가 중요하며, 중요한 정보일 수록 가장 먼저 눈에 띄는 것이 바람직하다고 생각한다. 본문에서는 <code class="language-plaintext highlighter-rouge">Minimal Mistakes</code> 기반 블로그 포스트에서 게시/수정 날짜를 표시하는 방법을 다룬다.</p>
+
+<h2 id="_includesarchive-singlehtml">/_includes/archive-single.html</h2>
+<p><code class="language-plaintext highlighter-rouge">/_includes</code> 경로 하위에 있는 <code class="language-plaintext highlighter-rouge">archive-single.html</code> 파일은 블로그의 포스트에 사용되는 레이아웃 구성 일부를 설정하는 파일이다. 해당 파일 내부에 다음 코드를 적절한 위치에 삽입한다.</p>
+<pre><code class="language-Liquid">&lt;!-- Describe last modified date --&gt;
+&lt;!--  --&gt;
+</code></pre>
+<p>필자는 <code class="language-plaintext highlighter-rouge">archive-single.html</code> 파일 내에서 포스트의 제목을 기재하는 코드 밑에 삽입했다.</p>
+
+<p>결과
+<img src="" alt="" /></p>
+:ET

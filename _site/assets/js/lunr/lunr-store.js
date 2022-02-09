@@ -12,8 +12,20 @@ var store = [{
         "teaser": null
       },{
         "title": "Markdown 사용법",
-        "excerpt":"Markdown 사용법 목차 1. 마크다운이란? 2. 기본 문법 3. 같은 문서 내 헤더로 링크 걸기 4. 중첩된 목록 1. 마크다운이란? 마크다운은 평문(plain-text) 편집기를 사용하는 정형화된(formatted) 텍스트를 위한 경량 마크업 언어다. 마크다운은 블로그나 즉석 메시지(instant messaging), 온라인 포럼, 협업 소프트웨어 그리고 리드미(REAMDE) 파일 등에 널리 사용된다. 2. 기본 문법 마크다운의 기본...","categories": ["Programming-Language","Markdown"],
+        "excerpt":"목차 1. 마크다운이란? 2. 기본 문법 3. 같은 문서 내 헤더로 링크 걸기 4. 중첩된 목록 1. 마크다운이란? 마크다운은 평문(plain-text) 편집기를 사용하는 정형화된(formatted) 텍스트를 위한 경량 마크업 언어다. 마크다운은 블로그나 즉석 메시지(instant messaging), 온라인 포럼, 협업 소프트웨어 그리고 리드미(REAMDE) 파일 등에 널리 사용된다. 2. 기본 문법 마크다운의 기본 문법은 두레이의...","categories": ["Programming-Language","Markdown"],
         "tags": ["Programming-Language"],
         "url": "/programming-language/markdown/how-to-use-markdown/",
+        "teaser": null
+      },{
+        "title": "포스트 게시 날짜 표시",
+        "excerpt":"자료를 조사할 때 내가 찾은 자료가 언제 작성된 것인지 한 번쯤 궁금히 여겨본 적 있을 것이다. 필자도 그러했는데, 검색된 자료가 최신 자료일 수록 더 믿음이 가며 특히 논문 등에 참조 문헌으로 인용할 때에는 작성 날짜가 중요한 의미를 가진다. 따라서 블로그 포스팅을 할 때에도 작성 날짜에 관련된 정보가 중요하며, 중요한 정보일...","categories": ["Github.io"],
+        "tags": ["Jekyll","Liquid"],
+        "url": "/github.io/show-modified-time/",
+        "teaser": null
+      },{
+        "title": "이미지 크기 조정 및 나란히 배치",
+        "excerpt":"마크다운에서 이미지 크기를 조정하고 가로로 나란히 배치해보자. 결론부터 말하자면 마크다운 문법으로 이미지 각각에 캡션을 유지해서 가로로 나란히 배치하는 방법을 찾진 못했다. 본문에서는 방법을 찾기위해 시도해봤던 것들을 기록해두었다. 1. 캡션 없이 ![](https://drive.google.com/uc?export=view&amp;id=1lxVr632cvKmNU0sPIVkJUmPynkz31pLg){: width=\"45%\"} ![](https://drive.google.com/uc?export=view&amp;id=1-AArs7kr1KkFDJqYkP8u2bjjRGXf_T9q){: width=\"45%\"} 가로 길이 비율을 적절히 조정하면 마크다운 문법으로 이미지를 가로로 나란히 배치할 수 있다. 마찬가지로 html 문법으로...","categories": ["Github.io"],
+        "tags": ["Jekyll","Liquid"],
+        "url": "/github.io/image-resize-place-side-by-side/",
         "teaser": null
       }]

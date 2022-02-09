@@ -1,6 +1,119 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-02-08T19:08:45+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Maemi’s devlog</title><author><name>Dr.Maemi</name></author><entry><title type="html">Markdown 사용법</title><link href="http://localhost:4000/programming-language/markdown/how-to-use-markdown/" rel="alternate" type="text/html" title="Markdown 사용법" /><published>2022-02-06T00:00:00+09:00</published><updated>2022-02-06T20:00:00+09:00</updated><id>http://localhost:4000/programming-language/markdown/how-to-use-markdown</id><content type="html" xml:base="http://localhost:4000/programming-language/markdown/how-to-use-markdown/"><![CDATA[<h1 id="markdown-사용법">Markdown 사용법</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-02-09T16:13:52+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Maemi’s devlog</title><author><name>Dr.Maemi</name></author><entry><title type="html">이미지 크기 조정 및 나란히 배치</title><link href="http://localhost:4000/github.io/image-resize-place-side-by-side/" rel="alternate" type="text/html" title="이미지 크기 조정 및 나란히 배치" /><published>2022-02-09T00:00:00+09:00</published><updated>2022-02-09T02:36:00+09:00</updated><id>http://localhost:4000/github.io/image-resize-place-side-by-side</id><content type="html" xml:base="http://localhost:4000/github.io/image-resize-place-side-by-side/"><![CDATA[<p>마크다운에서 이미지 크기를 조정하고 가로로 나란히 배치해보자.
+결론부터 말하자면 마크다운 문법으로 이미지 각각에 캡션을 유지해서 가로로 나란히 배치하는 방법을 찾진 못했다. 본문에서는 방법을 찾기위해 시도해봤던 것들을 기록해두었다.</p>
 
-<h2 id="목차">목차</h2>
+<h2 id="1-캡션-없이">1. 캡션 없이</h2>
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">![](</span><span class="sx">https://drive.google.com/uc?export=view&amp;id=1lxVr632cvKmNU0sPIVkJUmPynkz31pLg</span><span class="p">)</span>{: width="45%"}
+<span class="p">![](</span><span class="sx">https://drive.google.com/uc?export=view&amp;id=1-AArs7kr1KkFDJqYkP8u2bjjRGXf_T9q</span><span class="p">)</span>{: width="45%"}
+</code></pre></div></div>
+<p>가로 길이 비율을 적절히 조정하면 마크다운 문법으로 이미지를 가로로 나란히 배치할 수 있다.</p>
+
+<p><img src="https://drive.google.com/uc?export=view&amp;id=1lxVr632cvKmNU0sPIVkJUmPynkz31pLg" alt="" width="45%" />
+<img src="https://drive.google.com/uc?export=view&amp;id=1-AArs7kr1KkFDJqYkP8u2bjjRGXf_T9q" alt="" width="45%" /></p>
+
+<p>마찬가지로 html 문법으로 이미지를 가로로 나란히 배치할 수 있다.</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"https://drive.google.com/uc?export=view&amp;id=1lxVr632cvKmNU0sPIVkJUmPynkz31pLg"</span> <span class="na">width=</span><span class="s">"45%"</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"https://drive.google.com/uc?export=view&amp;id=1-AArs7kr1KkFDJqYkP8u2bjjRGXf_T9q"</span> <span class="na">width=</span><span class="s">"45%"</span> <span class="nt">/&gt;</span> 
+</code></pre></div></div>
+
+<p><img src="https://drive.google.com/uc?export=view&amp;id=1lxVr632cvKmNU0sPIVkJUmPynkz31pLg" width="45%" />
+<img src="https://drive.google.com/uc?export=view&amp;id=1-AArs7kr1KkFDJqYkP8u2bjjRGXf_T9q" width="45%" /></p>
+
+<p>그런데 이 경우 이미지를 가운데 정렬할 수 없다는 문제가 있다.</p>
+
+<h2 id="2-표를-이용해-이미지-배치">2. 표를 이용해 이미지 배치</h2>
+<p>표 안에 이미지를 넣어 정렬 효과를 기대할 수 있다.</p>
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>개 | 고양이
+:-: | :-:
+<span class="p">![](</span><span class="sx">https://drive.google.com/uc?export=view&amp;id=1lxVr632cvKmNU0sPIVkJUmPynkz31pLg</span><span class="p">)</span>{: width="45%"} | !<span class="p">[](</span><span class="sx">https://drive.google.com/uc?export=view&amp;id=1-AArs7kr1KkFDJqYkP8u2bjjRGXf_T9q</span><span class="p">)</span>{: width="45%"}
+
+개 | 고양이
+:-: | :-:
+<span class="p">![](</span><span class="sx">https://drive.google.com/uc?export=view&amp;id=1lxVr632cvKmNU0sPIVkJUmPynkz31pLg</span><span class="p">)</span> | !<span class="p">[](</span><span class="sx">https://drive.google.com/uc?export=view&amp;id=1-AArs7kr1KkFDJqYkP8u2bjjRGXf_T9q</span><span class="p">)</span>
+</code></pre></div></div>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">개</th>
+      <th style="text-align: center">고양이</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center"><img src="https://drive.google.com/uc?export=view&amp;id=1lxVr632cvKmNU0sPIVkJUmPynkz31pLg" alt="" width="45%" /></td>
+      <td style="text-align: center"><img src="https://drive.google.com/uc?export=view&amp;id=1-AArs7kr1KkFDJqYkP8u2bjjRGXf_T9q" alt="" width="45%" /></td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">개</th>
+      <th style="text-align: center">고양이</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center"><img src="https://drive.google.com/uc?export=view&amp;id=1lxVr632cvKmNU0sPIVkJUmPynkz31pLg" alt="" /></td>
+      <td style="text-align: center"><img src="https://drive.google.com/uc?export=view&amp;id=1-AArs7kr1KkFDJqYkP8u2bjjRGXf_T9q" alt="" /></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>이 경우엔 이미지를 원하는 비율로 설정하는 것이 힘들다.</p>]]></content><author><name>Dr.Maemi</name></author><category term="Github.io" /><category term="Jekyll" /><category term="Liquid" /><summary type="html"><![CDATA[마크다운에서 이미지 크기를 조정하고 가로로 나란히 배치해보자. 결론부터 말하자면 마크다운 문법으로 이미지 각각에 캡션을 유지해서 가로로 나란히 배치하는 방법을 찾진 못했다. 본문에서는 방법을 찾기위해 시도해봤던 것들을 기록해두었다.]]></summary></entry><entry><title type="html">포스트 게시 날짜 표시</title><link href="http://localhost:4000/github.io/show-modified-time/" rel="alternate" type="text/html" title="포스트 게시 날짜 표시" /><published>2022-02-08T00:00:00+09:00</published><updated>2022-02-08T19:31:00+09:00</updated><id>http://localhost:4000/github.io/show-modified-time</id><content type="html" xml:base="http://localhost:4000/github.io/show-modified-time/"><![CDATA[<p>자료를 조사할 때 내가 찾은 자료가 언제 작성된 것인지 한 번쯤 궁금히 여겨본 적 있을 것이다. 필자도 그러했는데, 검색된 자료가 최신 자료일 수록 더 믿음이 가며 특히 논문 등에 참조 문헌으로 인용할 때에는 작성 날짜가 중요한 의미를 가진다.</p>
+
+<p>따라서 블로그 포스팅을 할 때에도 작성 날짜에 관련된 정보가 중요하며, 중요한 정보일 수록 가장 먼저 눈에 띄는 것이 바람직하다고 생각한다. 본문에서는 <code class="language-plaintext highlighter-rouge">Minimal Mistakes</code> 기반 블로그 포스트에서 게시/수정 날짜를 표시하는 방법을 다룬다.</p>
+
+<h2 id="_includesarchive-singlehtml">/_includes/archive-single.html</h2>
+<p><code class="language-plaintext highlighter-rouge">/_includes</code> 경로 하위에 있는 <code class="language-plaintext highlighter-rouge">archive-single.html</code> 파일은 블로그의 포스트에 사용되는 레이아웃 구성 일부를 설정하는 파일이다. 해당 파일 내부에 다음 코드를 적절한 위치에 삽입한다.</p>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;!-- Describe last modified date --&gt;</span>
+{% if post.date %}
+  <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"page__meta"</span><span class="nt">&gt;&lt;i</span> <span class="na">class=</span><span class="s">"far fa-fw fa-calendar-alt"</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;&lt;/i&gt;</span> {{ post.date | date: "%B %d %Y" }}<span class="nt">&lt;/p&gt;</span>
+{% endif %}
+</code></pre></div></div>
+
+<p>필자는 <code class="language-plaintext highlighter-rouge">archive-single.html</code> 파일 내에서 포스트의 제목을 기재하는 코드 밑에 삽입했다.</p>
+
+<p style="text-align: center;"><img src="https://drive.google.com/uc?export=view&amp;id=1h6OL9Dh9-TXEBg1QwfVjWRtFmoCjJs7Y" alt="" class="align-center" />
+게시 날짜 표시 결과</p>
+
+<h2 id="_includespage__metahtml">/_includes/page__meta.html</h2>
+<p>다음으로 읽은 시간을 삭제해야 한다. 해당 코드는 <code class="language-plaintext highlighter-rouge">/_includes</code> 경로 하위에 있는 <code class="language-plaintext highlighter-rouge">page__meta.html</code> 파일에 있다. <code class="language-plaintext highlighter-rouge">documnet.read_time</code>과 관련된 if문을 통째로 주석처리하여 읽은 시간을 삭제할 수 있다.</p>
+
+<p style="text-align: center;"><img src="https://drive.google.com/uc?export=view&amp;id=1Kd1_UZI97mCmnDMnIhulDpTWqRRCbgiC" alt="" class="align-center" />
+읽은 시간 삭제 결과</p>]]></content><author><name>Dr.Maemi</name></author><category term="Github.io" /><category term="Jekyll" /><category term="Liquid" /><summary type="html"><![CDATA[자료를 조사할 때 내가 찾은 자료가 언제 작성된 것인지 한 번쯤 궁금히 여겨본 적 있을 것이다. 필자도 그러했는데, 검색된 자료가 최신 자료일 수록 더 믿음이 가며 특히 논문 등에 참조 문헌으로 인용할 때에는 작성 날짜가 중요한 의미를 가진다.]]></summary></entry><entry><title type="html">Github.io 이미지 정렬</title><link href="http://localhost:4000/github.io/align-image/" rel="alternate" type="text/html" title="Github.io 이미지 정렬" /><published>2022-02-06T00:00:00+09:00</published><updated>2022-02-08T05:21:00+09:00</updated><id>http://localhost:4000/github.io/align-image</id><content type="html" xml:base="http://localhost:4000/github.io/align-image/"><![CDATA[<p>이 블로그에 포스트할 때 이미지와 캡션을 가운데 정렬하여 보여주고 싶었다. 그런데 github의 REAMDE를 작성할 때처럼 했더니 적용이 안됐다.</p>
+
+<p>결론부터 말하자면, 다음과 같은 문법을 통해 이미지 정렬을 할 수 있다.</p>
+
+<div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code>![&lt;alt&gt;](&lt;image link&gt;){: &lt;align code&gt;}
+&lt;caption&gt;
+{: &lt;align code&gt;}
+</code></pre></div></div>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">alt</code>: <code class="language-plaintext highlighter-rouge">image link</code>로부터 이미지 업로드에 실패하면 표시될 대체 텍스</li>
+  <li><code class="language-plaintext highlighter-rouge">image link</code>: 업로드할 이미지 링크</li>
+  <li><code class="language-plaintext highlighter-rouge">align code</code>: 정렬 명령어
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">.align-left</code>: 왼쪽 정렬</li>
+      <li><code class="language-plaintext highlighter-rouge">align-center</code>: 가운데 정렬</li>
+      <li><code class="language-plaintext highlighter-rouge">align-right</code>: 오른쪽 정렬</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">caption</code>: 이미지 캡션 텍스트</li>
+</ul>
+
+<p><br />
+예시</p>
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">![](</span><span class="sx">https://drive.google.com/uc?export=view&amp;id=1pYF0eZ-IpPk24s0fQF6J7fbby_TGXWwy</span><span class="p">)</span>{: .align-center}
+예시 사진(gif)
+{: style="text-align: center;"}
+</code></pre></div></div>
+<p style="text-align: center;"><img src="https://drive.google.com/uc?export=view&amp;id=1pYF0eZ-IpPk24s0fQF6J7fbby_TGXWwy" alt="" class="align-center" />
+예시 사진(gif)</p>
+<p>예시 코드를 보면 이미지 링크로 구글 드라이브와 연동도 가능하다.</p>]]></content><author><name>Dr.Maemi</name></author><category term="Github.io" /><category term="Jekyll" /><category term="Liquid" /><summary type="html"><![CDATA[이 블로그에 포스트할 때 이미지와 캡션을 가운데 정렬하여 보여주고 싶었다. 그런데 github의 REAMDE를 작성할 때처럼 했더니 적용이 안됐다.]]></summary></entry><entry><title type="html">Markdown 사용법</title><link href="http://localhost:4000/programming-language/markdown/how-to-use-markdown/" rel="alternate" type="text/html" title="Markdown 사용법" /><published>2022-02-06T00:00:00+09:00</published><updated>2022-02-09T02:34:00+09:00</updated><id>http://localhost:4000/programming-language/markdown/how-to-use-markdown</id><content type="html" xml:base="http://localhost:4000/programming-language/markdown/how-to-use-markdown/"><![CDATA[<h2 id="목차">목차</h2>
 <ul>
   <li><a href="#1-마크다운이란">1. 마크다운이란?</a></li>
   <li><a href="#2-기본-문법">2. 기본 문법</a></li>
@@ -19,16 +132,24 @@
 <br /></p>
 
 <h2 id="3-같은-문서-내-헤더로-링크-걸기">3. 같은 문서 내 헤더로 링크 걸기</h2>
-
+<p>목차를 작성할 때 주로 사용하거나, 본문 내에서 특정 헤더로 이동이 필요할 때 사용한다. 다음과 같은 규칙으로 작성된다.</p>
 <ul>
   <li><a href="#링크할 헤더">보여줄 텍스트</a> 형식으로 기입</li>
   <li>스페이스바(띄어쓰기)는 ‘-‘로 대체</li>
   <li>’.’, ‘-‘, ‘:’, ‘(‘, ‘)’, ‘?’는 무시한다(제거)</li>
   <li>이모지는 무시한다(제거)</li>
   <li>대문자는 소문자로 바꿔 쓴다</li>
-  <li>어떤 헤더이든 ‘#’는 한 번만 쓴다
-<br /></li>
+  <li>어떤 헤더이든 ‘#’는 한 번만 쓴다</li>
 </ul>
+
+<p>예시</p>
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>자세한 내용은 <span class="p">[</span><span class="nv">5번 챕터</span><span class="p">](</span><span class="sx">#5-대충-어떤-헤더</span><span class="p">)</span>을 참조하세요.
+...
+
+<span class="gu">### 5. 대?충 어:떤 헤-더</span>
+...
+</code></pre></div></div>
+<p><br /></p>
 
 <h2 id="4-중첩된-목록">4. 중첩된 목록</h2>
 <p>두 칸을 들여 쓰거나, <code class="language-plaintext highlighter-rouge">tab</code>키를 입력해 중첩된 목록을 만들 수 있다.</p>
@@ -97,36 +218,7 @@
       <td style="text-align: right">정렬</td>
     </tr>
   </tbody>
-</table>]]></content><author><name>Dr.Maemi</name></author><category term="Programming-Language" /><category term="Markdown" /><category term="Programming-Language" /><summary type="html"><![CDATA[Markdown 사용법]]></summary></entry><entry><title type="html">Github.io 이미지 정렬</title><link href="http://localhost:4000/github.io/align-image/" rel="alternate" type="text/html" title="Github.io 이미지 정렬" /><published>2022-02-06T00:00:00+09:00</published><updated>2022-02-08T05:21:00+09:00</updated><id>http://localhost:4000/github.io/align-image</id><content type="html" xml:base="http://localhost:4000/github.io/align-image/"><![CDATA[<p>이 블로그에 포스트할 때 이미지와 캡션을 가운데 정렬하여 보여주고 싶었다. 그런데 github의 REAMDE를 작성할 때처럼 했더니 적용이 안됐다.</p>
-
-<p>결론부터 말하자면, 다음과 같은 문법을 통해 이미지 정렬을 할 수 있다.</p>
-
-<div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code>![&lt;alt&gt;](&lt;image link&gt;){: &lt;align code&gt;}
-&lt;caption&gt;
-{: &lt;align code&gt;}
-</code></pre></div></div>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">alt</code>: <code class="language-plaintext highlighter-rouge">image link</code>로부터 이미지 업로드에 실패하면 표시될 대체 텍스</li>
-  <li><code class="language-plaintext highlighter-rouge">image link</code>: 업로드할 이미지 링크</li>
-  <li><code class="language-plaintext highlighter-rouge">align code</code>: 정렬 명령어
-    <ul>
-      <li><code class="language-plaintext highlighter-rouge">.align-left</code>: 왼쪽 정렬</li>
-      <li><code class="language-plaintext highlighter-rouge">align-center</code>: 가운데 정렬</li>
-      <li><code class="language-plaintext highlighter-rouge">align-right</code>: 오른쪽 정렬</li>
-    </ul>
-  </li>
-  <li><code class="language-plaintext highlighter-rouge">caption</code>: 이미지 캡션 텍스트</li>
-</ul>
-
-<p><br />
-예시</p>
-<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">![](</span><span class="sx">https://drive.google.com/uc?export=view&amp;id=1pYF0eZ-IpPk24s0fQF6J7fbby_TGXWwy</span><span class="p">)</span>{: .align-center}
-예시 사진(gif)
-{: style="text-align: center;"}
-</code></pre></div></div>
-<p style="text-align: center;"><img src="https://drive.google.com/uc?export=view&amp;id=1pYF0eZ-IpPk24s0fQF6J7fbby_TGXWwy" alt="" class="align-center" />
-예시 사진(gif)</p>
-<p>예시 코드를 보면 이미지 링크로 구글 드라이브와 연동도 가능하다.</p>]]></content><author><name>Dr.Maemi</name></author><category term="Github.io" /><category term="Jekyll" /><category term="Liquid" /><summary type="html"><![CDATA[이 블로그에 포스트할 때 이미지와 캡션을 가운데 정렬하여 보여주고 싶었다. 그런데 github의 REAMDE를 작성할 때처럼 했더니 적용이 안됐다.]]></summary></entry><entry><title type="html">파이썬 개발 환경 설정</title><link href="http://localhost:4000/programming-language/python/Python-Dev-Env/" rel="alternate" type="text/html" title="파이썬 개발 환경 설정" /><published>2022-02-03T00:00:00+09:00</published><updated>2022-02-08T15:13:00+09:00</updated><id>http://localhost:4000/programming-language/python/Python-Dev-Env</id><content type="html" xml:base="http://localhost:4000/programming-language/python/Python-Dev-Env/"><![CDATA[<p>문법이 간단해서 비전공자도 쉽고 재미있게 배울 수 있는 파이썬, 본문을 통해 어떻게 시작할 수 있는지 알아보자.</p>
+</table>]]></content><author><name>Dr.Maemi</name></author><category term="Programming-Language" /><category term="Markdown" /><category term="Programming-Language" /><summary type="html"><![CDATA[목차 1. 마크다운이란? 2. 기본 문법 3. 같은 문서 내 헤더로 링크 걸기 4. 중첩된 목록]]></summary></entry><entry><title type="html">파이썬 개발 환경 설정</title><link href="http://localhost:4000/programming-language/python/Python-Dev-Env/" rel="alternate" type="text/html" title="파이썬 개발 환경 설정" /><published>2022-02-03T00:00:00+09:00</published><updated>2022-02-08T15:13:00+09:00</updated><id>http://localhost:4000/programming-language/python/Python-Dev-Env</id><content type="html" xml:base="http://localhost:4000/programming-language/python/Python-Dev-Env/"><![CDATA[<p>문법이 간단해서 비전공자도 쉽고 재미있게 배울 수 있는 파이썬, 본문을 통해 어떻게 시작할 수 있는지 알아보자.</p>
 
 <p>필자는 AI 엔진을 개발하거나 백엔드 서버에서 일부 비즈니스 로직을 다루는데 파이썬을 사용하는데, 아나콘다와 주피터 노트북, VS Code를 이용해서 개발하는게 편했다. 본문의 내용은 이와 관련된 내용으로 구성되어 있다.</p>
 
