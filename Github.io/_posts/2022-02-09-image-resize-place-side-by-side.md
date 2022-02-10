@@ -6,13 +6,8 @@ tags:
   - Jekyll
   - Liquid
 author_profile: true
-sidebar:
-  nav: "main"
 last_modified_at: 2022-02-09 02:36:00 +0900
-toc: true
-toc_sticky: true
 toc_label: "이미지 크기 조정 및 나란히 배치"
-toc_icon: none # toc icon
 ---
 마크다운에서 이미지 크기를 조정하고 가로로 나란히 배치해보자.
 결론부터 말하자면 마크다운 문법으로 이미지 각각에 캡션을 유지해서 가로로 나란히 배치하는 방법을 찾진 못했다. 본문에서는 방법을 찾기위해 시도해봤던 것들을 기록해두었다.

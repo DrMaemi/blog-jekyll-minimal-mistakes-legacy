@@ -6,8 +6,6 @@ tags:
   - Jekyll
   - Liquid
 author_profile: true
-sidebar:
-  nav: "main"
 last_modified_at: 2022-02-10 15:30:00 +0900
 toc_label: "포스트 게시 날짜 표시"
 ---

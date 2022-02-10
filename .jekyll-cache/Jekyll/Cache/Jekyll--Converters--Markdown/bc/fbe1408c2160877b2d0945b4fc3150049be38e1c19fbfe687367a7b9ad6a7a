@@ -1,4 +1,4 @@
-I"�<p><strong>결론부터 말하자면 <a href="#2-configyml">2. _config.yml</a>의 방법이 가장 좋다.</strong></p>
+I"2<p><strong>결론부터 말하자면 <a href="#2-configyml">2. _config.yml</a>의 방법이 가장 좋다.</strong></p>
 
 <p>자료를 조사할 때 내가 찾은 자료가 언제 작성된 것인지 한 번쯤 궁금히 여겨본 적 있을 것이다. 필자도 그러했는데, 검색된 자료가 최신 자료일 수록 더 믿음이 가며 특히 논문 등에 참조 문헌으로 인용할 때에는 작성 날짜가 중요한 의미를 가진다.</p>
 
@@ -53,7 +53,7 @@
         <span class="na">nav</span><span class="pi">:</span> <span class="s">main-sidebar</span>
 <span class="nn">...</span>
 </code></pre></div></div>
-<p>위와 같이 멤버 변수 중 <code class="language-plaintext highlighter-rouge">read_time</code> 값과 <code class="language-plaintext highlighter-rouge">sidebar</code> 설정하면 포스트별 읽은 시간 대신 게시 날짜를 표시할 수 있다.</p>
+<p>위와 같이 멤버 변수 중 <code class="language-plaintext highlighter-rouge">read_time</code>, <code class="language-plaintext highlighter-rouge">show_date</code>, <code class="language-plaintext highlighter-rouge">show_header-meta</code> 값을 설정하면 포스트별 읽은 시간 대신 게시 날짜를 표시할 수 있다.</p>
 
 <p style="text-align: center;"><img src="https://drive.google.com/uc?export=view&amp;id=1UnWJfv6FolYIhS5BR1FB_GtJ__xwvmhe" alt="" class="align-center" />
 &lt;그림 1. 게시 날짜 표시 전&gt;</p>

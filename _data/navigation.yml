@@ -1,22 +1,23 @@
 # main links
 main:
-  - title: "Github.io"
-    url: /Github.io
-  - title: "Programming-Language"
-    url: /Programming-Language/
-    children:
-    - title: "C++"
-      url: "/Programming-Language/C++"
-    - title: "Python"
-      url: "/Programming-Language/Python"
-    - title: "Markdown"
-      url: "/Programming-Language/Markdown"
-  
-  # - title: "About"
-  #   url: https://mmistakes.github.io/minimal-mistakes/about/
+  - title: "About"
+    url: /About
   # - title: "Sample Posts"
   #   url: /year-archive/
   # - title: "Sample Collections"
   #   url: /collection-archive/
   # - title: "Sitemap"
   #   url: /sitemap/
+
+sidebar:
+  - title: "Github.io"
+    url: /Github.io
+  - title: "Programming-Language"
+    url: /Programming-Language
+    children:
+    - title: "C++"
+      url: /Programming-Language/C++
+    - title: "Python"
+      url: /Programming-Language/Python
+    - title: "Markdown"
+      url: /Programming-Language/Markdown
