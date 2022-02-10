@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-02-10T14:59:30+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Maemi’s devlog</title><author><name>Dr.Maemi</name></author><entry><title type="html">이미지 크기 조정 및 나란히 배치</title><link href="http://localhost:4000/github.io/image-resize-place-side-by-side/" rel="alternate" type="text/html" title="이미지 크기 조정 및 나란히 배치" /><published>2022-02-09T00:00:00+09:00</published><updated>2022-02-09T02:36:00+09:00</updated><id>http://localhost:4000/github.io/image-resize-place-side-by-side</id><content type="html" xml:base="http://localhost:4000/github.io/image-resize-place-side-by-side/"><![CDATA[<p>마크다운에서 이미지 크기를 조정하고 가로로 나란히 배치해보자.
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-02-10T16:10:16+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Maemi’s devlog</title><author><name>Dr.Maemi</name></author><entry><title type="html">이미지 크기 조정 및 나란히 배치</title><link href="http://localhost:4000/github.io/image-resize-place-side-by-side/" rel="alternate" type="text/html" title="이미지 크기 조정 및 나란히 배치" /><published>2022-02-09T00:00:00+09:00</published><updated>2022-02-09T02:36:00+09:00</updated><id>http://localhost:4000/github.io/image-resize-place-side-by-side</id><content type="html" xml:base="http://localhost:4000/github.io/image-resize-place-side-by-side/"><![CDATA[<p>마크다운에서 이미지 크기를 조정하고 가로로 나란히 배치해보자.
 결론부터 말하자면 마크다운 문법으로 이미지 각각에 캡션을 유지해서 가로로 나란히 배치하는 방법을 찾진 못했다. 본문에서는 방법을 찾기위해 시도해봤던 것들을 기록해두었다.</p>
 
 <h2 id="1-캡션-없이">1. 캡션 없이</h2>
@@ -62,11 +62,15 @@
   </tbody>
 </table>
 
-<p>이 경우엔 이미지를 원하는 비율로 설정하는 것이 힘들다.</p>]]></content><author><name>Dr.Maemi</name></author><category term="Github.io" /><category term="Jekyll" /><category term="Liquid" /><summary type="html"><![CDATA[마크다운에서 이미지 크기를 조정하고 가로로 나란히 배치해보자. 결론부터 말하자면 마크다운 문법으로 이미지 각각에 캡션을 유지해서 가로로 나란히 배치하는 방법을 찾진 못했다. 본문에서는 방법을 찾기위해 시도해봤던 것들을 기록해두었다.]]></summary></entry><entry><title type="html">포스트 게시 날짜 표시</title><link href="http://localhost:4000/github.io/show-modified-time/" rel="alternate" type="text/html" title="포스트 게시 날짜 표시" /><published>2022-02-08T00:00:00+09:00</published><updated>2022-02-10T14:59:00+09:00</updated><id>http://localhost:4000/github.io/show-modified-time</id><content type="html" xml:base="http://localhost:4000/github.io/show-modified-time/"><![CDATA[<p>자료를 조사할 때 내가 찾은 자료가 언제 작성된 것인지 한 번쯤 궁금히 여겨본 적 있을 것이다. 필자도 그러했는데, 검색된 자료가 최신 자료일 수록 더 믿음이 가며 특히 논문 등에 참조 문헌으로 인용할 때에는 작성 날짜가 중요한 의미를 가진다.</p>
+<p>이 경우엔 이미지를 원하는 비율로 설정하는 것이 힘들다.</p>]]></content><author><name>Dr.Maemi</name></author><category term="Github.io" /><category term="Jekyll" /><category term="Liquid" /><summary type="html"><![CDATA[마크다운에서 이미지 크기를 조정하고 가로로 나란히 배치해보자. 결론부터 말하자면 마크다운 문법으로 이미지 각각에 캡션을 유지해서 가로로 나란히 배치하는 방법을 찾진 못했다. 본문에서는 방법을 찾기위해 시도해봤던 것들을 기록해두었다.]]></summary></entry><entry><title type="html">포스트 게시 날짜 표시</title><link href="http://localhost:4000/github.io/show-modified-time/" rel="alternate" type="text/html" title="포스트 게시 날짜 표시" /><published>2022-02-08T00:00:00+09:00</published><updated>2022-02-10T15:30:00+09:00</updated><id>http://localhost:4000/github.io/show-modified-time</id><content type="html" xml:base="http://localhost:4000/github.io/show-modified-time/"><![CDATA[<p><strong>결론부터 말하자면 <a href="#2-configyml">2. _config.yml</a>의 방법이 가장 좋다.</strong></p>
+
+<p>자료를 조사할 때 내가 찾은 자료가 언제 작성된 것인지 한 번쯤 궁금히 여겨본 적 있을 것이다. 필자도 그러했는데, 검색된 자료가 최신 자료일 수록 더 믿음이 가며 특히 논문 등에 참조 문헌으로 인용할 때에는 작성 날짜가 중요한 의미를 가진다.</p>
 
 <p>따라서 블로그 포스팅을 할 때에도 작성 날짜에 관련된 정보가 중요하며, 중요한 정보일 수록 가장 먼저 눈에 띄는 것이 바람직하다고 생각한다. 본문에서는 <code class="language-plaintext highlighter-rouge">Minimal Mistakes</code> 기반 블로그 포스트에서 게시/수정 날짜를 표시하는 방법을 다룬다.</p>
 
-<h2 id="_includespage__metahtml">/_includes/page__meta.html</h2>
+<h2 id="1-_includespage__metahtml">1. /_includes/page__meta.html</h2>
+<p>필자가 판단하기에 page__meta.html 파일을 수정하는 것보다 후술할 <a href="#2-configyml">2. _config.yml</a>의 방법이 더 효율적이다. 본문의 1장은 필자가 시도해봤던 방법으로 포스트 게시 날짜를 표시할 수 있으나 코드를 직접 수정해야 한다. 그보다는 2장처럼 Jekyll의 기능을 사용하는 것이 더 바람직하다고 생각한다.</p>
+
 <p><code class="language-plaintext highlighter-rouge">/_includes</code> 경로 하위에 있는 <code class="language-plaintext highlighter-rouge">page__meta.html</code> 파일은 블로그 포스트의 메타 데이터 구성을 설정하는 파일이다.</p>
 
 <p>먼저 해당 파일 내부에서 읽은 시간과 관련된 코드를 주석처리한다. <code class="language-plaintext highlighter-rouge">document.read_time</code>과 관련된 if 문을 통째로 주석처리하면 된다.
@@ -78,11 +82,48 @@
 {% endif %}
 </code></pre></div></div>
 
+<h2 id="2-_configyml">2. _config.yml</h2>
+<p><code class="language-plaintext highlighter-rouge">_config.yml</code>은 Jekyll로 구현된 서버를 구동할 때 필요한 설정값들을 담고 있는 파일이다. 해당 파일 내부의 값들이 어떤 의미를 가지는지 알기 위한 내용은 본문에서 다루기엔 양이 너무 방대하니 <a href="http://jekyllrb-ko.github.io/docs/step-by-step/01-setup/">Jeykll 튜토리얼</a>을 참조하자.</p>
+
+<p>본문의 주제에 필요한 것은 <code class="language-plaintext highlighter-rouge">_config.yml</code> 파일의 <code class="language-plaintext highlighter-rouge">defaults</code> 값을 수정하는 것이다.</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">...</span>
+<span class="c1"># Defaults</span>
+<span class="na">defaults</span><span class="pi">:</span>
+  <span class="c1"># default</span>
+  <span class="pi">-</span> <span class="na">scope</span><span class="pi">:</span>
+      <span class="na">path</span><span class="pi">:</span> <span class="s2">"</span><span class="s">"</span>
+    <span class="na">values</span><span class="pi">:</span>
+      <span class="na">layout</span><span class="pi">:</span> <span class="s">home</span>
+      <span class="na">author_profile</span><span class="pi">:</span> <span class="no">true</span>
+      <span class="na">sidebar</span><span class="pi">:</span>
+        <span class="na">nav</span><span class="pi">:</span> <span class="s">main-sidebar</span>
+  <span class="c1"># _posts</span>
+  <span class="pi">-</span> <span class="na">scope</span><span class="pi">:</span>
+      <span class="na">path</span><span class="pi">:</span> <span class="s2">"</span><span class="s">"</span>
+      <span class="na">type</span><span class="pi">:</span> <span class="s">posts</span>
+    <span class="na">values</span><span class="pi">:</span>
+      <span class="na">layout</span><span class="pi">:</span> <span class="s">single</span>
+      <span class="na">author_profile</span><span class="pi">:</span> <span class="no">true</span>
+      <span class="na">show_date</span><span class="pi">:</span> <span class="no">true</span>
+      <span class="na">show_header-meta</span><span class="pi">:</span> <span class="no">true</span>
+      <span class="na">read_time</span><span class="pi">:</span> <span class="no">false</span>
+      <span class="na">comments</span><span class="pi">:</span> <span class="no">true</span>
+      <span class="na">share</span><span class="pi">:</span> <span class="no">true</span>
+      <span class="na">related</span><span class="pi">:</span> <span class="no">true</span>
+      <span class="na">toc</span><span class="pi">:</span> <span class="no">true</span>
+      <span class="na">toc_sticky</span><span class="pi">:</span> <span class="no">true</span>
+      <span class="na">sidebar</span><span class="pi">:</span>
+        <span class="na">nav</span><span class="pi">:</span> <span class="s">main-sidebar</span>
+<span class="nn">...</span>
+</code></pre></div></div>
+<p>위와 같이 멤버 변수 중 <code class="language-plaintext highlighter-rouge">read_time</code> 값과 <code class="language-plaintext highlighter-rouge">sidebar</code> 설정하면 포스트별 읽은 시간 대신 게시 날짜를 표시할 수 있다.</p>
+
 <p style="text-align: center;"><img src="https://drive.google.com/uc?export=view&amp;id=1UnWJfv6FolYIhS5BR1FB_GtJ__xwvmhe" alt="" class="align-center" />
 &lt;그림 1. 게시 날짜 표시 전&gt;</p>
 
 <p style="text-align: center;"><img src="https://drive.google.com/uc?export=view&amp;id=1CKmi-_MzVk12jxZwwtiE-Sb-TqOvsX0M" alt="" class="align-center" />
-&lt;그림 2. 게시 날짜 표시 후&gt;</p>]]></content><author><name>Dr.Maemi</name></author><category term="Github.io" /><category term="Jekyll" /><category term="Liquid" /><summary type="html"><![CDATA[자료를 조사할 때 내가 찾은 자료가 언제 작성된 것인지 한 번쯤 궁금히 여겨본 적 있을 것이다. 필자도 그러했는데, 검색된 자료가 최신 자료일 수록 더 믿음이 가며 특히 논문 등에 참조 문헌으로 인용할 때에는 작성 날짜가 중요한 의미를 가진다.]]></summary></entry><entry><title type="html">Github.io 이미지 정렬</title><link href="http://localhost:4000/github.io/align-image/" rel="alternate" type="text/html" title="Github.io 이미지 정렬" /><published>2022-02-06T00:00:00+09:00</published><updated>2022-02-08T05:21:00+09:00</updated><id>http://localhost:4000/github.io/align-image</id><content type="html" xml:base="http://localhost:4000/github.io/align-image/"><![CDATA[<p>이 블로그에 포스트할 때 이미지와 캡션을 가운데 정렬하여 보여주고 싶었다. 그런데 github의 REAMDE를 작성할 때처럼 했더니 적용이 안됐다.</p>
+&lt;그림 2. 게시 날짜 표시 후&gt;</p>]]></content><author><name>Dr.Maemi</name></author><category term="Github.io" /><category term="Jekyll" /><category term="Liquid" /><summary type="html"><![CDATA[결론부터 말하자면 2. _config.yml의 방법이 가장 좋다.]]></summary></entry><entry><title type="html">Github.io 이미지 정렬</title><link href="http://localhost:4000/github.io/align-image/" rel="alternate" type="text/html" title="Github.io 이미지 정렬" /><published>2022-02-06T00:00:00+09:00</published><updated>2022-02-08T05:21:00+09:00</updated><id>http://localhost:4000/github.io/align-image</id><content type="html" xml:base="http://localhost:4000/github.io/align-image/"><![CDATA[<p>이 블로그에 포스트할 때 이미지와 캡션을 가운데 정렬하여 보여주고 싶었다. 그런데 github의 REAMDE를 작성할 때처럼 했더니 적용이 안됐다.</p>
 
 <p>결론부터 말하자면, 다음과 같은 문법을 통해 이미지 정렬을 할 수 있다.</p>
 
@@ -134,7 +175,7 @@
 <ul>
   <li><a href="#링크할 헤더">보여줄 텍스트</a> 형식으로 기입</li>
   <li>스페이스바(띄어쓰기)는 ‘-‘로 대체</li>
-  <li>’.’, ‘-‘, ‘:’, ‘(‘, ‘)’, ‘?’는 무시한다(제거)</li>
+  <li>’.’, ‘-‘, ‘_’, ‘:’, ‘(‘, ‘)’, ‘?’는 무시한다(제거)</li>
   <li>이모지는 무시한다(제거)</li>
   <li>대문자는 소문자로 바꿔 쓴다</li>
   <li>어떤 헤더이든 ‘#’는 한 번만 쓴다</li>

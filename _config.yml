@@ -15,7 +15,7 @@
 minimal_mistakes_skin    : "dirt" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise", "default"
 
 # Site Settings
-locale                   : "en-US"
+locale                   : "ko-KR"
 title                    : "Maemi's devlog"
 title_separator          : "-"
 subtitle                 : # site tagline that appears below site title in masthead
@@ -280,6 +280,14 @@ compress_html:
 
 # Defaults
 defaults:
+  # default
+  - scope:
+      path: ""
+    values:
+      layout: home
+      author_profile: true
+      sidebar:
+        nav: main-sidebar
   # _posts
   - scope:
       path: ""
@@ -287,7 +295,13 @@ defaults:
     values:
       layout: single
       author_profile: true
-      read_time: true
-      comments: # true
+      show_date: true
+      show_header-meta: true
+      read_time: false
+      comments: true
       share: true
       related: true
+      toc: true
+      toc_sticky: true
+      sidebar:
+        nav: main-sidebar

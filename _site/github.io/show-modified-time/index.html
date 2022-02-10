@@ -5,12 +5,12 @@
   Free for personal and commercial use under the MIT license
   https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
 -->
-<html lang="en" class="no-js">
+<html lang="ko" class="no-js">
   <head>
     <meta charset="utf-8">
 
 <!-- begin _includes/seo.html --><title>포스트 게시 날짜 표시 - Maemi’s devlog</title>
-<meta name="description" content="자료를 조사할 때 내가 찾은 자료가 언제 작성된 것인지 한 번쯤 궁금히 여겨본 적 있을 것이다. 필자도 그러했는데, 검색된 자료가 최신 자료일 수록 더 믿음이 가며 특히 논문 등에 참조 문헌으로 인용할 때에는 작성 날짜가 중요한 의미를 가진다.">
+<meta name="description" content="결론부터 말하자면 2. _config.yml의 방법이 가장 좋다.">
 
 
   <meta name="author" content="Dr.Maemi">
@@ -20,13 +20,13 @@
 
 
 <meta property="og:type" content="article">
-<meta property="og:locale" content="en_US">
+<meta property="og:locale" content="ko_KR">
 <meta property="og:site_name" content="Maemi's devlog">
 <meta property="og:title" content="포스트 게시 날짜 표시">
 <meta property="og:url" content="http://localhost:4000/github.io/show-modified-time/">
 
 
-  <meta property="og:description" content="자료를 조사할 때 내가 찾은 자료가 언제 작성된 것인지 한 번쯤 궁금히 여겨본 적 있을 것이다. 필자도 그러했는데, 검색된 자료가 최신 자료일 수록 더 믿음이 가며 특히 논문 등에 참조 문헌으로 인용할 때에는 작성 날짜가 중요한 의미를 가진다.">
+  <meta property="og:description" content="결론부터 말하자면 2. _config.yml의 방법이 가장 좋다.">
 
 
 
@@ -38,7 +38,7 @@
 
 
 
-  <meta property="article:modified_time" content="2022-02-10T14:59:00+09:00">
+  <meta property="article:modified_time" content="2022-02-10T15:30:00+09:00">
 
 
 
@@ -129,7 +129,7 @@
             </li></ul>
         
         <button class="greedy-nav__toggle hidden" type="button">
-          <span class="visually-hidden">Toggle menu</span>
+          <span class="visually-hidden">토글 메뉴</span>
           <div class="navicon"></div>
         </button>
         <ul class="hidden-links hidden"></ul>
@@ -173,7 +173,7 @@
   </div>
 
   <div class="author__urls-wrapper">
-    <button class="btn btn--inverse">Follow</button>
+    <button class="btn btn--inverse">팔로우</button>
     <ul class="author__urls social-icons">
       
 
@@ -264,7 +264,7 @@
 <nav class="nav__list">
   
   <input id="ac-toc" name="accordion-toc" type="checkbox" />
-  <label for="ac-toc">Toggle menu</label>
+  <label for="ac-toc">토글 메뉴</label>
   <ul class="nav__items">
     
       <li>
@@ -304,9 +304,9 @@
 
   <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
     <meta itemprop="headline" content="포스트 게시 날짜 표시">
-    <meta itemprop="description" content="자료를 조사할 때 내가 찾은 자료가 언제 작성된 것인지 한 번쯤 궁금히 여겨본 적 있을 것이다. 필자도 그러했는데, 검색된 자료가 최신 자료일 수록 더 믿음이 가며 특히 논문 등에 참조 문헌으로 인용할 때에는 작성 날짜가 중요한 의미를 가진다.">
+    <meta itemprop="description" content="결론부터 말하자면 2. _config.yml의 방법이 가장 좋다.">
     <meta itemprop="datePublished" content="2022-02-08T00:00:00+09:00">
-    <meta itemprop="dateModified" content="2022-02-10T14:59:00+09:00">
+    <meta itemprop="dateModified" content="2022-02-10T15:30:00+09:00">
 
     <div class="page__inner-wrap">
       
@@ -319,27 +319,24 @@
 
   <p class="page__meta">
     
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2022-02-08T00:00:00+09:00">February 8, 2022</time>
+      </span>
+    
 
     
 
-    <!-- 
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          less than 1 minute read
-        
-      </span>
-     -->
+    
 
     <!-- Describe last modified date -->
-    
+    <!--  -->
   </p>
 
 
-          <p class="page__date"><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated: <time datetime="2022-02-08T00:00:00+09:00">February 08, 2022</time></p>
+          <p class="page__date"><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트: <time datetime="2022-02-08T00:00:00+09:00">February 08, 2022</time></p>
         </header>
       
 
@@ -347,17 +344,21 @@
         
           <aside class="sidebar__right sticky">
             <nav class="toc">
-              <header><h4 class="nav__title"><i class="fas fa-none"></i> 포스트 게시 날짜 표시</h4></header>
-              <ul class="toc__menu"><li><a href="#_includespage__metahtml">/_includes/page__meta.html</a></li></ul>
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> 포스트 게시 날짜 표시</h4></header>
+              <ul class="toc__menu"><li><a href="#1-_includespage__metahtml">1. /_includes/page__meta.html</a></li><li><a href="#2-_configyml">2. _config.yml</a></li></ul>
 
             </nav>
           </aside>
         
-        <p>자료를 조사할 때 내가 찾은 자료가 언제 작성된 것인지 한 번쯤 궁금히 여겨본 적 있을 것이다. 필자도 그러했는데, 검색된 자료가 최신 자료일 수록 더 믿음이 가며 특히 논문 등에 참조 문헌으로 인용할 때에는 작성 날짜가 중요한 의미를 가진다.</p>
+        <p><strong>결론부터 말하자면 <a href="#2-configyml">2. _config.yml</a>의 방법이 가장 좋다.</strong></p>
+
+<p>자료를 조사할 때 내가 찾은 자료가 언제 작성된 것인지 한 번쯤 궁금히 여겨본 적 있을 것이다. 필자도 그러했는데, 검색된 자료가 최신 자료일 수록 더 믿음이 가며 특히 논문 등에 참조 문헌으로 인용할 때에는 작성 날짜가 중요한 의미를 가진다.</p>
 
 <p>따라서 블로그 포스팅을 할 때에도 작성 날짜에 관련된 정보가 중요하며, 중요한 정보일 수록 가장 먼저 눈에 띄는 것이 바람직하다고 생각한다. 본문에서는 <code class="language-plaintext highlighter-rouge">Minimal Mistakes</code> 기반 블로그 포스트에서 게시/수정 날짜를 표시하는 방법을 다룬다.</p>
 
-<h2 id="_includespage__metahtml">/_includes/page__meta.html</h2>
+<h2 id="1-_includespage__metahtml">1. /_includes/page__meta.html</h2>
+<p>필자가 판단하기에 page__meta.html 파일을 수정하는 것보다 후술할 <a href="#2-configyml">2. _config.yml</a>의 방법이 더 효율적이다. 본문의 1장은 필자가 시도해봤던 방법으로 포스트 게시 날짜를 표시할 수 있으나 코드를 직접 수정해야 한다. 그보다는 2장처럼 Jekyll의 기능을 사용하는 것이 더 바람직하다고 생각한다.</p>
+
 <p><code class="language-plaintext highlighter-rouge">/_includes</code> 경로 하위에 있는 <code class="language-plaintext highlighter-rouge">page__meta.html</code> 파일은 블로그 포스트의 메타 데이터 구성을 설정하는 파일이다.</p>
 
 <p>먼저 해당 파일 내부에서 읽은 시간과 관련된 코드를 주석처리한다. <code class="language-plaintext highlighter-rouge">document.read_time</code>과 관련된 if 문을 통째로 주석처리하면 된다.
@@ -368,6 +369,43 @@
   <span class="nt">&lt;i</span> <span class="na">class=</span><span class="s">"far fa-fw fa-calendar-alt"</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;&lt;/i&gt;</span> {{ post.date | date: "%B %d %Y" }}
 {% endif %}
 </code></pre></div></div>
+
+<h2 id="2-_configyml">2. _config.yml</h2>
+<p><code class="language-plaintext highlighter-rouge">_config.yml</code>은 Jekyll로 구현된 서버를 구동할 때 필요한 설정값들을 담고 있는 파일이다. 해당 파일 내부의 값들이 어떤 의미를 가지는지 알기 위한 내용은 본문에서 다루기엔 양이 너무 방대하니 <a href="http://jekyllrb-ko.github.io/docs/step-by-step/01-setup/">Jeykll 튜토리얼</a>을 참조하자.</p>
+
+<p>본문의 주제에 필요한 것은 <code class="language-plaintext highlighter-rouge">_config.yml</code> 파일의 <code class="language-plaintext highlighter-rouge">defaults</code> 값을 수정하는 것이다.</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">...</span>
+<span class="c1"># Defaults</span>
+<span class="na">defaults</span><span class="pi">:</span>
+  <span class="c1"># default</span>
+  <span class="pi">-</span> <span class="na">scope</span><span class="pi">:</span>
+      <span class="na">path</span><span class="pi">:</span> <span class="s2">"</span><span class="s">"</span>
+    <span class="na">values</span><span class="pi">:</span>
+      <span class="na">layout</span><span class="pi">:</span> <span class="s">home</span>
+      <span class="na">author_profile</span><span class="pi">:</span> <span class="no">true</span>
+      <span class="na">sidebar</span><span class="pi">:</span>
+        <span class="na">nav</span><span class="pi">:</span> <span class="s">main-sidebar</span>
+  <span class="c1"># _posts</span>
+  <span class="pi">-</span> <span class="na">scope</span><span class="pi">:</span>
+      <span class="na">path</span><span class="pi">:</span> <span class="s2">"</span><span class="s">"</span>
+      <span class="na">type</span><span class="pi">:</span> <span class="s">posts</span>
+    <span class="na">values</span><span class="pi">:</span>
+      <span class="na">layout</span><span class="pi">:</span> <span class="s">single</span>
+      <span class="na">author_profile</span><span class="pi">:</span> <span class="no">true</span>
+      <span class="na">show_date</span><span class="pi">:</span> <span class="no">true</span>
+      <span class="na">show_header-meta</span><span class="pi">:</span> <span class="no">true</span>
+      <span class="na">read_time</span><span class="pi">:</span> <span class="no">false</span>
+      <span class="na">comments</span><span class="pi">:</span> <span class="no">true</span>
+      <span class="na">share</span><span class="pi">:</span> <span class="no">true</span>
+      <span class="na">related</span><span class="pi">:</span> <span class="no">true</span>
+      <span class="na">toc</span><span class="pi">:</span> <span class="no">true</span>
+      <span class="na">toc_sticky</span><span class="pi">:</span> <span class="no">true</span>
+      <span class="na">sidebar</span><span class="pi">:</span>
+        <span class="na">nav</span><span class="pi">:</span> <span class="s">main-sidebar</span>
+<span class="nn">...</span>
+</code></pre></div></div>
+<p>위와 같이 멤버 변수 중 <code class="language-plaintext highlighter-rouge">read_time</code> 값과 <code class="language-plaintext highlighter-rouge">sidebar</code> 설정하면 포스트별 읽은 시간 대신 게시 날짜를 표시할 수 있다.</p>
 
 <p style="text-align: center;"><img src="https://drive.google.com/uc?export=view&amp;id=1UnWJfv6FolYIhS5BR1FB_GtJ__xwvmhe" alt="" class="align-center" />
 &lt;그림 1. 게시 날짜 표시 전&gt;</p>
@@ -387,7 +425,7 @@
   
 
   <p class="page__taxonomy">
-    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> 태그: </strong>
     <span itemprop="keywords">
     
       <a href="/tags/#jekyll" class="page__taxonomy-item p-category" rel="tag">Jekyll</a><span class="sep">, </span>
@@ -406,7 +444,7 @@
   
 
   <p class="page__taxonomy">
-    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> 카테고리: </strong>
     <span itemprop="keywords">
     
       <a href="/categories/#github-io" class="page__taxonomy-item p-category" rel="tag">Github.io</a>
@@ -417,20 +455,20 @@
 
         
 
-  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time class="dt-published" datetime="2022-02-10">February 10, 2022</time></p>
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time class="dt-published" datetime="2022-02-10">February 10, 2022</time></p>
 
       </footer>
 
       <section class="page__share">
   
-    <h4 class="page__share-title">Share on</h4>
+    <h4 class="page__share-title">공유하기</h4>
   
 
-  <a href="https://twitter.com/intent/tweet?text=%ED%8F%AC%EC%8A%A4%ED%8A%B8+%EA%B2%8C%EC%8B%9C+%EB%82%A0%EC%A7%9C+%ED%91%9C%EC%8B%9C%20http%3A%2F%2Flocalhost%3A4000%2Fgithub.io%2Fshow-modified-time%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=%ED%8F%AC%EC%8A%A4%ED%8A%B8+%EA%B2%8C%EC%8B%9C+%EB%82%A0%EC%A7%9C+%ED%91%9C%EC%8B%9C%20http%3A%2F%2Flocalhost%3A4000%2Fgithub.io%2Fshow-modified-time%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
-  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fgithub.io%2Fshow-modified-time%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Fgithub.io%2Fshow-modified-time%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
-  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fgithub.io%2Fshow-modified-time%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2Fgithub.io%2Fshow-modified-time%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
 </section>
 
 
@@ -438,11 +476,11 @@
   <nav class="pagination">
     
       <a href="/programming-language/markdown/how-to-use-markdown/" class="pagination--pager" title="Markdown 사용법
-">Previous</a>
+">이전</a>
     
     
       <a href="/github.io/image-resize-place-side-by-side/" class="pagination--pager" title="이미지 크기 조정 및 나란히 배치
-">Next</a>
+">다음</a>
     
   </nav>
 
@@ -454,7 +492,7 @@
   
   
     <div class="page__related">
-      <h2 class="page__related-title">You may also enjoy</h2>
+      <h2 class="page__related-title">참고</h2>
       <div class="grid__wrapper">
         
           
@@ -474,25 +512,22 @@
 
   <p class="page__meta">
     
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2022-02-09T00:00:00+09:00">February 9, 2022</time>
+      </span>
+    
 
     
 
-    <!-- 
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          less than 1 minute read
-        
-      </span>
-     -->
+    
 
     <!-- Describe last modified date -->
-    
+    <!-- 
       <i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> February 09 2022
-    
+     -->
   </p>
 
 
@@ -520,25 +555,22 @@
 
   <p class="page__meta">
     
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2022-02-06T00:00:00+09:00">February 6, 2022</time>
+      </span>
+    
 
     
 
-    <!-- 
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          1 minute read
-        
-      </span>
-     -->
+    
 
     <!-- Describe last modified date -->
-    
+    <!-- 
       <i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> February 06 2022
-    
+     -->
   </p>
 
 
@@ -571,25 +603,22 @@
 
   <p class="page__meta">
     
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2022-02-06T00:00:00+09:00">February 6, 2022</time>
+      </span>
+    
 
     
 
-    <!-- 
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          less than 1 minute read
-        
-      </span>
-     -->
+    
 
     <!-- Describe last modified date -->
-    
+    <!-- 
       <i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> February 06 2022
-    
+     -->
   </p>
 
 
@@ -616,25 +645,22 @@
 
   <p class="page__meta">
     
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2022-02-03T00:00:00+09:00">February 3, 2022</time>
+      </span>
+    
 
     
 
-    <!-- 
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          2 minute read
-        
-      </span>
-     -->
+    
 
     <!-- Describe last modified date -->
-    
+    <!-- 
       <i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> February 03 2022
-    
+     -->
   </p>
 
 
@@ -661,7 +687,7 @@
         <div class="page__footer-follow">
   <ul class="social-icons">
     
-      <li><strong>Follow:</strong></li>
+      <li><strong>팔로우:</strong></li>
     
 
     
@@ -681,7 +707,7 @@
     
 
     
-      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> 피드</a></li>
     
   </ul>
 </div>
