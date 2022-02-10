@@ -22,7 +22,7 @@ toc_label: "포스트 게시 날짜 표시"
 
 먼저 해당 파일 내부에서 읽은 시간과 관련된 코드를 주석처리한다. `document.read_time`과 관련된 if 문을 통째로 주석처리하면 된다.
 이후 다음 코드를 주석처리한 부분에 삽입한다.
-
+ㅠㅕㅜ
 ```markdown
 <!-- Describe last modified date -->
 {% raw %}{% if post.date %}
