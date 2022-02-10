@@ -20,12 +20,24 @@ var store = [{
         "title": "포스트 게시 날짜 표시",
         "excerpt":"결론부터 말하자면 2. _config.yml의 방법이 가장 좋다. 자료를 조사할 때 내가 찾은 자료가 언제 작성된 것인지 한 번쯤 궁금히 여겨본 적 있을 것이다. 필자도 그러했는데, 검색된 자료가 최신 자료일 수록 더 믿음이 가며 특히 논문 등에 참조 문헌으로 인용할 때에는 작성 날짜가 중요한 의미를 가진다. 따라서 블로그 포스팅을 할 때에도...","categories": ["Github.io"],
         "tags": ["Jekyll","Liquid"],
-        "url": "/github.io/show-modified-time/",
+        "url": "/github.io/show-posted-time/",
         "teaser": null
       },{
         "title": "이미지 크기 조정 및 나란히 배치",
         "excerpt":"마크다운에서 이미지 크기를 조정하고 가로로 나란히 배치해보자. 결론부터 말하자면 마크다운 문법으로 이미지 각각에 캡션을 유지해서 가로로 나란히 배치하는 방법을 찾진 못했다. 본문에서는 방법을 찾기위해 시도해봤던 것들을 기록해두었다. 1. 캡션 없이 ![](https://drive.google.com/uc?export=view&amp;id=1lxVr632cvKmNU0sPIVkJUmPynkz31pLg){: width=\"45%\"} ![](https://drive.google.com/uc?export=view&amp;id=1-AArs7kr1KkFDJqYkP8u2bjjRGXf_T9q){: width=\"45%\"} 가로 길이 비율을 적절히 조정하면 마크다운 문법으로 이미지를 가로로 나란히 배치할 수 있다. 마찬가지로 html 문법으로...","categories": ["Github.io"],
         "tags": ["Jekyll","Liquid"],
         "url": "/github.io/image-resize-place-side-by-side/",
+        "teaser": null
+      },{
+        "title": "포스트 수정 날짜 표시",
+        "excerpt":"이번엔 포스트 수정 날짜를 표시하는 방법에 대해서 알아보자. 현재 블로그는 Minimal Mistakes 테마의 Commit: 2632ff6가 완료된 시점의 코드를 기반으로 작성되었는데, 수정 날짜와 관련된 파일은 다음 세 개이다. /_layouts/single.html /_includes/page__meta.html /_includes/page__date.html 본문에서는 이 중 page__meta.html과 page__date.html 파일을 수정하여 &lt;그림 1&gt;과 같이 참조 관계를 형성할 것이다. graph TD /_layouts/single.html --&gt; /_includes/page__meta.html /_includes/page__meta.html...","categories": ["Github.io"],
+        "tags": ["Jekyll","Liquid"],
+        "url": "/github.io/show-modified-time/",
+        "teaser": null
+      },{
+        "title": "테스트",
+        "excerpt":"    graph TD     A--&gt;B     A--&gt;C     B--&gt;D     C--&gt;D        graph LR     A--&gt;B     A--&gt;C     B--&gt;D     C--&gt;D   ","categories": ["Test"],
+        "tags": ["Test"],
+        "url": "/test/test/",
         "teaser": null
       }]

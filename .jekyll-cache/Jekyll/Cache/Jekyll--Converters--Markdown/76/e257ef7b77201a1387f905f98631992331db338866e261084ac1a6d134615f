@@ -1,0 +1,16 @@
+I"½<div class="mermaid"> 
+  graph TD
+    A--&gt;B
+    A--&gt;C
+    B--&gt;D
+    C--&gt;D 
+</div>
+
+<div class="mermaid"> 
+  graph LR
+    A--&gt;B
+    A--&gt;C
+    B--&gt;D
+    C--&gt;D 
+</div>
+:ET
