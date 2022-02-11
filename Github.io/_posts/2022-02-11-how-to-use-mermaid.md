@@ -64,7 +64,7 @@ CDN으로부터 모듈을 스크립트로 임베딩하기 위해서는 각 html 
 ### 2.2. Importing Implementation
 우선, 텍스트를 다이어그램 등으로 렌더링하기 위한 자바스크립트 코드를 다운받아야 한다. 해당 파일은 [https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js](https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js) 링크를 통해 다운받을 수 있다.
 
-2.1장과 같은 원리로 `/_includes/head/custom.html`에 다음과 같은 코드를 삽입한다.
+다운받은 파일 이름이 `mermaid.min.js`이고, 다운받은 파일을 `/assets/js` 경로에 위치시켰다면 2.1장과 같은 원리로 `/_includes/head/custom.html`에 다음과 같은 코드를 삽입한다.
 
 ```html
 <script src="/assets/js/mermaid.min.js"></script>
