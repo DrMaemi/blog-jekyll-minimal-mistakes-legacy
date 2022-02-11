@@ -35,9 +35,9 @@ var store = [{
         "url": "/github.io/show-modified-time/",
         "teaser": null
       },{
-        "title": "테스트",
-        "excerpt":"    graph TD     A--&gt;B     A--&gt;C     B--&gt;D     C--&gt;D        graph LR     A--&gt;B     A--&gt;C     B--&gt;D     C--&gt;D   ","categories": ["Test"],
-        "tags": ["Test"],
-        "url": "/test/test/",
+        "title": "Mermaid를 이용해 UML 그리기",
+        "excerpt":"1. Mermaid란? Mermaid란 javascript 기반으로 구현된 다이어그램 및 차트 작성 도구이다. Mermaid는 정형화된 텍스트를 렌더링하여 다이어그램을 동적으로 생성하거나 수정 가능하다. 예를 들어 몇 개의 노드와 엣지로 구성된 그래프를 그리고 싶다면 다음과 같이 코드를 작성할 수 있다. &lt;div class=\"mermaid\" align=\"center\"&gt; graph TD A --&gt; B A --&gt; C B --&gt; D...","categories": ["Github.io"],
+        "tags": ["Jekyll","Liquid","Mermaid"],
+        "url": "/github.io/how-to-use-mermaid/",
         "teaser": null
       }]
