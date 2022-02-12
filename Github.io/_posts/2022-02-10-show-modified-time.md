@@ -1,12 +1,12 @@
 ---
-title: "포스트 수정 날짜 표시"
+title: 포스트 수정 날짜 표시
 categories:
   - Github.io
 tags:
   - Jekyll
   - Liquid
 author_profile: true
-toc_label: "포스트 수정 날짜 표시"
+toc_label: 포스트 수정 날짜 표시
 ---
 이번엔 포스트 수정 날짜를 표시하는 방법에 대해서 알아보자.
 현재 블로그는 [Minimal Mistakes](https://github.com/mmistakes/minimal-mistakes) 테마의 [Commit: 2632ff6](https://github.com/mmistakes/minimal-mistakes/commit/2632ff650a6efb0d856a37d675be5f1b63692181)가 완료된 시점의 코드를 기반으로 작성되었는데, 수정 날짜와 관련된 파일은 다음 세 개이다.

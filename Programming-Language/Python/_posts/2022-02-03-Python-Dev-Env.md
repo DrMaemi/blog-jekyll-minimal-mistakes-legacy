@@ -1,5 +1,5 @@
 ---
-title: "파이썬 개발 환경 설정"
+title: 파이썬 개발 환경 설정
 categories:
   - Python
 tags:
@@ -8,7 +8,7 @@ tags:
   - VSCode
 author_profile: true
 last_modified_at: 2022-02-08 15:13:00 +0900
-toc_label: "파이썬 개발 환경 설정"
+toc_label: 파이썬 개발 환경 설정
 ---
 문법이 간단해서 비전공자도 쉽고 재미있게 배울 수 있는 파이썬, 본문을 통해 어떻게 시작할 수 있는지 알아보자.
 

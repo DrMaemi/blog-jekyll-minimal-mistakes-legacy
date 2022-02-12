@@ -1,12 +1,12 @@
 ---
-title: "Markdown 사용법"
+title: Markdown 사용법
 categories:
   - Markdown
 tags:
   - Programming-Language
 author_profile: true
 last_modified_at: 2022-02-09 02:34:00 +0900
-toc_label: "Markdown 사용법"
+toc_label: Markdown 사용법
 ---
 ## 목차
 - [1. 마크다운이란?](#1-마크다운이란)

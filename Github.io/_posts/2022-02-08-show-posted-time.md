@@ -1,5 +1,5 @@
 ---
-title: "포스트 게시 날짜 표시"
+title: 포스트 게시 날짜 표시
 categories:
   - Github.io
 tags:
@@ -7,7 +7,7 @@ tags:
   - Liquid
 author_profile: true
 last_modified_at: 2022-02-10 15:30:00 +0900
-toc_label: "포스트 게시 날짜 표시"
+toc_label: 포스트 게시 날짜 표시
 ---
 **결론부터 말하자면 [2. _config.yml](#2-configyml)의 방법이 가장 좋다.**
 

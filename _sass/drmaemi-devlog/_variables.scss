@@ -44,6 +44,14 @@ $type-size-7: 0.6875em !default; // ~11px
 $type-size-8: 0.625em !default; // ~10px
 
 /* headline scale */
+$h-size-1-general: 1.563em !default; // ~25.008px
+$h-size-2-general: 1.25em !default; // ~20px
+$h-size-3-general: 1.125em !default; // ~18px
+$h-size-4-general: 1.0625em !default; // ~17px
+$h-size-5-general: 1.03125em !default; // ~16.5px
+$h-size-6-general: 1em !default; // ~16px
+
+/* headline scale - default */
 $h-size-1: 1.563em !default; // ~25.008px
 $h-size-2: 1.25em !default; // ~20px
 $h-size-3: 1.125em !default; // ~18px
@@ -171,3 +179,21 @@ $navicon-width: 1.5rem !default;
 $navicon-height: 0.25rem !default;
 $global-transition: all 0.2s ease-in-out !default;
 $intro-transition: intro 0.3s both !default;
+
+
+// Whole TOC
+$wholetoc-opt-view-icon-width: 22px;
+$wholetoc-indent-size: 18px;
+$wholetoc-item-height: 12px;
+$wholetoc-category-padding-top: 16px;
+$wholetoc-category-icon-size: calc(.8 ); //* #{$h-size-2-general}
+$wholetoc-category-branch-v-left: $wholetoc-indent-size / 2 - 4px;
+$wholetoc-category-branch-last-v-height: $wholetoc-category-padding-top + 9px;
+$wholetoc-category-branch-h-width: $wholetoc-indent-size / 2;
+$wholetoc-post-padding-top: 6px;
+$wholetoc-post-branch-last-v-height: $wholetoc-post-padding-top + 9px;
+// Whole TOC: view style - card
+$wholetoc-view-card-font-size-small: 13px;
+$wholetoc-view-card-font-size-large: 14px;
+$wholetoc-view-card-width-small: 80px;
+$wholetoc-view-card-width-large: 120px;

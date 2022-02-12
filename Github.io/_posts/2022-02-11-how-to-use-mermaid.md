@@ -1,5 +1,5 @@
 ---
-title: "Mermaid를 이용해 UML 그리기"
+title: Mermaid를 이용해 UML 그리기
 categories:
   - Github.io
 tags:
@@ -7,7 +7,7 @@ tags:
   - Liquid
   - Mermaid
 author_profile: true
-toc_label: "Mermaid를 이용해 UML 그리기"
+toc_label: Mermaid를 이용해 UML 그리기
 ---
 ## 1. Mermaid란?
 Mermaid란 javascript 기반으로 구현된 다이어그램 및 차트 작성 도구이다.

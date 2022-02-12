@@ -391,9 +391,9 @@ Github Page가 관련 플러그인을 지원해주면 Github Page로 호스팅�
 <p>이후에 Mermaid 양식의 코드를 작성하면 &lt;그림 1&gt;과 &lt;그림 2&gt;처럼 웹 페이지에서 적절히 렌더링된 그림을 볼 수 있다.</p>
 
 <h3 id="22-importing-implementation">2.2. Importing Implementation</h3>
-<p>우선, 텍스트를 다이어그램 등으로 렌더링하기 위한 자바스크립트 코드를 다운받아야 한다. 해당 파일은 <a href="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js">https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js</a></p>
+<p>우선, 텍스트를 다이어그램 등으로 렌더링하기 위한 자바스크립트 코드를 다운받아야 한다. 해당 파일은 <a href="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js">https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js</a> 링크를 통해 다운받을 수 있다.</p>
 
-<p>2.1장과 같은 원리로 <code class="language-plaintext highlighter-rouge">/_includes/head/custom.html</code>에 다음과 같은 코드를 삽입한다.</p>
+<p>다운받은 파일 이름이 <code class="language-plaintext highlighter-rouge">mermaid.min.js</code>이고, 다운받은 파일을 <code class="language-plaintext highlighter-rouge">/assets/js</code> 경로에 위치시켰다면 2.1장과 같은 원리로 <code class="language-plaintext highlighter-rouge">/_includes/head/custom.html</code>에 다음과 같은 코드를 삽입한다.</p>
 
 <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"/assets/js/mermaid.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
 <span class="nt">&lt;script&gt;</span><span class="nx">mermaid</span><span class="p">.</span><span class="nx">initialize</span><span class="p">({</span><span class="na">startOnLoad</span><span class="p">:</span><span class="kc">true</span><span class="p">});</span><span class="nt">&lt;/script&gt;</span>

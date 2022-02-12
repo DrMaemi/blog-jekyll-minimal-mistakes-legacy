@@ -1,5 +1,5 @@
 ---
-title: "Github.io 이미지 정렬"
+title: Github.io 이미지 정렬
 categories:
   - Github.io
 tags:
@@ -7,7 +7,7 @@ tags:
   - Liquid
 author_profile: true
 last_modified_at: 2022-02-08 05:21:00 +0900
-toc_label: "Github.io 이미지 정렬"
+toc_label: Github.io 이미지 정렬
 ---
 이 블로그에 포스트할 때 이미지와 캡션을 가운데 정렬하여 보여주고 싶었다. 그런데 github의 REAMDE를 작성할 때처럼 했더니 적용이 안됐다.
 
