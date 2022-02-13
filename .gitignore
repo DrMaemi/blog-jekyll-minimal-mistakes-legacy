@@ -1,0 +1,26 @@
+# macOS
+.DS_Store
+
+_site/
+.sass-cache/
+.jekyll-cache/
+.jekyll-metadata
+
+# Jekyll generated files
+.jekyll-cache
+.jekyll-metadata
+.sass-cache
+_asset_bundler_cache
+_site
+
+# Ruby Gem
+*.gem
+.bundle
+Gemfile.lock
+**/vendor/bundle
+
+# VS Code
+.vscode
+
+# executive files
+*.exe
