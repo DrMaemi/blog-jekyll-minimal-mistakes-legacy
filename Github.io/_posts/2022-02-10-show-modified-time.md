@@ -1,5 +1,6 @@
 ---
 title: 포스트 수정 날짜 표시
+last_modified_at: 2022-02-14 16:33:00 +0900
 categories:
   - Github.io
 tags:
@@ -70,9 +71,10 @@ toc_label: 포스트 수정 날짜 표시
 파일의 기존 내용은 포스트의 Front Matter에 변수 `last_modified_at`이 설정되어 있으면 해당 변수 내용은 마지막 수정 날짜를, 그렇지 않으면 포스트 작성 날짜를 출력하도록 작성되어 있다. `page_meta.html` 내용을 확인해보면 포스트 게시 날짜는 반드시 출력되므로 기존에 작성된 흐름 제어 코드는 필요 없다. 따라서 기존 코드를 전부 지우고 다음 코드를 삽입한다.
 ```html
 {% raw %}
+{% assign document = post | default: page %}
 {% assign date_format = site.date_format | default: "%B %-d, %Y" %}
-{% if page.last_modified_at %}
-  <time lastModified="{{ page.last_modified_at | date_to_xmlschema}}"><br><i class="far {% if include.type == 'grid' and document.read_time and document.show_date %}fa-fw {% endif %}fa-calendar-alt" aria-hidden="true"></i> Last modified at: {{ page.last_modified_at | date: date_format }}</time>
+{% if document.last_modified_at %}
+  <time lastModified="{{ document.last_modified_at | date_to_xmlschema}}"><br><i class="far {% if include.type == 'grid' and document.read_time and document.show_date %}fa-fw {% endif %}fa-calendar-alt" aria-hidden="true"></i> Last modified at: {{ document.last_modified_at | date: date_format }}</time>
 {% endif %}
 {% endraw %}
 ```
