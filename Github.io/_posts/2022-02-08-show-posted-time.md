@@ -45,8 +45,7 @@ defaults:
     values:
       layout: home
       author_profile: true
-      sidebar:
-        nav: main-sidebar
+      ...
   # _posts
   - scope:
       path: ""
@@ -54,16 +53,11 @@ defaults:
     values:
       layout: single
       author_profile: true
+      ...
       show_date: true
       show_header-meta: true
       read_time: false
-      comments: true
-      share: true
-      related: true
-      toc: true
-      toc_sticky: true
-      sidebar:
-        nav: main-sidebar
+      ...
 ...
 ```
 위와 같이 멤버 변수 중 `read_time`, `show_date`, `show_header-meta` 값을 설정하면 포스트별 읽은 시간 대신 게시 날짜를 표시할 수 있다.
