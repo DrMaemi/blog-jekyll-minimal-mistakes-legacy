@@ -12,7 +12,7 @@ toc_label: 카테고리 TOC 페이지 만들기
 
 카테고리별 TOC 페이지를 만들기 위해서는 Jekyll 웹 서버 구조, Liquid 문법, 자바스크립트에 대해 알아야 하는데 이에 대한 모든 내용을 본문에서 다루진 않고 필요한 일부만 다룰 예정이다.
 
-카테고리별 TOC 페이지는 1. TOC 페이지를 만들기 위해 흐름 제어를 수행하는 Liquid 파일들과 2. 만들어진 TOC 페이지를 담기 위한 레이아웃을 지정하는 html 파일들과 3. 카테고리 네비게이션 파일을 이용해 만들 수 있다. 필요한 파일들의 참조 관계는 <그림 1>과 같다.
+카테고리별 TOC 페이지는 1. TOC 페이지를 만들기 위해 흐름 제어를 수행하는 Liquid 파일들, 2. 만들어진 TOC 페이지를 담기 위한 레이아웃을 지정하는 html 파일들, 3. 카테고리 네비게이션 파일, 4. index.html 파일을 이용해 만들 수 있다. 필요한 파일들의 참조 관계는 <그림 1>과 같다.
 
 <div class="mermaid" align="center">
 flowchart TB
@@ -56,5 +56,16 @@ flowchart TB
 ## 3. 카테고리 네비게이션 설정
 카테고리 네비게이션은 `/_data/navigation.yml` 파일을 통해 설정할 수 있다. 지난 포스트의 [카테고리 네비게이션 설정](https://drmaemi.github.io/github.io/sidebar/#1-카테고리-네비게이션-설정)을 참고하자.
 
+## 4. index.html
+3장까지 완료했다면 카테고리 TOC 페이지를 위한  index.html 파일을 작성해야 한다. 예를 들어 `Category-1`의 TOC 페이지를 보고싶다면, Jeykll 서버의 `/Category-1` 경로 밑에 `index.html` 파일을 생성하고, 본문 내용 없이 Front Matter만 다음과 같이 기입해준다.
+```yml
+---
+layout: archive-subtoc
+title: Category-1
+---
+```
+
+여기까지 완료했다면 카테고리 TOC 페이지의 URL인 `https://<user-name>.github.io/Category-1/`에 접속함으로써 페이지 요청이 가능함을 확인할 수 있다. 이후엔 CSS를 적절히 입혀 꾸며주면 된다. Jekyll 웹 서버의 CSS는 `/_sass` 경로 하위에 있는 scss 파일들을 통해 적용할 수 있다.
+
 ## A. 참조
-Sammy Baek, "[Git Page Jekyll Blog] - [14] 목차 만들기", *ExtraBrain*, Available at https://seungwubaek.github.io/blog/whole_toc/ (Accessed Feb, 2022).
+Sammy Baek, "[Git Page Jekyll Blog] - [14] 목차 만들기", *ExtraBrain*, Available at [https://seungwubaek.github.io/blog/whole_toc](https://seungwubaek.github.io/blog/whole_toc) (Accessed Feb, 2022).
