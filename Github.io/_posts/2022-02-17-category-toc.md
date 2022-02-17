@@ -67,5 +67,12 @@ title: Category-1
 
 여기까지 완료했다면 카테고리 TOC 페이지의 URL인 `https://<user-name>.github.io/Category-1/`에 접속함으로써 페이지 요청이 가능함을 확인할 수 있다. 이후엔 CSS를 적절히 입혀 꾸며주면 된다. Jekyll 웹 서버의 CSS는 `/_sass` 경로 하위에 있는 scss 파일들을 통해 적용할 수 있다.
 
+한 편, 4장까지 내용을 적용했을 때 TOC 페이지에서 폴더 펼치기/접기 기능이 제대로 동작되지 않았다. 폴더 버튼에 자바스크립트로 구현한 기능을 적용하지 않았기 때문이다. 해당 기능을 구현한 자바스크립트 파일 [customs.min.js](https://drive.google.com/uc?export=download&id=1ku3K6Iop8dD15kYR7zP8WsOqd0a_h8Is)을 `/assets/js` 경로 하위에 위치시키고 `/_config.yml` 파일에서 `footer_scripts` 항목에 명시하여 사용할 수 있도록 했다. `Minimal Mistakes` 서버에 있는 `main.min.js` 파일 또한 사용한다.
+```yml
+footer_scripts:
+  - /assets/js/main.min.js
+  - /assets/js/customs.min.js
+```
+
 ## A. 참조
 Sammy Baek, "[Git Page Jekyll Blog] - [14] 목차 만들기", *ExtraBrain*, Available at [https://seungwubaek.github.io/blog/whole_toc](https://seungwubaek.github.io/blog/whole_toc) (Accessed Feb, 2022).
