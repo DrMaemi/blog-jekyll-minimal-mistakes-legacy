@@ -168,6 +168,7 @@ exclude:
   - assets/js/plugins
   - assets/js/_main.js
   - assets/js/vendor
+  - assets/js/customs/
   - Capfile
   - CHANGELOG
   - config
@@ -305,3 +306,7 @@ defaults:
       toc_sticky: true
       sidebar:
         nav: sidebar
+
+footer_scripts:
+  - /assets/js/main.min.js
+  - /assets/js/customs.min.js
