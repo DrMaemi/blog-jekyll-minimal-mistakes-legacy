@@ -140,7 +140,7 @@ if($sitePaginator.length > 0) {
         if(totalData === undefined) {
           $.ajax({
             type: 'GET',
-            url: '/data/posts-info.json',
+            url: '/assets/data/posts-info.json',
             success: function(response) {
               totalData = {'data': response};
               done(response);

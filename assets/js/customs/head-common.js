@@ -12,7 +12,7 @@ function drawAjaxError(jqXHR, textStatus, errorMsg) {
 function setTextToTotalPostsCnt(caller) {
   $.ajax({
     type: 'GET',
-    url: '/data/posts-info.json',
+    url: '/assets/data/posts-info.json',
     success: function(response) {
       $(caller).text(response.length);
     },
