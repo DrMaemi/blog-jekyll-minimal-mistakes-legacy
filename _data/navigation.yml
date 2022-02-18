@@ -28,3 +28,8 @@ sidebar:
       url: /Programming-Language/Python
     - title: Markdown
       url: /Programming-Language/Markdown
+  - title: Tools
+    url: /Tools
+    children:
+      - title: MinGW
+        url: /Tools/MinGW
