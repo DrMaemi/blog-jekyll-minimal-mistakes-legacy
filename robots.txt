@@ -1,0 +1,5 @@
+user-agent: *
+allow: /
+disallow: /assets/
+
+Sitemap: https://drmaemi.github.io/sitemap.xml
