@@ -157,15 +157,20 @@ $medium: 768px !default;
 $medium-wide: 900px !default;
 $large: 1024px !default;
 $x-large: 1280px !default;
-$max-width: $x-large !default;
+$max-width: 1440px !default; // default $x-large
 
 /*
    Grid
    ========================================================================== */
 
-$right-sidebar-width-narrow: 100px !default; // default 200px
-$right-sidebar-width: 200px !default; // default 300px
-$right-sidebar-width-wide: 250px !default; // default 400px
+$left-sidebar-scroll-width: 16px;
+$left-sidebar-meta-font-size: 13px;
+$left-sidebar-width: 225px;  // left sidebar width + scroll bar space
+$left-sidebar-font-size: 14px;
+$left-sidebar-item-font-size: 14px;
+$right-sidebar-width-narrow: 225px !default; // default 200px
+$right-sidebar-width: 275px !default; // default 300px
+$right-sidebar-width-wide: 325px !default; // default 400px
 
 /*
    Other
