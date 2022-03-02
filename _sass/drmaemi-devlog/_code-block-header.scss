@@ -1,0 +1,25 @@
+/* ==========================================================================
+   CUSTOM ELEMENTS
+   Written by DrMaemi. 2022
+   ========================================================================== */
+
+.code-block-header {
+    position: relative;
+    padding-top: 23px;
+    border-radius: $border-radius;
+  
+    &::before {
+      content: attr(data-lang);
+      background: darken(#afafaf, 8%);
+      color: darken(#ffffff, 0%);
+      display: block;
+      font-size: 14px;
+      font-weight: 700;
+      padding: 1px 10px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 10;
+      border-top-right-radius: $border-radius;
+    }
+  }
