@@ -162,6 +162,14 @@ pre {
   overflow-x: auto; /* add scrollbars to wide code blocks*/
 }
 
+pre:not(.code-block-header) {
+  border-radius: $border-radius;
+}
+
+code {
+  border-top-right-radius: $border-radius;
+}
+
 p > code,
 a > code,
 li > code,
