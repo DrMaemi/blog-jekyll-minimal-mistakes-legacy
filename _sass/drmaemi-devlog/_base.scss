@@ -162,7 +162,7 @@ pre {
   overflow-x: auto; /* add scrollbars to wide code blocks*/
 }
 
-pre:not(.code-block-header) {
+pre:not(.with-header) {
   border-radius: $border-radius;
 }
 
