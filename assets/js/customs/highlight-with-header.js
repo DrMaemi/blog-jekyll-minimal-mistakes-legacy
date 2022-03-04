@@ -9,8 +9,8 @@ document.addEventListener('DOMContentLoaded', () => {
       if (filename) {
         el.classList.remove(el.className);
         el.classList.add(highlightLang);
-        el.parentElement.setAttribute('data-lang', filename);
-        el.parentElement.classList.add('code-block-header');
+        el.parentElement.setAttribute('file-name', filename);
+        el.parentElement.classList.add('with-header');
       }
     }
   });
