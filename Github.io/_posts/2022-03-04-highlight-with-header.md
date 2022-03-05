@@ -7,6 +7,7 @@ tags:
   - Javascript
 author_profile: true
 toc_label: 코드 블럭 파일 이름 명시
+last_modified_at: 2022-03-05 01:08:25 +0900
 ---
 깃을 이용하기 시작할 무렵, 코드 블럭을 이용해 코드를 기입할 때 파일 이름을 명시하는 것이 이해하는데 도움이 많이 된다고 생각했지만 깃은 그런 기능을 지원하지 않았다. 이 때 필자는 코드 블럭 내에 주석 처리로 파일 이름을 명시하거나, 코드 블럭 바깥에 평문으로 작성하여 안내하곤 했다. 그러나 깃 블로그를 시작하고 이와 관련된 내용을 적용할 수 있을 것이라 생각했다.
 
@@ -87,7 +88,7 @@ uglify 하려면 `npm`의 `uglify-js` 모듈이 필요하다. `npm`을 이용하
 이후 터미널에서 `npm run uglify-customs` 를 실행하여 uglify된 `customs.min.js`을 얻는다.
 
 ## 2. 렌더링하여 보여줄 CSS 작성
-`/_sass` 경로 하위에 다음 코드를 작성한다. 기존 .scss 파일 중 적절한 위치에 삽입해도 좋고, 새로 파일을 만들어 저장해도 된다. 새로 파일을 만들어 저장할 경우 Jekyll 구조에 따라 `/assets/css/main.scss`에 참조를 명시해야 한다.
+`/_sass` 경로 하위에 다음 코드를 작성한다. 기존 .scss 파일 중 적절한 위치에 삽입해도 좋고, 새로 파일을 만들어 저장해도 된다. 
 
 ```scss:_code-block-header.scss
 .code-block-header {
@@ -112,30 +113,7 @@ uglify 하려면 `npm`의 `uglify-js` 모듈이 필요하다. `npm`을 이용하
 }
 ```
 
-여기까지 하고, 터미널에서 `bundle exec jekyll serve`로 서버를 실행시켜보면 <그림 1>과 같이 `code-block-header` 클래스에 속한 코드 블럭은 하이라이트가 제대로 적용되지 않는 모습을 확인할 수 있다. 필자의 Jekyll 서버는 `rouge` 하이라이터를 사용하는데, 특정 태그의 클래스가 `highlight-rouge`를 포함하는 부분만 하이라이트 CSS를 적용시키기 때문인 듯하다.
-
-![](https://drive.google.com/uc?export=view&id=1XF5FOdgF6kqEt7MlxAlvzjLP7H3mpXJt){: .align-center}
-<그림 1. CSS 파일까지 작성 후 테스트 화면>
-{: style="text-align: center;"}
-
-![](https://drive.google.com/uc?export=view&id=1LZ55kWMVojExQn80zmbX8y0LsySrCgex){: .align-center}
-<그림 2. 변환된 HTML 구문이 다르다>
-{: style="text-align: center;"}
-
-## 3. 하이라이터 변경
-2장 마지막에서 언급한 문제를 해결하기 위해서 시행착오를 몇 번 겪었는데, `highlight.js`를 적용하는 것이 가장 쉬운 해결책이었다. 겪었던 시행착오에 대해서는 [4장 보충](#4-보충)에서 추가로 다루겠다.
-
-`highlight.js`를 사용하기 위해 [https://highlightjs.org/usage/](https://highlightjs.org/usage/)를 참고했다. NPM 패키지를 이용하거나 소스를 빌드하는 방법 등 여러가지 방법이 있으나 필자는 가장 간단한 방법인 cdnjs 서버를 이용하는 방법을 사용했다. `/_includes/head/custom.html`에 다음과 같이 코드를 작성한다.
-
-```html:/_includes/head/custom.html
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/vs2015.min.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/highlight.min.js"></script> -->
-<!-- and it's easy to individually load additional languages -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/languages/go.min.js"></script>
-<script>hljs.initHighlightingOnLoad();</script>
-```
-
-작성한 SCSS를 활용하기 위해선 `/assets/css/main.scss`에 명시해야 한다. 필자의 Jekyll 서버는 <그림 3>의 호출 구조로 SCSS를 이용하고 있다.
+새로 SCSS 파일을 만들어 저장할 경우 Jekyll 구조에 따라 `/assets/css/main.scss`에 참조를 명시해야 한다. 필자의 Jekyll 서버는 <그림 1>의 호출 구조로 SCSS를 이용하고 있다.
 
 <div class="mermaid" align="center">
 flowchart TB
@@ -154,9 +132,32 @@ flowchart TB
   main.scss --> drmaemi-devlog.scss
   drmaemi-devlog.scss --> _highlight-with-header.scss
 </div>
-<그림 3. SCSS 호출 구조>
+<그림 1. SCSS 호출 구조>
 {: style="text-align: center"}
 
+여기까지 하고, 터미널에서 `bundle exec jekyll serve`로 서버를 실행시켜보면 <그림 2>과 같이 `code-block-header` 클래스에 속한 코드 블럭은 하이라이트가 제대로 적용되지 않는 모습을 확인할 수 있다. 필자의 Jekyll 서버는 `rouge` 하이라이터를 사용하는데, 특정 태그의 클래스가 `highlight-rouge`를 포함하는 부분만 하이라이트 CSS를 적용시키기 때문인 듯하다.
+
+![](https://drive.google.com/uc?export=view&id=1XF5FOdgF6kqEt7MlxAlvzjLP7H3mpXJt){: .align-center}
+<그림 2. CSS 파일까지 작성 후 테스트 화면>
+{: style="text-align: center;"}
+
+![](https://drive.google.com/uc?export=view&id=1LZ55kWMVojExQn80zmbX8y0LsySrCgex){: .align-center}
+<그림 3. 변환된 HTML 구문이 다르다>
+{: style="text-align: center;"}
+
+
+## 3. 하이라이터 변경
+2장 마지막에서 언급한 문제를 해결하기 위해서 시행착오를 몇 번 겪었는데, `highlight.js`를 적용하는 것이 가장 쉬운 해결책이었다. 겪었던 시행착오에 대해서는 [4장 보충](#4-보충)에서 추가로 다루겠다.
+
+`highlight.js`를 사용하기 위해 [https://highlightjs.org/usage/](https://highlightjs.org/usage/)를 참고했다. NPM 패키지를 이용하거나 소스를 빌드하는 방법 등 여러가지 방법이 있으나 필자는 가장 간단한 방법인 cdnjs 서버를 이용하는 방법을 사용했다. `/_includes/head/custom.html`에 다음과 같이 코드를 작성한다.
+
+```html:/_includes/head/custom.html
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/vs2015.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/highlight.min.js"></script> -->
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/languages/go.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+```
 
 여기까지 진행했다면 <그림 4>와 같이 정상적으로 코드 블럭 헤더(빨간색으로 표시)와 변경한 하이라이트가 적용된 것을 확인할 수 있다.
 
