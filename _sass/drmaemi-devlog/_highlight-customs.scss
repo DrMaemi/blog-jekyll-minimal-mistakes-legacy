@@ -23,3 +23,15 @@ pre.with-header {
     border-top-right-radius: $border-radius;
   }
 }
+
+.hljs-ln td.hljs-ln-numbers {
+  text-align: right;
+  color: #ccc;
+  border-right: 1px solid #ccc;
+  vertical-align: top;
+  padding-right: 7px;
+}
+
+.hljs-ln td.hljs-ln-code {
+  padding-left: 10px;
+}

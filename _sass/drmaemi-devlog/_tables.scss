@@ -2,7 +2,7 @@
    TABLES
    ========================================================================== */
 
-table {
+table:not(.hljs-ln) {
   display: block;
   margin-bottom: 1em;
   width: 100%;
@@ -27,7 +27,7 @@ th {
   text-align: left;
 }
 
-td {
+td:not(.hljs-ln-line) {
   padding: 0.5em;
   border-bottom: 1px solid mix(#000, $border-color, 25%);
 }
