@@ -75,4 +75,4 @@ footer_scripts:
 ```
 
 ## A. 참조
-Sammy Baek, "[Git Page Jekyll Blog] - [14] 목차 만들기", *ExtraBrain*, Available at [https://seungwubaek.github.io/blog/whole_toc](https://seungwubaek.github.io/blog/whole_toc) (Accessed Feb, 2022).
+Sammy Baek, "[Git Page Jekyll Blog] - [14] 목차 만들기", *ExtraBrain*, Available at [https://seungwubaek.github.io/blog/whole_toc](https://seungwubaek.github.io/blog/whole_toc) (Accessed Feb., 2022).

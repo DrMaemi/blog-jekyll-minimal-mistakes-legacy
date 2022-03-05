@@ -171,4 +171,4 @@ flowchart TB
 한가지 예로, 1장과 3장의 방법이 가장 효율적인 방법이 아닐 수 있다. 1장과 3장과 같이 자바스크립트 코드와 highlight.js를 사용하는 이유는, 파일 이름을 명시하기 위해 마크다운 구문을 변경했을 때 `Kramdown`이 변경된 구문을 제대로 변환하지 못하기 때문이다. 이 문제를 해결하는 방법을 필자가 아직 찾지 못했기 때문에 본문의 방식을 사용한 것이다.
 
 # A. 참조
-hachy, "GitHub Pagesでコードブロックにファイル名を表示する", *Hachy*, Available at [https://hachy.github.io/2018/11/14/add-file-name-to-code-block-in-jekyll-on-github-pages.html](https://hachy.github.io/2018/11/14/add-file-name-to-code-block-in-jekyll-on-github-pages.html) (Accessed March, 2022).
+hachy, "GitHub Pagesでコードブロックにファイル名を表示する", *Hachy*, Available at [https://hachy.github.io/2018/11/14/add-file-name-to-code-block-in-jekyll-on-github-pages.html](https://hachy.github.io/2018/11/14/add-file-name-to-code-block-in-jekyll-on-github-pages.html) (Accessed Mar. 4, 2022).

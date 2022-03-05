@@ -96,6 +96,6 @@ plugins:
 {: style="text-align: center;"}
 
 ## A. 참조
-루크의 IT이야기, "SEO의 기본, Robotx.txt 세팅하기", *brunch*, Available at [https://brunch.co.kr/@webbible/5](https://brunch.co.kr/@webbible/5) (Accessed Feb, 2022).
+루크의 IT이야기, "SEO의 기본, Robotx.txt 세팅하기", *brunch*, Available at [https://brunch.co.kr/@webbible/5](https://brunch.co.kr/@webbible/5) (Accessed Feb. 2022).
 
-Sammy Baek, "[Git Page Jekyll Blog] - [5] 검색 엔진에 노출 시키기 (SEO, robots 등)", *ExtraBrain*, Available at [https://seungwubaek.github.io/blog/seo_robots/#page-title](https://seungwubaek.github.io/blog/seo_robots/#page-title) (Accessed Feb, 2022).
+Sammy Baek, "[Git Page Jekyll Blog] - [5] 검색 엔진에 노출 시키기 (SEO, robots 등)", *ExtraBrain*, Available at [https://seungwubaek.github.io/blog/seo_robots/#page-title](https://seungwubaek.github.io/blog/seo_robots/#page-title) (Accessed Feb., 2022).

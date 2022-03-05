@@ -116,6 +116,6 @@ flowchart TB
 
 
 ## A. 참조
-Wikipedia, "Evolutionary History of Life", Available at [https://en.wikipedia.org/wiki/Google_Analytics](https://en.wikipedia.org/wiki/Google_Analytics) (Accessed Feb, 2022).
+Wikipedia, "Evolutionary History of Life", Available at [https://en.wikipedia.org/wiki/Google_Analytics](https://en.wikipedia.org/wiki/Google_Analytics) (Accessed Feb. 2022).
 
-Sammy Baek, "[Git Page Jekyll Blog] - [6] Google Analytics 연동", *ExtraBrain*, Available at [https://seungwubaek.github.io/blog/google_analytics/#page-title](https://seungwubaek.github.io/blog/google_analytics/#page-title)
+Sammy Baek, "[Git Page Jekyll Blog] - [6] Google Analytics 연동", *ExtraBrain*, Available at [https://seungwubaek.github.io/blog/google_analytics/#page-title](https://seungwubaek.github.io/blog/google_analytics/#page-title) (Accessed Feb., 2022).
