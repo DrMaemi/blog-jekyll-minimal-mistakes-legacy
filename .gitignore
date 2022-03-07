@@ -1,11 +1,6 @@
 # macOS
 .DS_Store
 
-_site/
-.sass-cache/
-.jekyll-cache/
-.jekyll-metadata
-
 # Jekyll generated files
 .jekyll-cache
 .jekyll-metadata
@@ -24,3 +19,6 @@ Gemfile.lock
 
 # executive files
 *.exe
+
+# Test Files
+Test
