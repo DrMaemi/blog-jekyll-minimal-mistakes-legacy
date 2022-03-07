@@ -30,6 +30,11 @@ sidebar:
       url: /Programming-Language/Markdown
     - title: CSS
       url: /Programming-Language/CSS
+  - title: Algorithm
+    url: /Algorithm
+    children:
+    - title: Baekjoon-Online-Judge
+      url: /Algorithm/Baekjoon-Online-Judge
   - title: Tools
     url: /Tools
     children:
