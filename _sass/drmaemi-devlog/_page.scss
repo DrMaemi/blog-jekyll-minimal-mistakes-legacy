@@ -118,8 +118,7 @@ body {
 
   /* paragraph indents */
   p {
-    // margin: 0 0 $indent-var;
-    margin: 3*$indent-var-quarter 0 $indent-var-quarter;
+    margin: 0 0 $indent-var;
 
     /* sibling indentation*/
     @if $paragraph-indent == true {
@@ -127,6 +126,10 @@ body {
         text-indent: $indent-var;
         margin-top: -($indent-var);
       }
+    }
+
+    &.short {
+      margin: 0 0 $indent-var/4;
     }
   }
 
