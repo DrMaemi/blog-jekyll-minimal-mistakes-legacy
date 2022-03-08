@@ -156,11 +156,11 @@ kbd,
 samp,
 pre {
   font-family: $monospace;
-  margin: 0;
 }
 
 pre {
   overflow-x: auto; /* add scrollbars to wide code blocks*/
+  margin: 0 0 $indent-var;
 }
 
 pre:not(.with-header) {
