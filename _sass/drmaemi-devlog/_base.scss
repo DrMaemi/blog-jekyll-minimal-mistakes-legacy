@@ -169,6 +169,7 @@ pre:not(.with-header) {
 
 code {
   border-top-right-radius: $border-radius;
+  background: lightgray;
 }
 
 p > code,
@@ -179,7 +180,7 @@ td > code {
   padding-top: 0.1rem;
   padding-bottom: 0.1rem;
   font-size: 0.8em;
-  background: lightgray;
+  // background: lightgray;
   border-radius: $border-radius;
 
   &:before,
