@@ -43,6 +43,8 @@ sidebar:
         #   url: /Algorithm/Baekjoon-Online-Judge/Step-By-Step/8-Basic-Math-1
         - title: 18. 스택
           url: /Algorithm/Baekjoon-Online-Judge/Step-By-Step/18-Stack
+        - title: 19. 큐와 덱
+          url: /Algorithm/Baekjoon-Online-Judge/Step-By-Step/19-Queue-Deque
   - title: Tools
     url: /Tools
     children:
