@@ -60,7 +60,8 @@ $(function(){
       //   Main Menu
       $('.nav__sub-title-name > a').each(function(idx, item){
         var $item = $(item);
-        var itemCat = $item.attr('id').split('sidebar-')[1];
+        // var itemCat = $item.attr('id').split('sidebar-')[1];
+        var itemCat = $item.attr('search_id')
         var numTot = getStatFromGroupByCategories(postsGroupByCats, itemCat, 'numTot', 0);
         $item.append('<span class="nav__sub-title-stat">' + numTot + '</span>');
       });
@@ -68,7 +69,8 @@ $(function(){
       var catSep = '|';
       $('.nav__item-children > li > a').each(function(idx, item){
         var $item = $(item);
-        var itemCats = $item.attr('id').split('sidebar-')[1].split(catSep);
+        // var itemCats = $item.attr('id').split('sidebar-')[1].split(catSep);
+        var itemCats = $item.attr('url').slice(1).split('/')
         var numTot = getStatFromGroupByCategories(postsGroupByCats, itemCats, 'numTot', 0);
         $item.append('<span class="nav__item-children-stat">' + numTot + '</span>');
       });
