@@ -3,9 +3,10 @@
    ========================================================================== */
 
 table:not(.hljs-ln) {
-  display: block;
-  margin-bottom: 1em;
-  width: 100%;
+  display: table;
+  // margin-bottom: 1em;
+  margin: 0 auto 1em auto;
+  // width: 100%;
   font-family: $global-font-family;
   // font-size: $type-size-6;
   font-size: 18px;
