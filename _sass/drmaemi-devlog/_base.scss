@@ -154,7 +154,8 @@ tt,
 code,
 kbd,
 samp,
-pre {
+pre,
+c {
   font-family: $monospace;
 }
 
@@ -167,7 +168,7 @@ pre:not(.with-header) {
   border-radius: $border-radius;
 }
 
-code {
+code, c {
   border-top-right-radius: $border-radius;
   background: lightgray;
 }
@@ -176,12 +177,20 @@ p > code,
 a > code,
 li > code,
 figcaption > code,
-td > code {
+td > code,
+h2 > code,
+h3 > code,
+h4 > code,
+h5 > code,
+h6 > code,
+c {
   padding-top: 0.1rem;
   padding-bottom: 0.1rem;
   font-size: 0.8em;
   // background: lightgray;
   border-radius: $border-radius;
+  position: relative;
+  bottom: 0.1rem;
 
   &:before,
   &:after {
