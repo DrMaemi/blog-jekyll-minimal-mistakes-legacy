@@ -39,8 +39,8 @@ sidebar:
       - title: 단계별로 풀어보기
         url: /Algorithm/Baekjoon-Online-Judge/Step-By-Step
         children:
-        # - title: 8. 기본 수학 1
-        #   url: /Algorithm/Baekjoon-Online-Judge/Step-By-Step/8-Basic-Math-1
+        - title: 8. 기본 수학 1
+          url: /Algorithm/Baekjoon-Online-Judge/Step-By-Step/8-Basic-Math-1
         - title: 15. 동적 계획법 1
           url: /Algorithm/Baekjoon-Online-Judge/Step-By-Step/15-Dynamic-Programming-1
         - title: 18. 스택
