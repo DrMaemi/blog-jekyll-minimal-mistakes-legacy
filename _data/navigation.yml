@@ -41,6 +41,8 @@ sidebar:
         children:
         # - title: 8. 기본 수학 1
         #   url: /Algorithm/Baekjoon-Online-Judge/Step-By-Step/8-Basic-Math-1
+        - title: 15. 동적 계획법 1
+          url: /Algorithm/Baekjoon-Online-Judge/Step-By-Step/15-Dynamic-Programming-1
         - title: 18. 스택
           url: /Algorithm/Baekjoon-Online-Judge/Step-By-Step/18-Stack
         - title: 19. 큐와 덱
