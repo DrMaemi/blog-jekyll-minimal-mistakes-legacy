@@ -47,6 +47,10 @@ sidebar:
           url: /Algorithm/Baekjoon-Online-Judge/Step-By-Step/18-Stack
         - title: 19. 큐와 덱
           url: /Algorithm/Baekjoon-Online-Judge/Step-By-Step/19-Queue-Deque
+        - title: 24. DFS와 BFS
+          url: /Algorithm/Baekjoon-Online-Judge/Step-By-Step/24-DFS-BFS
+        - title: 25. 최단 경로
+          url: /Algorithm/Baekjoon-Online-Judge/Step-By-Step/25-Shortest-Path
   - title: Tools
     url: /Tools
     children:
