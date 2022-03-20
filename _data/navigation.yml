@@ -47,6 +47,8 @@ sidebar:
           url: /Algorithm/Baekjoon-Online-Judge/Step-By-Step/18-Stack
         - title: 19. 큐와 덱
           url: /Algorithm/Baekjoon-Online-Judge/Step-By-Step/19-Queue-Deque
+        - title: 23. 동적 계획법 2
+          url: /Algorithm/Baekjoon-Online-Judge/Step-By-Step/23-Dynamic-Programming-2
         - title: 24. DFS와 BFS
           url: /Algorithm/Baekjoon-Online-Judge/Step-By-Step/24-DFS-BFS
         - title: 25. 최단 경로
