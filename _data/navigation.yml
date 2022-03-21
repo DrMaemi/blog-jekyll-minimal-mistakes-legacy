@@ -43,6 +43,8 @@ sidebar:
           url: /Algorithm/Baekjoon-Online-Judge/Step-By-Step/8-Basic-Math-1
         - title: 15. 동적 계획법 1
           url: /Algorithm/Baekjoon-Online-Judge/Step-By-Step/15-Dynamic-Programming-1
+        - title: 17. 정수론 및 조합론
+          url: /Algorithm/Baekjoon-Online-Judge/Step-By-Step/17-Number-Combinatorics
         - title: 18. 스택
           url: /Algorithm/Baekjoon-Online-Judge/Step-By-Step/18-Stack
         - title: 19. 큐와 덱
