@@ -1,15 +1,15 @@
 ---
-title: 파이썬 개발 환경 설정
-categories:
-  - Python
+title: '[1] 파이썬 개발 환경 설정'
 tags:
   - Anaconda
-  - Jupyter Notebook
+  - Jupyter-Notebook
   - VSCode
 author_profile: true
 last_modified_at: 2022-02-08 15:13:00 +0900
-toc_label: 파이썬 개발 환경 설정
+toc_label: '[1] 파이썬 개발 환경 설정'
+post-order: 1
 ---
+
 문법이 간단해서 비전공자도 쉽고 재미있게 배울 수 있는 파이썬, 본문을 통해 어떻게 시작할 수 있는지 알아보자.
 
 필자는 AI 엔진을 개발하거나 백엔드 서버에서 일부 비즈니스 로직을 다루는데 파이썬을 사용하는데, 아나콘다와 주피터 노트북, VS Code를 이용해서 개발하는게 편했다. 본문의 내용은 이와 관련된 내용으로 구성되어 있다.

@@ -1,9 +1,12 @@
 ---
-title: 자료형 - 딕셔너리(Dictionary)
+title: '[4] 자료형 - 딕셔너리(Dictionary)'
 tags:
   - Dictionary
+  - Associative-Array
+  - Hash
 author_profile: true
-toc_label: 자료형 - 딕셔너리(Dictionary)
+toc_label: '[4] 자료형 - 딕셔너리(Dictionary)'
+post-order: 4
 ---
 
 파이썬에서 사용할 수 있는, 대응 관계를 나타내는 연관 배열(Associative Array) 또는 해시(Hash) 자료구조인 딕셔너리(Dictionary)에 대해 알아보자.
