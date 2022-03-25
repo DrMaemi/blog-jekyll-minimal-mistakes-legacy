@@ -55,6 +55,8 @@ sidebar:
           url: /Algorithm/Baekjoon-Online-Judge/Step-By-Step/24-DFS-BFS
         - title: 25. 최단 경로
           url: /Algorithm/Baekjoon-Online-Judge/Step-By-Step/25-Shortest-Path
+        - title: 33. 문자열 알고리즘 1
+          url: /Algorithm/Baekjoon-Online-Judge/Step-By-Step/33-String-Algorithm-1
   - title: Tools
     url: /Tools
     children:
