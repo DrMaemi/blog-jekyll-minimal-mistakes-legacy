@@ -1,13 +1,11 @@
 ---
-title: 검색 엔진 최적화
-categories:
-  - Github.io
+title: '검색 엔진 최적화와 Google Search Console 연동'
 tags:
   - Jekyll
   - Liquid
 author_profile: true
-toc_label: 검색 엔진 최적화
-last_modified_at: 2022-02-20 19:31:00 +0900
+toc_label: '검색 엔진 최적화와 Google Search Console 연동'
+last_modified_at: 2022-03-24 20:11:44 +0900
 ---
 ## 검색 엔진 최적화(SEO)란?
 SEO, Search Engine Optimization, 검색 엔진 최적화란 크롤러(Crawler)가 웹사이트의 정보를 탐색하면 이를 적절히 수정·조율하여 최적화를 진행하고 검색 결과(SERPs) 상단에 웹사이트를 노출시켜 트래픽(방문자)을 높이는 디지털 마케팅 전략을 말한다.
@@ -47,8 +45,8 @@ disallow: /assets/
 Sitemap: https://drmaemi.github.io/sitemap.xml
 ```
 
-## 사이트맵(sitemap.xml) 작성
-사이트맵은 웹사이트의 구조를 알려주는 파일이다. 검색 엔진의 크롤러가 해당 파일을 참조하여 웹사이트의 구조를 파악하고 이를 검색 결과 노출 우선순위에 반영한다. 이 파일은 본인이 직접 만들 수도 있지만 Jekyll Plugin을 이용해서 자동화할 수 있다. `Minimal Mistakes`를 사용하면 해당 플러그인이 내장되어 있고, `/_config.yml` 파일에서 `plugins` 항목에 `jekyll-sitemap`을 명시함으로써 사용할 수 있다.
+## 사이트맵(sitemap.xml)과 피드(feed) 작성
+사이트맵은 웹사이트의 구조를 알려주는 파일이다. 피드는 웹사이트에서 작성된 포스트나 글에 대한 정보를 담고 있는 파일이며 검색 엔진이 웹사이트를 구독하여 웹 페이지를 직접 방문하지 않아도 이를 알 수 있도록 한다. 결과적으로 검색 엔진의 크롤러가 해당 파일들을 참조하여 웹사이트의 구조를 파악하고 이를 검색 결과 노출 우선순위에 반영한다. 이 파일은 본인이 직접 만들 수도 있지만 Jekyll Plugin을 이용해서 자동화할 수 있다. `Minimal Mistakes`를 사용하면 해당 플러그인이 내장되어 있고, `/_config.yml` 파일에서 `plugins` 항목에 `jekyll-sitemap`과 `jekyll-feed`를 명시함으로써 사용할 수 있다.
 
 ```yml
 # _config.yml
@@ -94,6 +92,14 @@ plugins:
 ![](https://drive.google.com/uc?export=view&id=16W_TvGn1uxUS6xxq0MDIMCdEGYHi-geg){: .align-center}
 <그림 6. 소유권 확인 완료>
 {: style="text-align: center;"}
+
+소유권 확인까지 완료했다면 마지막으로 Google Search Console에서 사이트맵과 피드를 제출한다.
+
+![](https://drive.google.com/uc?export=view&id=13oSmv7eDL0khlERVs0HscRVhz1WzXCD2){: .align-center}
+<그림 7. 사이트맵과 피드 제출>
+{: style="text-align: center;"}
+
+제출된 파일을 확인하는 데 몇 주 정도 소요된다고 한다.
 
 ## A. 참조
 루크의 IT이야기, "SEO의 기본, Robotx.txt 세팅하기", *brunch*, Available at [https://brunch.co.kr/@webbible/5](https://brunch.co.kr/@webbible/5) (Accessed Feb. 2022).
