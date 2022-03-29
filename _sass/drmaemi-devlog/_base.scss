@@ -162,6 +162,7 @@ c {
 pre {
   overflow-x: auto; /* add scrollbars to wide code blocks*/
   margin: 0 0 $indent-var;
+  font-size: $type-size-6;
 }
 
 pre:not(.with-header) {
