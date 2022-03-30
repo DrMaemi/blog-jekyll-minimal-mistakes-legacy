@@ -59,6 +59,11 @@ sidebar:
           url: /Algorithm/Baekjoon-Online-Judge/Step-By-Step/27-Tree
         - title: 33. 문자열 알고리즘 1
           url: /Algorithm/Baekjoon-Online-Judge/Step-By-Step/33-String-Algorithm-1
+      - title: 알고리즘 분류
+        url: /Algorithm/Baekjoon-Online-Judge/Categorized
+        children:
+        - title: 구현
+          url: /Algorithm/Baekjoon-Online-Judge/Step-By-Step/Implementation
   - title: Tools
     url: /Tools
     children:
