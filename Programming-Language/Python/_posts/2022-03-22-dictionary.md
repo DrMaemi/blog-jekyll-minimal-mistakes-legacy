@@ -6,6 +6,7 @@ tags:
   - Hash
 author_profile: true
 toc_label: '[4] 자료형 - 딕셔너리(Dictionary)'
+last_modified_at: 2022-04-01 17:05:01 +0900
 post-order: 4
 ---
 
@@ -25,22 +26,32 @@ post-order: 4
 >>> a[2] = 'b'
 >>> a
 {1: 'a', 2: 'b'}
->>> a['name'] = 'pey'
+>>> a['name'] = 'Sang-Hyun Lee'
 >>> a
-{1: 'a', 2: 'b', 'name': 'pey'}
+{1: 'a', 2: 'b', 'name': 'Sang-Hyun Lee'}
 ```
 
 ## 3. 요소 삭제
-`del[<key>]` 형태로 키-값 쌍을 삭제할 수 있다.
+<code>del <i>dictionary</i>[<i>key</i>]</code> 또는 <c><i>dictionary</i>.pop(<i>key</i>)</c> 형태로 키-값 쌍을 삭제할 수 있다.
+
 ```txt
+>>> a
+{1: 'a', 2: 'b', 'name': 'Sang-Hyun Lee'}
 >>> del a[1]
 >>> a
 {2: 'b', 'name': 'pey'}
+>>> a.pop('name')
+'Sang-Hyun Lee'
+>>> a
+{2: 'b'}
 ```
-키를 기준으로 삭제된다.
+
+- 키를 기준으로 삭제된다.
+- <code>.pop(<i>key</i>)</code>는 키-값에서 값을 반환한다.
+
 
 ## 4. 주의 사항
-중복되는 key 값을 설정하면 가장 마지막 {key: value}쌍만 남는다.
+중복되는 key 값을 설정하면 가장 마지막 키-값만 남는다.
 ```txt
 >>> a = {1: 'a', 1: 'b', 1: 'c'}
 >>> a
