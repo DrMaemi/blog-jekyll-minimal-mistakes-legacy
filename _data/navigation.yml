@@ -38,6 +38,16 @@ sidebar:
     - title: Baekjoon Online Judge
       url: /Algorithm/Baekjoon-Online-Judge
       children:
+      - title: 알고리즘 분류
+        url: /Algorithm/Baekjoon-Online-Judge/Categorized
+        children:
+        - title: 구현
+          url: /Algorithm/Baekjoon-Online-Judge/Categorized/Implementation
+          children:
+          - title: 골드 4
+            url: /Algorithm/Baekjoon-Online-Judge/Categorized/Implementation/Gold-4
+          - title: 골드 5
+            url: /Algorithm/Baekjoon-Online-Judge/Categorized/Implementation/Gold-5
       - title: 단계별로 풀어보기
         url: /Algorithm/Baekjoon-Online-Judge/Step-By-Step
         children:
@@ -63,11 +73,6 @@ sidebar:
           url: /Algorithm/Baekjoon-Online-Judge/Step-By-Step/27-Tree
         - title: 33. 문자열 알고리즘 1
           url: /Algorithm/Baekjoon-Online-Judge/Step-By-Step/33-String-Algorithm-1
-      - title: 알고리즘 분류
-        url: /Algorithm/Baekjoon-Online-Judge/Categorized
-        children:
-        - title: 구현
-          url: /Algorithm/Baekjoon-Online-Judge/Step-By-Step/Implementation
   - title: Tools
     url: /Tools
     children:
