@@ -48,6 +48,11 @@ sidebar:
             url: /Algorithm/Baekjoon-Online-Judge/Categorized/Implementation/Gold-4
           - title: 골드 5
             url: /Algorithm/Baekjoon-Online-Judge/Categorized/Implementation/Gold-5
+        - title: 브루트포스
+          url: /Algorithm/Baekjoon-Online-Judge/Categorized/Brute-Force
+          children:
+          - title: 골드 5
+            url: /Algorithm/Baekjoon-Online-Judge/Categorized/Brute-Force/Gold-5
       - title: 단계별로 풀어보기
         url: /Algorithm/Baekjoon-Online-Judge/Step-By-Step
         children:
@@ -71,6 +76,8 @@ sidebar:
           url: /Algorithm/Baekjoon-Online-Judge/Step-By-Step/25-Shortest-Path
         - title: 27. 트리
           url: /Algorithm/Baekjoon-Online-Judge/Step-By-Step/27-Tree
+        - title: 29. 최소 신장 트리
+          url: /Algorithm/Baekjoon-Online-Judge/Step-By-Step/29-Minimum-Spanning-Tree
         - title: 33. 문자열 알고리즘 1
           url: /Algorithm/Baekjoon-Online-Judge/Step-By-Step/33-String-Algorithm-1
   - title: Tools
