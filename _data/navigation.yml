@@ -89,6 +89,11 @@ sidebar:
           url: /Algorithm/Baekjoon-Online-Judge/Step-By-Step/29-Minimum-Spanning-Tree
         - title: 33. 문자열 알고리즘 1
           url: /Algorithm/Baekjoon-Online-Judge/Step-By-Step/33-String-Algorithm-1
+  - title: Application
+    url: /Application
+    children:
+    - title: JSP
+      url: /Application/JSP
   - title: Tools
     url: /Tools
     children:
