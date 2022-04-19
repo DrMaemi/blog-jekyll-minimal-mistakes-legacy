@@ -5,6 +5,7 @@ categories:
 tags:
   - Jekyll
   - Liquid
+mermaid: true
 author_profile: true
 toc_label: Google Analytics 연동
 last_modified_at: 2022-02-24 03:11:02 +0900

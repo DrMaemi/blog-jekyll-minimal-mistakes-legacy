@@ -5,6 +5,7 @@ categories:
 tags:
   - Jekyll
   - Liquid
+mermaid: true
 author_profile: true
 toc_label: 카테고리 TOC 페이지 만들기
 ---

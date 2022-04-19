@@ -6,6 +6,7 @@ tags:
   - Jekyll
   - Liquid
   - Mermaid
+mermaid: true
 author_profile: true
 toc_label: Mermaid를 이용해 UML 그리기
 ---

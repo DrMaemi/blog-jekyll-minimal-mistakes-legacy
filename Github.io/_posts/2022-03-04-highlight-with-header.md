@@ -5,6 +5,7 @@ categories:
 tags:
   - Jekyll
   - Javascript
+mermaid: true
 author_profile: true
 toc_label: 코드 블럭 파일 이름 명시
 last_modified_at: 2022-03-05 01:08:25 +0900

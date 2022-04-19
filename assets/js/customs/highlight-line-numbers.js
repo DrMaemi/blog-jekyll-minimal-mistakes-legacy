@@ -202,7 +202,6 @@
 
     function addLineNumbersBlockFor (inputHtml, options) {
         var lines = getLines(inputHtml);
-        console.log(lines)
 
         // if last line contains only carriage return remove it
         if (lines[lines.length-1].trim() === '') {

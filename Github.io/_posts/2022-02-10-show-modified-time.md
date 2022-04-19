@@ -6,6 +6,7 @@ categories:
 tags:
   - Jekyll
   - Liquid
+mermaid: true
 author_profile: true
 toc_label: 포스트 수정 날짜 표시
 ---
