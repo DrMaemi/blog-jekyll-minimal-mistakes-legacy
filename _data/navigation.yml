@@ -96,8 +96,11 @@ sidebar:
   - title: Application
     url: /Application
     children:
-    - title: JSP
-      url: /Application/JSP
+      - title: Web
+        url: /Application/Web
+        children:
+        - title: JSP
+          url: /Application/Web/JSP
   - title: Tools
     url: /Tools
     children:
