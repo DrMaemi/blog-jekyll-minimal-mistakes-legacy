@@ -104,6 +104,8 @@ sidebar:
   - title: Tools
     url: /Tools
     children:
+      - title: Eclipse
+        url: /Tools/Eclipse
       - title: MinGW
         url: /Tools/MinGW
   - title: Documentation
