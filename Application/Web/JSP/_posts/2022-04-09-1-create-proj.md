@@ -1,14 +1,13 @@
 ---
-title: '[JSP] 1. 프로젝트 생성'
+title: '[JSP] 1. 프로젝트 생성(Hello World !)'
 tags:
   - Eclipse
   - Tomcat
 author_profile: true
-toc_label: '[JSP] 1. 프로젝트 생성'
+toc_label: '[JSP] 1. 프로젝트 생성(Hello World !)'
+last_modified_at: 2022-04-26 15:01:25 +0900
 post-order: 1
 ---
-
-한국에서 많은 기업들이 백엔드 서버를 프로그래밍할 때 Java 기반의 Spring 프레임 워크를 가장 많이 쓴다. 필자는 백엔드 분야에 관심이 많아서 Spring이 왜 많이 쓰이는지, 그리고 어떻게 사용하는지 궁금해서 공부를 시작했는데, Spring을 제대로 이해하기 위해서는 Spring이 등장하기 전에 자바로 서버를 프로그래밍하기 위한 JSP, Servlet 등을 선행 공부하는 것이 필요하다고 한다.
 
 본 블로그의 JSP 포스트는 '동빈나'님의 유튜브 [JSP 게시판 만들기 강좌](https://www.youtube.com/playlist?list=PLRx0vPvlEmdAZv_okJzox5wj2gG_fNh_6)를 참조하여 필자가 공부한 것을 정리하고 부족한 부분은 추가하는 형태로 작성될 예정이다.
 
@@ -56,7 +55,24 @@ java.util.logging.ConsoleHandler.encoding = EUC-KR
 ## 3. index.jsp 작성 및 웹 서버 실행
 `src/main/webapp` 경로 밑에 `index.jsp`를 작성하고 실행버튼을 클릭하면(혹은 `Ctrl`+`F11` 단축키 이용) 가장 먼저 웹 프로젝트를 구동시킬 런타임을 지정하게 된다. `Target runtime`에서 `New runtime`을 클릭하고 본인이 설치한 Tomcat 버전을 선택한 뒤 `Installation directory`에 Tomcat 설치 경로 `.../apache-tomcat-9.0.62`를 기입하여 완료한다.
 
+```html:src/main/webapp/index.jsp:lineons
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Hello World !</title>
+</head>
+<body>
+  Hello World !
+</body>
+</html>
+```
+
 여기까지 완료했으면 Tomcat으로 웹 서버가 정상적으로 구동되어 브라우저로 `http://localhost:8080/<project_name>/index.jsp`에 접속하면 `Hello World !` 문구가 보인다.
+
+![](https://drive.google.com/uc?export=view&id=1eLUnDXM-L0oMDR50-o3RKfAF0J7y1WSj){: .align-center}
+<그림 1. Hello World !>
+{: style="text-align: center;"}
 
 ## A. 참조
 동빈나, "JSP 게시판 만들기 강좌 1강 - Hello World! (JSP Advanced Development Tutorial #1)", *Youtube*, May 4, 2017. [Oneline]. Available: [https://youtu.be/wEIBDHfoMBg](https://youtu.be/wEIBDHfoMBg) [Accessed Apr. 8, 2022].
