@@ -114,6 +114,11 @@ sidebar:
         children:
         - title: JSP
           url: /Application/Web/JSP
+  - title: Dev-Ops
+    url: /Dev-Ops
+    children:
+    - title: Git
+      url: /Dev-Ops/Git
   - title: Tools
     url: /Tools
     children:
@@ -121,6 +126,8 @@ sidebar:
         url: /Tools/Eclipse
       - title: MinGW
         url: /Tools/MinGW
+      - title: Window
+        url: /Tools/Window
   - title: Documentation
     url: /Documentation
     children:

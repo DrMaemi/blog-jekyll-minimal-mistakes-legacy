@@ -6,7 +6,7 @@ toc_label: '[JSP] 4. 로그인 기능 구현'
 post-order: 4
 ---
 
-## DAO 클래스() 작성
+## DAO 클래스 작성
 여기서 말하는 DAO는 Database Access Object의 약자로서 JSP로 구동되는 웹 서버가 DB 서버와 인터페이싱하기 위한 객체를 말한다. DB의 정보를 불러오거나 삽입하는 역할을 수행한다.
 
 지난 포스트 [3. 회원 DB 구축 - 자바 빈즈(Java Beans) 구현]({{site.url}}/application/web/jsp/3-setup-db/#자바-빈즈java-beans-구현)에서 생성했던 `user` 패키지 하위에 `UserDAO` 클래스를 생성하여 DB 연동에 필요한 멤버 변수들과 클래스 생성자, 연동 코드를 다음과 같이 작성한다.
@@ -20,49 +20,49 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 public class UserDAO {
-  private Connection conn;
-  private PreparedStatement pstmt;
-  private ResultSet rs;
+    private Connection conn;
+    private PreparedStatement pstmt;
+    private ResultSet rs;
 
-  public UserDAO() {
-    try {
-      String dbURL = "jdbc:mysql://localhost:3306/BBS";
-      String dbID = "root";
-      String dbPassword = "your password";
-      Class.forName("com.mysql.cj.jdbc.Driver");
+    public UserDAO() {
+      try {
+          String dbURL = "jdbc:mysql://localhost:3306/BBS";
+          String dbID = "root";
+          String dbPassword = "your password";
+          Class.forName("com.mysql.cj.jdbc.Driver");
 
-      conn = DriverManager.getConnection(dbURL, dbID, dbPassword);
+          conn = DriverManager.getConnection(dbURL, dbID, dbPassword);
 
-    } catch (Exception e) {
-      e.printStackTrace();
-    }
-  }
-
-  public int login(String userID, String userPassword) {
-    String SQL = "SELECT userPassword FROM USER WHERE userID = ?";
-      
-    try {
-      pstmt = conn.prepareStatement(SQL);
-      pstmt.setString(1, userID);
-      rs = pstmt.executeQuery();
-
-      if (rs.next()) {
-        if (rs.getString(1).equals(userPassword)) {
-          return 1;
-        }
-        else {
-          return 0;
-        }
+      } catch (Exception e) {
+          e.printStackTrace();
       }
-
-      return -1;
-
-    } catch (Exception e) {
-      e.printStackTrace();
     }
+
+    public int login(String userID, String userPassword) {
+        String SQL = "SELECT userPassword FROM USER WHERE userID = ?";
       
-    return -2;
-  }
+        try {
+            pstmt = conn.prepareStatement(SQL);
+            pstmt.setString(1, userID);
+            rs = pstmt.executeQuery();
+
+        if (rs.next()) {
+            if (rs.getString(1).equals(userPassword)) {
+                return 1;
+            }
+            else {
+                return 0;
+            }
+        }
+
+        return -1;
+
+      } catch (Exception e) {
+          e.printStackTrace();
+      }
+      
+      return -2;
+    }
 }
 ```
 
