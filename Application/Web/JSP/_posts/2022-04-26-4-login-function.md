@@ -1,5 +1,6 @@
 ---
 title: '[JSP] 4. 로그인 기능 구현'
+uml: true
 author_profile: true
 toc_label: '[JSP] 4. 로그인 기능 구현'
 post-order: 4
