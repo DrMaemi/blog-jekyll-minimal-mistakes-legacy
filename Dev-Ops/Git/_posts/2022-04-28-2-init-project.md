@@ -1,7 +1,7 @@
 ---
-title: [Git] 2. 저장소 생성(초기화)
+title: '[Git] 2. 저장소 생성(초기화)'
 author_profile: true
-toc_label: [Git] 2. 저장소 생성(초기화)
+toc_label: '[Git] 2. 저장소 생성(초기화)'
 post-order: 2
 ---
 

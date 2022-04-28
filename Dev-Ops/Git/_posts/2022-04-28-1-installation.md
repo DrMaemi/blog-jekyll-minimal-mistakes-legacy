@@ -1,7 +1,7 @@
 ---
-title: [Git] 1. 설치
+title: '[Git] 1. 설치'
 author_profile: true
-toc_label: [Git] 1. 설치
+toc_label: '[Git] 1. 설치'
 post-order: 1
 ---
 
