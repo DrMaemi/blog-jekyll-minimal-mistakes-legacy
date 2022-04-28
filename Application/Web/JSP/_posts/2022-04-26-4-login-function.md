@@ -23,47 +23,49 @@ public class UserDAO {
     private Connection conn;
     private PreparedStatement pstmt;
     private ResultSet rs;
-
+     
     public UserDAO() {
-      try {
-          String dbURL = "jdbc:mysql://localhost:3306/BBS";
-          String dbID = "root";
-          String dbPassword = "your password";
-          Class.forName("com.mysql.cj.jdbc.Driver");
-
-          conn = DriverManager.getConnection(dbURL, dbID, dbPassword);
-
-      } catch (Exception e) {
-          e.printStackTrace();
-      }
+        try {
+            String dbURL = "jdbc:mysql://localhost:3306/BBS";
+            String dbID = "root";
+            String dbPassword = "`rmaqlcflqpf468";
+            
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            
+            conn = DriverManager.getConnection(dbURL, dbID, dbPassword);
+                
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
-
+     
     public int login(String userID, String userPassword) {
-        String SQL = "SELECT userPassword FROM USER WHERE userID = ?";
-      
+        String SQL = "SELECT userPaswsword FROM user WHERE userID = ?";
+        
         try {
             pstmt = conn.prepareStatement(SQL);
             pstmt.setString(1, userID);
             rs = pstmt.executeQuery();
-
-        if (rs.next()) {
-            if (rs.getString(1).equals(userPassword)) {
-                return 1;
+            
+            if (rs.next()) {
+                if (rs.getString(1).equals(userPassword)) {
+                    return 1;
+                }
+                else {
+                    return 0;
+                }
             }
-            else {
-                return 0;
-            }
+            
+            return -1;
+            
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-
-        return -1;
-
-      } catch (Exception e) {
-          e.printStackTrace();
-      }
-      
-      return -2;
+        
+        return -2;
     }
 }
+
 ```
 
 `UserDAO.java`는 JDBC 연동을 위해 JDBC 드라이버를 사용한다. 생성자와 로그인 기능 메서드에서 JDBC를 사용하기 위한 코드들이 다음 순서로 작성된다.

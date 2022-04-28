@@ -3,12 +3,43 @@ title: '[JSP] 6. 회원가입 기능 구현'
 author_profile: true
 toc_label: '[JSP] 6. 회원가입 기능 구현'
 post-order: 6
+last_modified_at: 2022-04-29 00:30:00 +0900
 ---
 
 사용자가 회원가입 페이지(join.jsp)를 통해 작성한 정보를 토대로 회원가입 기능을 구현한다.
 
-## `joinAction.jsp`
-지난 포스트 [4. 로그인 기능 구현 - loginAction.jsp]({{site.url}}/application/web/jsp/4-login-function/#loginactionjsp)에서 자바 빈을 활용해 사용자 정보를 페이지 간 통신한 것처럼 `joinAction.jsp`에서도 자바 빈 `user`를 활용한다. `join.jsp` 페이지에서 사용자가 작성한 정보들을 받아 MySQL에 있는 회원 정보 DB에 입력한다. 이 과정에서 1. 정보 입력 누락 2. 중복 아이디 등의 예외가 발생할 수 있으므로 각 경우에 대한 예외 처리 코드를 작성한다.
+## `UserDAO` 클래스 `.join()` 메서드 작성
+사용자가 회원가입 페이지에서 작성한 정보들을 DAO 객체가 회원 DB에 입력한다. 이와 관련된 메서드 `.join()`을 `UserDAO.java`에 추가해준다.
+
+```java:src/main/java/user/UserDAO.java
+...
+    public int join(User user) {
+        String SQL = "INSERT INTO user VALUES (?, ?, ?, ?, ?);";
+
+        try {
+            pstmt = conn.prepareStatement(SQL);
+
+            pstmt.setString(1, user.getUserID());
+            pstmt.setString(2, user.getUserPassword());
+            pstmt.setString(3, user.getUserName());
+            pstmt.setString(4, user.getUserGender());
+            pstmt.setString(5, user.getUserEmail());
+
+            return pstmt.executeUpdate();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return -1; // 데이터베이스 오류
+    }
+...
+```
+
+회원 DB `user`의 스키마의 제약 사항으로 사용자 ID를 *PRIMARY KEY*로 지정했는데, 이 때문에 *SQLException*이 발생하면 -1을 반환하고 후술할 `joinAction.jsp` 페이지에서 예외 처리한다.
+
+## `joinAction.jsp` 작성
+지난 포스트 [4. 로그인 기능 구현 - loginAction.jsp]({{site.url}}/application/web/jsp/4-login-function/#loginactionjsp)에서 자바 빈을 활용해 사용자 정보를 페이지 간 통신한 것처럼 `joinAction.jsp`에서도 자바 빈 `user`를 활용한다. `join.jsp` 페이지는 사용자가 작성한 정보들을 받아 `user` 객체의 필드들을 설정하고 DAO 객체 `userDAO`로 넘긴다. MySQL에 있는 회원 정보 DB에 입력한다. 이 과정에서 1. 정보 입력 누락 2. 중복 아이디 등의 예외가 발생할 수 있으므로 각 경우에 대한 예외 처리 코드를 작성한다.
 
 ```jsp:src/main/webapp/joinAction.jsp:lineons
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="EUC-KR"%>

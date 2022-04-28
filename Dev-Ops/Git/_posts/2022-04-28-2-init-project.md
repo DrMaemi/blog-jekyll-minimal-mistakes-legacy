@@ -29,10 +29,9 @@ Resolving deltas: 100% (3/3), done.
 로컬에 존재하는 프로젝트 루트 디렉토리에서 다음 명령어들을 사용한다.
 
 1. `git init`
-2. `git add .`
+2. `git add <directory or file>`
 3. `git commit -m "<commit message>"`
-
-<p class=short><c>git init</c>, <c>git add</c>, <c>git commit</c>, <c>git push</c></p>
+4. `git push`
 
 ```txt:Git Bash
 $ git init
