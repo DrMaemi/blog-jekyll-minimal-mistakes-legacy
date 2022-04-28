@@ -40,59 +40,72 @@ sidebar:
     - title: Baekjoon Online Judge
       url: /Algorithm/Baekjoon-Online-Judge
       children:
-      - title: 알고리즘 분류
-        url: /Algorithm/Baekjoon-Online-Judge/Categorized
+      - title: C++
+        url: /Algorithm/Baekjoon-Online-Judge/C++
         children:
-        - title: 구현
-          url: /Algorithm/Baekjoon-Online-Judge/Categorized/Implementation
+        - title: 단계별로 풀어보기
+          url: /Algorithm/Baekjoon-Online-Judge/C++/Step-By-Step
           children:
-          - title: 골드 4
-            url: /Algorithm/Baekjoon-Online-Judge/Categorized/Implementation/Gold-4
-          - title: 골드 5
-            url: /Algorithm/Baekjoon-Online-Judge/Categorized/Implementation/Gold-5
-        - title: 그리디
-          url: /Algorithm/Baekjoon-Online-Judge/Categorized/Greedy
-          children:
-          - title: 골드 4
-            url: /Algorithm/Baekjoon-Online-Judge/Categorized/Greedy/Gold-4
-        - title: 브루트포스
-          url: /Algorithm/Baekjoon-Online-Judge/Categorized/Brute-Force
-          children:
-          - title: 골드 5
-            url: /Algorithm/Baekjoon-Online-Judge/Categorized/Brute-Force/Gold-5
-      - title: 단계별로 풀어보기
-        url: /Algorithm/Baekjoon-Online-Judge/Step-By-Step
+          - title: 13. 정수론 및 조합론
+            url: /Algorithm/Baekjoon-Online-Judge/C++/Step-By-Step/13-Number-Combinatorics
+      - title: Python
+        url: /Algorithm/Baekjoon-Online-Judge/Python
         children:
-        - title: 8. 기본 수학 1
-          url: /Algorithm/Baekjoon-Online-Judge/Step-By-Step/8-Basic-Math-1
-        - title: 15. 동적 계획법 1
-          url: /Algorithm/Baekjoon-Online-Judge/Step-By-Step/15-Dynamic-Programming-1
-        - title: 16. 누적합
-          url: /Algorithm/Baekjoon-Online-Judge/Step-By-Step/16-Cumulative-Sum
-        - title: 17. 정수론 및 조합론
-          url: /Algorithm/Baekjoon-Online-Judge/Step-By-Step/17-Number-Combinatorics
-        - title: 18. 스택
-          url: /Algorithm/Baekjoon-Online-Judge/Step-By-Step/18-Stack
-        - title: 19. 큐와 덱
-          url: /Algorithm/Baekjoon-Online-Judge/Step-By-Step/19-Queue-Deque
-        - title: 20. 이분 탐색
-          url: /Algorithm/Baekjoon-Online-Judge/Step-By-Step/20-Binary-Search
-        - title: 23. 동적 계획법 2
-          url: /Algorithm/Baekjoon-Online-Judge/Step-By-Step/23-Dynamic-Programming-2
-        - title: 24. DFS와 BFS
-          url: /Algorithm/Baekjoon-Online-Judge/Step-By-Step/24-DFS-BFS
-        - title: 25. 최단 경로
-          url: /Algorithm/Baekjoon-Online-Judge/Step-By-Step/25-Shortest-Path
-        - title: 27. 트리
-          url: /Algorithm/Baekjoon-Online-Judge/Step-By-Step/27-Tree
-        - title: 28. 유니온 파인드
-          url: /Algorithm/Baekjoon-Online-Judge/Step-By-Step/28-Union-Find
-        - title: 29. 최소 신장 트리
-          url: /Algorithm/Baekjoon-Online-Judge/Step-By-Step/29-Minimum-Spanning-Tree
-        - title: 33. 문자열 알고리즘 1
-          url: /Algorithm/Baekjoon-Online-Judge/Step-By-Step/33-String-Algorithm-1
-        - title: 38. 세그먼트 트리
-          url: /Algorithm/Baekjoon-Online-Judge/Step-By-Step/38-Segment-Tree
+        - title: 
+        children:
+        - title: 알고리즘 분류
+          url: /Algorithm/Baekjoon-Online-Judge/Python/Categorized
+          children:
+          - title: 구현
+            url: /Algorithm/Baekjoon-Online-Judge/Python/Categorized/Implementation
+            children:
+            - title: 골드 4
+              url: /Algorithm/Baekjoon-Online-Judge/Python/Categorized/Implementation/Gold-4
+            - title: 골드 5
+              url: /Algorithm/Baekjoon-Online-Judge/Python/Categorized/Implementation/Gold-5
+          - title: 그리디
+            url: /Algorithm/Baekjoon-Online-Judge/Python/Categorized/Greedy
+            children:
+            - title: 골드 4
+              url: /Algorithm/Baekjoon-Online-Judge/Python/Categorized/Greedy/Gold-4
+          - title: 브루트포스
+            url: /Algorithm/Baekjoon-Online-Judge/Python/Categorized/Brute-Force
+            children:
+            - title: 골드 5
+              url: /Algorithm/Baekjoon-Online-Judge/Python/Categorized/Brute-Force/Gold-5
+        - title: 단계별로 풀어보기
+          url: /Algorithm/Baekjoon-Online-Judge/Python/Step-By-Step
+          children:
+          - title: 8. 기본 수학 1
+            url: /Algorithm/Baekjoon-Online-Judge/Python/Step-By-Step/8-Basic-Math-1
+          - title: 15. 동적 계획법 1
+            url: /Algorithm/Baekjoon-Online-Judge/Python/Step-By-Step/15-Dynamic-Programming-1
+          - title: 16. 누적합
+            url: /Algorithm/Baekjoon-Online-Judge/Python/Step-By-Step/16-Cumulative-Sum
+          - title: 17. 정수론 및 조합론
+            url: /Algorithm/Baekjoon-Online-Judge/Python/Step-By-Step/17-Number-Combinatorics
+          - title: 18. 스택
+            url: /Algorithm/Baekjoon-Online-Judge/Python/Step-By-Step/18-Stack
+          - title: 19. 큐와 덱
+            url: /Algorithm/Baekjoon-Online-Judge/Python/Step-By-Step/19-Queue-Deque
+          - title: 20. 이분 탐색
+            url: /Algorithm/Baekjoon-Online-Judge/Python/Step-By-Step/20-Binary-Search
+          - title: 23. 동적 계획법 2
+            url: /Algorithm/Baekjoon-Online-Judge/Python/Step-By-Step/23-Dynamic-Programming-2
+          - title: 24. DFS와 BFS
+            url: /Algorithm/Baekjoon-Online-Judge/Python/Step-By-Step/24-DFS-BFS
+          - title: 25. 최단 경로
+            url: /Algorithm/Baekjoon-Online-Judge/Python/Step-By-Step/25-Shortest-Path
+          - title: 27. 트리
+            url: /Algorithm/Baekjoon-Online-Judge/Python/Step-By-Step/27-Tree
+          - title: 28. 유니온 파인드
+            url: /Algorithm/Baekjoon-Online-Judge/Python/Step-By-Step/28-Union-Find
+          - title: 29. 최소 신장 트리
+            url: /Algorithm/Baekjoon-Online-Judge/Python/Step-By-Step/29-Minimum-Spanning-Tree
+          - title: 33. 문자열 알고리즘 1
+            url: /Algorithm/Baekjoon-Online-Judge/Python/Step-By-Step/33-String-Algorithm-1
+          - title: 38. 세그먼트 트리
+            url: /Algorithm/Baekjoon-Online-Judge/Python/Step-By-Step/38-Segment-Tree
   - title: Application
     url: /Application
     children:
