@@ -111,4 +111,4 @@ mysql> SELECT * FROM user;
 ```
 
 ## A. 참조
-동빈나, "JSP 게시판 만들기 강좌 5강 - 회원가입 페이지 디자인 (JSP Advanced Development Tutorial #5)", *Youtube*, May 4, 2017. [Online]. Available: [https://youtu.be/-Kbhn2TJGn4](https://youtu.be/-Kbhn2TJGn4) [Accessed Apr. 28, 2022].
+동빈나, "JSP 게시판 만들기 강좌 6강 - 회원가입 기능 구현하기 (JSP Advanced Development Tutorial #6)", *Youtube*, May 4, 2017. [Online]. Available: [https://youtu.be/v2mmPRLjJGw](https://youtu.be/v2mmPRLjJGw) [Accessed Apr. 28, 2022].
