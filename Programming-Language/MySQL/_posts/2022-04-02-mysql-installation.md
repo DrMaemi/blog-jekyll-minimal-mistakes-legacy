@@ -1,9 +1,9 @@
 ---
-title: '[1] MySQL 설치'
+title: '[MySQL] 설치'
 tags:
   - Chocolatey
 author_profile: true
-toc_label: '[1] MySQL 설치'
+toc_label: '[MySQL] 설치'
 post-order: 1
 ---
 

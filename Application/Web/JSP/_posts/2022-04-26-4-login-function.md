@@ -4,6 +4,7 @@ uml: true
 author_profile: true
 toc_label: '[JSP] 4. 로그인 기능 구현'
 post-order: 4
+last_modified_at: 2022-05-02 14:47:33 +0900
 ---
 
 ## DAO 클래스 작성
@@ -177,46 +178,7 @@ C:\ProgramData\chocolatey\lib\mysql-connector-java\tools>tar -xvf mysql-connecto
 
 ### 발생한 오류
 #### java.sql.SQLExeception: The server time zone value is unrecognized...
-강좌를 보며 코드를 작성하여 서버를 구동시킨 후 로그인 테스트를 했는데 데이터베이스 오류에 대한 alert가 발생하면서 출력된 오류를 확인했더니 다음과 같은 오류였다.
-
-<p class=short>오류 문구</p>
-
-```txt
-java.sql.SQLException: The server time zone value is unrecognized or represents more than one time zone. You must configure either the server or JDBC driver (via the serverTimezone configuration property) to use a more specifc time zone value if you want to utilize time zone support.
-```
-
-확인해보니, mysql-connector-java 5.1.X 이후 버전부터 타임존을 명시하지 않으면 시스템 시간대를 사용함으로써 JDBC 연동 시 에러를 발생시킨다. 이를 해결하기 위해 DB 시스템 변수를 다음과 같이 수정해줘야 한다.
-
-```sql
-SET GLOBAL time_zone = '+0:00' -- 권한 필요, UTC로 설정하는 경우 '+0:00', KST는 '+9:00'
-SET time_zone = '+0:00'
-```
-
-<p class=short>실행 결과</p>
-
-```txt:CMD
-mysql> SELECT @@GLOBAL.time_zone, @@SESSION.time_zone;
-+--------------------+---------------------+
-| @@GLOBAL.time_zone | @@SESSION.time_zone |
-+--------------------+---------------------+
-| SYSTEM             | SYSTEM              |
-+--------------------+---------------------+
-1 row in set (0.00 sec)
-
-mysql> SET GLOBAL time_zone = '+0:00';
-Query OK, 0 rows affected (0.01 sec)
-
-mysql> SET time_zone = '+0:00';
-Query OK, 0 rows affected (0.00 sec)
-
-mysql> SELECT @@GLOBAL.time_zone, @@SESSION.time_zone;
-+--------------------+---------------------+
-| @@GLOBAL.time_zone | @@SESSION.time_zone |
-+--------------------+---------------------+
-| +00:00             | +00:00              |
-+--------------------+---------------------+
-1 row in set (0.00 sec)
-```
+[[MySQL] 에러들 - time zone error]({{site.url}}/programming-language/mysql/mysql-erros/#javasqlsqlexeception-the-server-time-zone-value-is-unrecognized) 포스트 참조
 
 ## 로그인 시도
 로그인 기능을 블랙박스 테스트한다. <그림 3>은 존재하지 않는 임의의 아이디와 패스워드를 입력해 로그인을 시도한 경우이고, <그림 4>는 지난 포스트 [3. 회원 DB 구축](https://drmaemi.github.io/application/web/jsp/3-setup-db/)에서 테이블에 삽입한 사용자 홍길동으로 로그인을 시도한 경우이다. URL을 확인해보면 로그인에 성공하여 `main.jsp`로 이동한 모습을 볼 수 있다.
@@ -233,7 +195,5 @@ mysql> SELECT @@GLOBAL.time_zone, @@SESSION.time_zone;
 동빈나, "JSP 게시판 만들기 강좌 4강 - 로그인 기능 구현하기 (JSP Advanced Development Tutorial #4))", *Youtube*, May 4, 2017. [Online]. Available: [https://youtu.be/RYo3OGlRoJw](https://youtu.be/RYo3OGlRoJw) [Accessed Apr. 26, 2022].
 
 kyun2world, "[Java 궁금증] Class.forName()은 어떻게 동작할까?", *Tistory*, Jan. 21, 2018. [Online]. Available: [https://kyun2.tistory.com/23](https://kyun2.tistory.com/23) [Accessed Apr. 27, 2022].
-
-버터필드, "[MySQL] The server time zone value is unrecognized or represents more than one time zone 에러 해결 방법", *Tistory*, Feb. 9, 2020. [Online]. Available: [https://atoz-develop.tistory.com/entry/MySQL-The-server-time-zone-value-is-unrecognized-or-represents-more-than-one-time-zone](https://atoz-develop.tistory.com/entry/MySQL-The-server-time-zone-value-is-unrecognized-or-represents-more-than-one-time-zone) [Accsesed Apr. 27, 2022].
 
 JOKER, "[JSP] 자바빈 / useBean, setProperty, getProperty", *Naver blog*, May 16, 2017. [Online]. Available: [https://m.blog.naver.com/PostView.naver?isHttpsRedirect=true&blogId=heartflow89&logNo=221006593791](https://m.blog.naver.com/PostView.naver?isHttpsRedirect=true&blogId=heartflow89&logNo=221006593791) [Accessed Apr. 27, 2022].
