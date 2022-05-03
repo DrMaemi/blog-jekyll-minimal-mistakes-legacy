@@ -15,8 +15,7 @@ post-order: 1
 JSP로 웹 어플리케이션을 개발하기 위해서는 자바 프로그래밍 개발 환경과 웹 서버를 구동하기 위한 WAS(Web Application Server) 엔진이 필요하다.
 
 ### 1.1. 자바 개발 환경
-자바 개발 환경 구성을 위해서는 JDK와 IDE를 설치해야 한다. 이에 관해서는 
-본 블로그에서 작성한 포스트 [자바 개발 환경 구성](https://drmaemi.github.io/programming-language/java/dev-env/)를 참조하자.
+자바 개발 환경 구성을 위해서는 JDK와 IDE를 설치해야 한다. 이에 관해서는 본 블로그에서 작성한 포스트 [자바 개발 환경 구성](https://drmaemi.github.io/programming-language/java/dev-env/)를 참조하자.
 
 개발 환경 IDE는 유튜브 강좌에서 이클립스와 Java EE를 사용했는데, 필자는 스프링 개발을 최종 목적으로 하기 때문에 Spring Tools Suite 4 Eclipse를 사용했다.
 
@@ -75,8 +74,8 @@ java.util.logging.ConsoleHandler.encoding = EUC-KR
 {: style="text-align: center;"}
 
 ## A. 참조
-동빈나, "JSP 게시판 만들기 강좌 1강 - Hello World! (JSP Advanced Development Tutorial #1)", *Youtube*, May 4, 2017. [Oneline]. Available: [https://youtu.be/wEIBDHfoMBg](https://youtu.be/wEIBDHfoMBg) [Accessed Apr. 8, 2022].
+동빈나, "JSP 게시판 만들기 강좌 1강 - Hello World! (JSP Advanced Development Tutorial #1)", *Youtube*, May 4, 2017. [Online]. Available: [https://youtu.be/wEIBDHfoMBg](https://youtu.be/wEIBDHfoMBg) [Accessed Apr. 8, 2022].
 
-dejavuhyo, "Windows에서 Tomcat 콘솔 로그 한글깨짐 해결", *Github.io*, Jan. 26, 2021. [Oneline]. Available: [https://dejavuhyo.github.io/posts/tomcat-console-encoding/](https://dejavuhyo.github.io/posts/tomcat-console-encoding/) [Accessed Apr. 8, 2022].
+dejavuhyo, "Windows에서 Tomcat 콘솔 로그 한글깨짐 해결", *Github.io*, Jan. 26, 2021. [Online]. Available: [https://dejavuhyo.github.io/posts/tomcat-console-encoding/](https://dejavuhyo.github.io/posts/tomcat-console-encoding/) [Accessed Apr. 8, 2022].
 
 은서파, "STS에서 Dynamic Web Project 개발", *Tistory*, Jan. 12, 2021. [Online]. Available: [https://goodteacher.tistory.com/329](https://goodteacher.tistory.com/329) [Accssed Apr. 8, 2022].

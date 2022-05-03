@@ -114,6 +114,8 @@ sidebar:
         children:
         - title: JSP
           url: /Application/Web/JSP
+        - title: Spring Boot
+          url: /Application/Web/Spring-Boot
   - title: Dev-Ops
     url: /Dev-Ops
     children:
@@ -124,6 +126,8 @@ sidebar:
     children:
       - title: Eclipse
         url: /Tools/Eclipse
+      - title: IntelliJ
+        url: /Tools/IntelliJ
       - title: MinGW
         url: /Tools/MinGW
       - title: Window
