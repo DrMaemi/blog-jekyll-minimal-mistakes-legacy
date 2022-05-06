@@ -1,11 +1,12 @@
 ---
 title: '[Spring Boot] 1. 프로젝트 생성(Hello World !)'
 tags:
-  - Eclipse
+  - IntelliJ
+  - Gradle
   - Tomcat
 author_profile: true
 toc_label: '[Spring Boot] 1. 프로젝트 생성(Hello World !)'
-last_modified_at: 2022-04-26 15:01:25 +0900
+last_modified_at: 2022-05-06 02:48:15 +0900
 post-order: 1
 ---
 
@@ -57,11 +58,48 @@ IntelliJ IDEA Community 버전에서는 Spring 개발에 필요한 라이브러�
 <화면 4. 스프링부트 웹 어플리케이션 실행>
 {: style="text-align: center;"}
 
-이 때 하단 실행 로그를 보면 어떤 설정도 하지 않았는데도 기본적으로 8080 포트로 지정된 웹 어플리케이션 서버 Tomcat이 실행되는 것을 확인할 수 있다.
+그런데 웹 어플리케이션이 실행되지 않고 다음과 같은 오류가 발생했다.
 
-![](https://drive.google.com/uc?export=view&id=16gjSQ-3HNjj0oUmZl_NDjzwzj9EMskyi){: align-center}
-<화면 5. index.html 페이지>
+```txt:CMD
+Error: Could not find or load main class maemi.dr.SpringDemo.SpringDemoApplication
+Caused by: java.lang.ClassNotFoundException: dr.maemi.SpringDemo.SpringDemoApplication
+
+Process finished with exit code 1
+```
+
+원인을 찾아보니 프로젝트 폴더에서 Gradle Build를 수행하지 못해 생기는 문제인 것 같았다. 이를 해결하는 방법은 *File > Settings* 에서 *Build, Execution, Deployment > Build Tools > Gradle* 의 설정 값을 <화면 5>와 같이 수정하는 것이다.
+
+![](https://drive.google.com/uc?export=view&id=19MO9kQ6woHVqKynBXOsO3WBqV5mzdkTj){: .align-center}
+<화면 5. Gradle Build Setting 변경>
 {: style="text-align: center;"}
+
+근데 필자는 이것을 처음 시도했을 때 <화면 6>과 같이 IntelliJ가 Gradle 프로젝트를 인식하지 못해 세팅 화면이 비어있었다.
+
+![](https://drive.google.com/uc?export=view&id=1dUcDRIsg0dClp6J0J8fSfBXJR6xlIZuh){: .align-center}
+<화면 6. Gradle 프로젝트 인식 실패>
+{: style="text-align: center;"}
+
+이에 대한 해결법은 프로젝트 폴더에서 `.idea` 파일을 삭제하고 *File > Invalidate Caches* 에서 *Clear...* 항목 모두 체크한 뒤 *Invalidate and Restart*하여 IDEA를 재실행하는 것이다.
+
+이후에 다시 <화면 5>의 설정 창을 열어 빌드 설정을 변경하면 <화면 7>처럼 Gradle로 스프링 프로젝트를 정상적으로 빌드한다. 만약 <화면 6>의 문제가 아니었다면 *Build > Rebuild Project*를 시도해보는 것을 권한다.
+
+![](https://drive.google.com/uc?export=view&id=1vPIX3Rhz7PHGJeKSgj4ss6ieOB8bntok){: .align-center}
+<화면 7. Gradle로 스프링 프로젝트 빌드>
+{: style="text-align: center;"}
+
+그럼 이제 <화면 4>처럼 웹 어플리케이션을 실행할 수 있다. 이 때 하단 실행 로그를 보면 어떤 설정도 하지 않았는데도 기본적으로 8080 포트로 지정된 웹 어플리케이션 서버 Tomcat이 실행되는 것을 확인할 수 있다.
+
+![](https://drive.google.com/uc?export=view&id=16gjSQ-3HNjj0oUmZl_NDjzwzj9EMskyi){: .align-center}
+<화면 8. index.html 페이지>
+{: style="text-align: center;"}
+
+여담으로, <화면 5> 설정에서 *Gradle JVM*으로 JDK 18을 선택했는데 *Invalid Gradle JDK configuration found* 오류창이 팝업됐었다. 그래도 어플리케이션 실행에는 문제가 없었는데, 후에 이 문제로 오류가 발생한다면 JVM을 Gradle과 호환되는 버전으로 변경해야할 것 같다.
 
 ## A. 참조
 SidePower, "IntelliJ IDEA Community를 이용한 Springboot 개발 시작. 스프링부트란", *Tistory*, Jun 7, 2021. [Online]. Available: [https://youtu.be/wEIBDHfoMBg](https://youtu.be/wEIBDHfoMBg) [Accessed May 3, 2022].
+
+Into, "[Error] Intellij Spring 'Could not find or load main class' Caused by 'java.lang.ClassNotFoundException', 인텔리제이 메인 클래스 에러", *Tistory*, Aug. 22, 2021. [Online]. Available: [https://bba-jin.tistory.com/13](https://bba-jin.tistory.com/13) [Accessed May 6. 2022].
+
+otrodevym, "[intellij] 인텔리제이에서 Gradle 프로젝트 인식 안되는 경우", *Tistory*, May 4, 2021. [Online]. Available: [https://otrodevym.tistory.com/entry/intellij-인텔리제이에서-Gradle-프로젝트-인식-안되는-경우](https://otrodevym.tistory.com/entry/intellij-인텔리제이에서-Gradle-프로젝트-인식-안되는-경우) [Accessed May 6. 2022].
+
+한코딩, "[스프링 부트] 게시판 무작정 따라하기 - 프로젝트 생성", *Youtube*, Sep. 1, 2021. [Online]. Available: [https://youtu.be/6CJ6akFElPc](https://youtu.be/6CJ6akFElPc) [Accessed May 6. 2022].
