@@ -14,10 +14,13 @@ $indent-var: 1.3em !default;
 $indent-var-quarter: $indent-var/4 !default;
 
 /* system typefaces */
+@import url('https://webfontworld.github.io/SCoreDream/SCoreDream.css');
+// @import url('https://webfontworld.github.io/naver/MaruBuri.css');
+// "Malgun Gothic"
 $serif: Georgia, Times, serif !default;
-$sans-serif: -apple-system, BlinkMacSystemFont, "Roboto", "Segoe UI",
-  "Helvetica Neue", "Lucida Grande", Arial, sans-serif !default;
-$monospace: Monaco, Consolas, "Lucida Console", monospace !default;
+$sans-serif: -apple-system, BlinkMacSystemFont, "SCoreDream", "Roboto",
+  "Segoe UI", "Helvetica Neue", "Lucida Grande", Arial, sans-serif !default;
+$monospace: "IBM Plex Mono", Monaco, Consolas, "Lucida Console", monospace !default;
 
 /* sans serif typefaces */
 $sans-serif-narrow: $sans-serif !default;
