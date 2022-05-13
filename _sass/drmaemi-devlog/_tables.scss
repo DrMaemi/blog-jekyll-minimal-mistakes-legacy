@@ -4,8 +4,8 @@
 
 table:not(.hljs-ln) {
   display: table;
-  // margin-bottom: 1em;
-  margin: 0 auto 1em auto;
+  margin-bottom: 1em;
+  // margin: 0 auto 1em auto;
   // width: 100%;
   font-family: $global-font-family;
   // font-size: $type-size-6;
@@ -27,11 +27,13 @@ th {
   padding: 0.5em;
   font-weight: bold;
   // text-align: left;
+  border: 1px solid mix(#000, $border-color, 25%);
 }
 
 td:not(.hljs-ln-line) {
   padding: 0.5em;
-  border-bottom: 1px solid mix(#000, $border-color, 25%);
+  // border-bottom: 1px solid mix(#000, $border-color, 25%);
+  border: 1px solid mix(#000, $border-color, 25%);
 }
 
 tr,

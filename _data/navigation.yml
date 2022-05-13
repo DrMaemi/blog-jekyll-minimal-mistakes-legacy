@@ -46,6 +46,8 @@ sidebar:
         - title: 단계별로 풀어보기
           url: /Algorithm/Baekjoon-Online-Judge/C++/Step-By-Step
           children:
+          - title: 6. 문자열
+            url: /Algorithm/Baekjoon-Online-Judge/C++/Step-By-Step/6-String
           - title: 13. 정수론 및 조합론
             url: /Algorithm/Baekjoon-Online-Judge/C++/Step-By-Step/13-Number-Combinatorics
       - title: Python
@@ -121,6 +123,11 @@ sidebar:
     children:
     - title: Git
       url: /Dev-Ops/Git
+  - title: Cloud Platform
+    url: /Cloud-Platform
+    children:
+    - title: AWS
+      url: /Cloud-Platform/AWS
   - title: Tools
     url: /Tools
     children:
