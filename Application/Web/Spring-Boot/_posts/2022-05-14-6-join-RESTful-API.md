@@ -339,7 +339,7 @@ public class UserService{
     - 메서드 수준에서 트랜잭션 개념 사용
 - **Repository.findById(id)**
     - PK를 SQL의 WHERE 조건으로 데이터 탐색
-    - 반환 값은 Optional&lt;<T>&gt;이며 값에 접근하기 위해 `.get()` 메서드 사용
+    - 반환 값은 Optional&lt;<T>&gt;이며 값에 접근하기 위해 <c>.get()</c> 메서드 사용
 - **Repository.save(Entity)**
     - DB 테이블에 INSERT문 사용(데이터 생성)
 - **Optional&lt;UserEntity&gt;**
