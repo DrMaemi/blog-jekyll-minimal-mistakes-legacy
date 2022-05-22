@@ -4,6 +4,7 @@ uml: true
 author_profile: true
 toc_label: '[Spring Boot] 6. 회원가입 기능 RESTful API 구현'
 post-order: 6
+last_modified_at: 2022-05-22 22:07:02 +0900
 ---
 
 웹 어플리케이션에서 사용자에 따라 컨텐츠를 구분하거나 접근 권한을 제어해야 하는 기능을 제공하기 위해 로그인 시스템을 사용한다. 로그인 시스템 기능 구현에 앞서 사용자는 회원가입을 통해 웹 서버에 정보를 등록한다. 본 포스트에서는 스프링부트, JPA로 MySQL을 회원가입 기능의 RESTful API를 구현하는 것에 대해 설명한다.
@@ -79,7 +80,7 @@ mysql> DESC USER;
 8 rows in set (0.00 sec)
 ```
 
-`USER` 테이블의 속성 중 `created_date`와 `last_modified_date`의 이름 철자가 다르지 않도록 유의한다. 이는 테이블에 변경이 생겼을 때 변경을 가한 데이터 객체 `Entity`의 변화를 감지하는 스프링부트의 `AuditingEntityListener`가 해당 데이터의 생성/수정 시간을 테이블에 기록할 때 `created_date`, `last_modified_date` 속성 이름을 기준으로 수행하기 때문이다. 만약 해당 속성이 없다면 강제로 속성을 생성한다.
+`USER` 테이블의 속성 중 `created_date`와 `last_modified_date`의 이름 철자가 다르지 않도록 유의한다. 이는 테이블에 변경이 생겼을 때 변경을 가한 데이터 객체 `Entity`의 변화를 감지하는 스프링부트의 `AuditingEntityListener`가 해당 데이터의 생성/수정 시간을 테이블에 기록할 때 `created_date`, `last_modified_date` 속성 이름을 기준으로 수행하기 때문이다. JPA가 엔티티 객체를 DB와 연동할 때 객체 필드가 카멜 케이스(Camel Case)로 표기되어 있으면 이를 스네이크 케이스(Snake Case)로 변환하고 SQL `ALTER` 구문으로 테이블 속성을 변경하는 것으로 추측된다. 후술할 `TimeEntity` 객체에서 관련 필드들의 이름인 `createdDate`, `lastModifiedDate`가 스네이크 케이스로 변환되어 테이블의 필드에 반영된다.
 
 ## UserRepository
 이제 위에 정의한 `USER` 테이블의 데이터 조작을 담당하는 `UserRepository`를 구현한다. `Repository`는 인터페이스로 정의하고, JpaRepository 인터페이스를 상속받으면 된다.
