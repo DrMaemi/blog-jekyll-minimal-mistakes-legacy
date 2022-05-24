@@ -348,6 +348,13 @@ public class UserService{
 - **selectUser -> {...}**
     - Repository 객체로부터 얻은 데이터 내부 값을 수정함으로써 DB에 있는 정보도 UPDATE됨
 
+`@Transactional`은 선언적 트랜잭션을 사용한다는 의미로 해당 메서드가 트랜잭션의 성격을 가지며, 적용된 범위에서 트랜잭션 기능이 포함된 프록시 객체가 생성된다. 프록시 객체는 해당 어노테이션이 포함된 메서드가 호출될 경우 PlatformTransactionManager를 사용해 트랜잭션을 수행하고, 정상 여부에 따라 commit/rollback을 수행한다.
+
+`readOnly=true` 옵션을 사용하면 트랜잭션 성능이 향상되는데, 이는 Hibernate의 Session Flush Mode를 FlushMode.MANUAL로 설정하고, 설정이 완료되면 강제로 플러시를 하지 않는 한 플러시가 일어나지 않는다. 이는 트랜잭션을 commit해도 영속성 문맥(Persistence Context)이 플러시되지 않아 엔티티의 등록/수정/삭제가 동작하지 않고, 영속성 문맥은 위와 같은 엔티티의 변경을 감지하기 위핸 스냅샷을 저장하지 않기 때문에 성능이 향상된다.
+
+영속성 문맥(Persistence Context)란 어플리케이션에서 생명주기를 관리하는 각각의 고유한 엔티티들의 집합을 말한다. 영속성 제공자(Persistence Providers)인 Hibernate 등은 엔티티의 생성, 수정, 삭제 등의 생명주기를 관리하는 기능을 제공한다.
+{: .notice--info}
+
 ## UserDto
 Repository 객체가 얻은 사용자 엔티티 정보를 받아 객체로서 전달되는 데이터 전달 객체(DTO, Data Transfer Object) `UserDto`를 구현한다.
 
@@ -506,3 +513,6 @@ uss0915, "Spring Boot 로 웹 서비스 출시하기 -3. 게시판 구현하기 
 
 dltkdgus3435, "[SpringBoot] spring-data-jpa 사용시 @Repository 어노테이션은 꼭 필요한가?", *Velog.io*, Dec. 12, 2021. [Online]. Available: [https://velog.io/@dltkdgns3435/SpringBoot-spring-data-jpa-사용시-Repository-어노테이션은-꼭-필요한가](https://velog.io/@dltkdgns3435/SpringBoot-spring-data-jpa-사용시-Repository-어노테이션은-꼭-필요한가) [Accessed May 14, 2022].
 
+강준현, "@Transactional readOnly 속성", *Github.io*, Sep. 1, 2021. [Online]. Available: [https://junhyunny.github.io/spring-boot/jpa/junit/transactional-readonly/](https://junhyunny.github.io/spring-boot/jpa/junit/transactional-readonly/) [Accessed May 23, 2022].
+
+baeldung, "JPA/Hibernate Persistence Context", *baeldung.com*, Mar. 11, 2022. [Online]. Available: [https://www.baeldung.com/jpa-hibernate-persistence-context](https://www.baeldung.com/jpa-hibernate-persistence-context)
