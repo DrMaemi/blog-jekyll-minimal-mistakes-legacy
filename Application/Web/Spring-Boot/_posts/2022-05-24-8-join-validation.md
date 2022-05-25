@@ -271,7 +271,7 @@ public class UserController {
   <div class="col-lg-4"></div>
   <div class="col-lg-4">
     <div class="jumbotron" style="padding-top: 20px;">
-      <form method="post" action="/user/join" modelAttribute="userDto">
+      <form method="post" action="/user/join">
         <h3 style="text-align: center;">회원가입</h3>
         <div class="form-group">
           아이디 <input type="text" class="form-control" placeholder="아이디" name="id" th:value="${userDto.getId()}" maxlength="20">
@@ -319,6 +319,16 @@ public class UserController {
 ```
 
 타임리프 문법을 이용해서 유효성 검사 결과 데이터가 있다면 이를 화면에 삽입하고 기존에 입력했던 사용자 입력을 컨트롤러가 모델 객체를 통해 전달하면 타임리프 엔진이 이를 이용해 기존 입력 데이터를 보존한다.
+
+- **th:text="${value}"**
+  - 컨트롤러에서 전달한 모델의 attribute에 해당하는 값이 만약 존재하면 태그 영역 안에 해당 값을 텍스트로 삽입한다.
+  - UserController에서 각 필드의 유효성 검사 결과를 뷰에 전달하는 모델에 `<valid_필드:메세지>` 쌍 형태로 전달했기 때문에 유효성 검사 결과 메세지가 있다면 표시
+- **th:value="${value}"**
+  - `<input>` 상자 영역 안에 기본 값으로서 rvalue를 삽입
+  - 유효성 검사 실패 시 사용자가 입력했던 값을 컨트롤러가 뷰에 전달하는 모델에 `userDto` 객체로 전달했기 때문에 각 `<input>` 상자에서 입력받는 필드에 맞게 사용자가 사전에 입력한 값을 기본 값으로 삽입하여 보존
+- **th:if, unless**
+  - 타임리프 엔진에서 사용하는 if else 구문
+  - 성별을 선택하는 라디오형 입력 상자에서 사용자가 사전에 선택한 성별에 대해 선택 유지
 
 ## 테스트
 ![](https://drive.google.com/uc?export=view&id=1U0P_U88v805zqZF1IidseNz33APiRoUv){: .align-center}
