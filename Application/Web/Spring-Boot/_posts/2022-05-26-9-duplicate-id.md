@@ -3,11 +3,19 @@ title: '[Spring Boot] 9. 회원가입 시 아이디 중복 검사(Ajax, JPA)'
 author_profile: true
 toc_label: '[Spring Boot] 9. 회원가입 시 아이디 중복 검사(Ajax, JPA)'
 post-order: 9
+last_modified_at: 2022-05-26 13:40:57 +0900
 ---
 
 사용자가 DB에 이미 존재하는 아이디로 회원가입을 시도할 경우 이를 사전에 확인할 수 있도록 아이디 중복 검사 기능을 구현할 것이다. 아이디 중복 검사 기능은 사용자가 웹페이지를 보는 상태에서 원할 때 비동기적으로 처리해야 하기 때문에 비동기 웹 통신에 사용되는 Ajax를 사용한다.
 
 비동기 처리의 개념 이해와 자바스크립트 코드 사용법에 대해서는 본 포스트에서 자세히 다루지 않을 것이다. 대신 [포스트](https://realrain.net/post/async-await/)를 참조하자.
+
+## 프로젝트 구조
+![](https://drive.google.com/uc?export=view&id=1VB4TYft-reEYo7D-2xjatqU9PB9lteO-){: .align-center}
+&lt;화면 1. 프로젝트 구조&gt;
+{: style="text-align: center;"}
+
+이번 포스트에서 다룰 내용은 <화면 1>의 프로젝트 구조 중 이름이 파란 색으로 표시된 파일들에 대해서 다룰 예정이다.
 
 ## 비동기 처리 예제
 본격적으로 회원가입 아이디 중복 검사 기능을 구현하기 전에 자바스크립트를 이용해 어떻게 비동기 처리를 구현할 수 있는지 예제를 통해 확인해보고자 했다. 간단하게 사용자 ID를 입력받으면 해당 사용자의 이메일 주소를 알 수 있는 웹페이지를 비동기 처리로 구현해봤다. 비동기 처리는 바닐라 자바스크립트, fetch(), async-await 구문 순으로 변천사를 가졌는데 모던 자바스크립트에서는 async-await 구문을 사용하는 것을 권장한다.
@@ -109,9 +117,11 @@ User ID : <input type="text" id="inputId">
 ### 테스트
 ![](https://drive.google.com/uc?export=view&id=14LM46uypQFvoB3Mjn9A31kBFkU_-_Rqe){: .align-center}
 &lt;비동기 테스트 1. 사용자 ID 입력 전&gt;
+{: style="text-align: center;"}
 
 ![](https://drive.google.com/uc?export=view&id=1z7aWKyglppeuxEt9NK1OhY-o250gEuRb){: .align-center}
 &lt;비동기 테스트 2. ID 입력 및 검색 버튼 클릭 후&gt;
+{: style="text-align: center;"}
 
 사실, html 파일을 작성한 뒤 바로 테스트했을 때 ERROR 200 오류를 발생시켰다. 어플리케이션 URL로 GET 요청 시 오류가 발생하고 있었는데, 확인해보니 스프링부트 어플리케이션이 CORS를 허용하지 않아 발생한 문제였다. 나는 분명 CORS를 허용한 걸로 이해하고 있었는데, 알고보니 CORS 허용을 위해 스프링 시큐리티에 추가적으로 CORS 요청에 대한 리소스 관리 로직을 구현하는 구현체가 필요했다.
 
@@ -126,7 +136,7 @@ CORS는 단순 요청(SimpleRequest) 방식과 예비 요청(PreflightRequest) �
 </div>
 {: .notice--info}
 
-```java:/src/main/java/maemi.dr.SpringDemo.config.SecurityConfig
+```java:/src/main/java/maemi.dr.SpringDemo.config.SecurityConfig:lineons
 package maemi.dr.SpringDemo.config;
 
 import lombok.AllArgsConstructor;
@@ -368,13 +378,75 @@ public class UserRestController {
 2. 중복검사 기능을 비동기 처리
 3. 비동기 처리가 끝난 후 브라우저가 기본 동작을 수행하도록 설정
 
-*(1)*, *(3)* 기능에 대한 코드가 추가되어야 하는데, 이는 위에서 작성한 `join.html`의 비동기 처리를 위한 자바스크립트 코드에서 람다 함수가 전달받는 이벤트 객체와 이벤트 객체의 기본 이벤트 수행 여부를 결정한은 필드 `returnValue`의 값을 변경해주면 된다.
+*(1)*, *(3)* 기능에 대한 코드가 추가되어야 하는데, 이는 위에서 작성한 `join.html`의 비동기 처리를 위한 자바스크립트 코드에서 람다 함수가 전달받는 이벤트 객체와 이벤트 객체의 기본 이벤트 수행 여부를 결정하는 필드 `returnValue`의 값을 변경해주면 된다.
 
-```html:/src/main/resources/templates/user/join.html
-...
+추가로, 아이디 중복 검사를 완료하지 않으면 가입 버튼 텍스트를 `아이디 중복확인을 해주세요`로 보이게끔 하고 중복 검사를 완료한 경우 `가입`으로 보이도록 했다.
+
+```html:/src/main/resources/templates/user/join.html:lineons
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+  <meta name="viewport" content="width=device-width" initial-scale="1" charset="UTF-8">
+  <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.css}"/>
+  <title>스프링부트 게시판 웹사이트</title>
+  <style>
+    .not_valid { color: red }
+  </style>
+</head>
+<body>
+<div th:insert="/common/header.html" id="header"></div>
+<div class="container">
+  <div class="col-lg-4"></div>
+  <div class="col-lg-4">
+    <div class="jumbotron" style="padding-top: 20px;">
+      <form method="post" action="/user/join">
+        <h3 style="text-align: center;">회원가입</h3>
+        <div class="form-group">
+          아이디 <span th:text="${valid_id}" class="not_valid"></span>
+          <input type="text" class="form-control" placeholder="아이디" id="userId" name="id" th:value="${userDto.getId()}" maxlength="20">
+          <button id="checkDuplicateId">중복확인</button>
+          <span id="isDuplicated"></span>
+        </div>
+        <div class="form-group">
+          비밀번호 <span th:text="${valid_password}" class="not_valid"></span>
+          <input type="password" class="form-control" autocomplete="off" placeholder="비밀번호" name="password" th:value="${userDto.getPassword()}" maxlength="20">
+        </div>
+        <div class="form-group">
+          이름 <span th:text="${valid_name}" class="not_valid"></span>
+          <input type="text" class="form-control" placeholder="이름" name="name" th:value="${userDto.getName()}" maxlength="20">
+        </div>
+        <div class="form-group" style="text-align: center;">
+          <div class="btn-group" data-toggle="buttons">
+            <label th:if="${userDto.getGender() == 'male'}" class="btn btn-primary active">
+              <input type="radio" name="gender" autocomplete="off" value="male" checked>남자
+            </label>
+            <label th:unless="${userDto.getGender() == 'male'}" class="btn btn-primary">
+              <input type="radio" name="gender" autocomplete="off" value="male">남자
+            </label>
+            <label th:if="${userDto.getGender() == 'female'}" class="btn btn-primary active">
+              <input type="radio" name="gender" autocomplete="off" value="female" checked>여자
+            </label>
+            <label th:unless="${userDto.getGender() == 'female'}" class="btn btn-primary">
+              <input type="radio" name="gender" autocomplete="off" value="female">여자
+            </label>
+          </div>
+        </div>
+        <div th:text="${valid_gender}" style="text-align: center;" class="not_valid"></div>
+        <div class="form-group">
+          이메일 <input type="email" class="form-control" placeholder="이메일" name="email" th:value="${userDto.getEmail()}" maxlength="50">
+          <span th:text="${valid_email}" class="not_valid"></span>
+        </div>
+        <input type="submit" class="btn btn-primary form-control" id="submit" disabled value="아이디 중복확인을 해주세요.">
+      </form>
+    </div>
+  </div>
+  <div class="col-lg-4"></div>
+</div>
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script th:src="@{/js/bootstrap.js}"></script>
 <script>
   document.getElementById("checkDuplicateId").addEventListener('click', async e => {
-    e.preventDefault(); // e.returnValue = false; 와 같음
+    e.preventDefault();
     var inputUserId = document.getElementById('userId').value;
     const res = await fetch('http://localhost:8080/api/user/exist/'+inputUserId);
     const isDuplicated = await res.json();
@@ -383,12 +455,15 @@ public class UserRestController {
       document.getElementById('isDuplicated').innerText = "중복된 아이디가 있습니다.";
     } else {
       document.getElementById('isDuplicated').innerText = "사용 가능한 아이디입니다.";
-      document.getElementById('submit').removeAttribute('disabled');
+      submitBtn = document.getElementById('submit');
+      submitBtn.removeAttribute('disabled');
+      submitBtn.value = "가입";
     }
     e.returnValue = true;
   });
 </script>
-...
+</body>
+</html>
 ```
 
 ![](https://drive.google.com/uc?export=view&id=1B9GRXe-2db040LId71wBYGsgY-ZSii0V){: .align-center}
@@ -399,11 +474,16 @@ public class UserRestController {
 &lt;테스트 3. 중복검사 완료 후 일부 정보 입력 누락 후 가입 시도&gt;
 {: style="text-align: center;"}
 
-![](https://drive.google.com/uc?export=view&id=1oYL8cmqDVSpgFIggrFnmtI85lZl-JI6x){: .align-center}
+![](https://drive.google.com/uc?export=view&id=17qoIOTJgy_4VF4KAHA_XhSezVH68bxSs){: .align-center}
 &lt;테스트 4. 유효성 검사 정상 동작, 그러나 중복검사를 다시 해야 함&gt;
 {: style="text-align: center;"}
 
 &lt;테스트 3&gt;, &lt;테스트 4&gt;를 보면 중복검사 후 회원가입 버튼이 정상적으로 활성화되며 유효성 검사까지 정상적으로 동작함을 확인할 수 있지만, 유효성 검사 후에 다시 중복검사를 해야되는 것을 알 수 있다. 이런 불편함을 없애려면 마지막으로 입력된 아이디에 대한 정보를 모델에 담아 뷰가 알 수 있도록 하면서 해당 아이디에 대한 중복 검사 유무에 대한 정보를 같이 알고 있도록 구현하면 될 것 같다.
+
+## Future Works
+회원가입에 대한 기능에서 사용자 입력에 대한 유효성 검사와 아이디 중복 검사 기능까지 구현해보았다. 아이디 중복 검사를 완료한 뒤 회원가입을 시도했을 때 유효성이 충족되지 않았을 경우 중복 검사를 다시 해야 하는 번거로움을 해결하기 위해 사용자가 웹페이지에서 입력했었던 아이디와 그에 대한 중복 검사 완료 유무에 대한 정보를 서버에서 저장해놓고 있거나 웹페이지에서 해당 정보를 서버로 전달하는 기능을 구현해야 할 것이다.
+
+또한 회원가입 뿐 아니라 로그인 기능에도 로그인 실패 시 이에 대한 알림을 적절히 표시할 수 있는 기능을 구현해나가야 할 것이다.
 
 ## A. 참조
 realrain, "Javascript 비동기 처리의 이해", *realrain.net*, May 14, 2021. [Online]. Available: [https://realrain.net/post/async-await/](https://realrain.net/post/async-await/)
@@ -418,7 +498,18 @@ Daleseo, "[자바스크립트] 비동기 처리 3부 - async/await", *dalesoe.co
 
 헤일리_HJ, "210511 (회원가입) 아이디 중복 체크", *Tistory*, May 11, 2021. [Online]. Available: [https://dukdukz.tistory.com/entry/210511-회원가입-아이디-중복-체크](https://dukdukz.tistory.com/entry/210511-회원가입-아이디-중복-체크) [Accessed May 25, 2022].
 
-도뎡이, "스프링 부트(Spring Boot) JPA 게시판 - 비동기(Ajax) 페이징(Paging) 및 검색(Search) - 페이지 번호 & 검색 조건 (이전 페이지 정보) 유지하기(With. MySQL)", *Tistory*, Jan. 24, 2022. [Online]. Available: [https://congsong.tistory.com/60](https://congsong.tistory.com/60)
-
 toycoms, "Spring Security CORS", *Tistory*, Jun. 2, 2020. [Online]. Available: [https://toycoms.tistory.com/37](https://toycoms.tistory.com/37) [Accessed May 25, 2022].
 
+도뎡이, "스프링 부트(Spring Boot) JPA 게시판 - 비동기(Ajax) 페이징(Paging) 및 검색(Search) - 페이지 번호 & 검색 조건 (이전 페이지 정보) 유지하기(With. MySQL)", *Tistory*, Jan. 24, 2022. [Online]. Available: [https://congsong.tistory.com/60](https://congsong.tistory.com/60) [Accessed May 25, 2022].
+
+조쉬, "Javascript - form태그 내부 ajax처리시 2번 전송되는 현상", *joshi.co.kr*, Mar. 9, 2021. [Online]. Available: [http://www.joshi.co.kr/index.php?mid=board_XbwP90&document_srl=306899](http://www.joshi.co.kr/index.php?mid=board_XbwP90&document_srl=306899) [Accessed May 25, 2022].
+
+[http://www.joshi.co.kr/index.php?mid=board_XbwP90&document_srl=306899](http://www.joshi.co.kr/index.php?mid=board_XbwP90&document_srl=306899) [Accessed May 26, 2022].
+
+Ilya Kantor, "브라우저 기본 동작", *ko.javascript.info*, May 20, 2021. [Online]. Available: [https://ko.javascript.info/default-browser-action](https://ko.javascript.info/default-browser-action) [Accessed May 26, 2022].
+
+서상혁, "[JS] event.preventDefault() 간단 설명 / preventDefault란?", *Tistory*, Jan. 19, 2020. [Online]. Available: [https://programming119.tistory.com/100](https://programming119.tistory.com/100) [Accessed May 26, 2022].
+
+리뷰나라, "[javascript] evt.preventDefault ()의 반대는 무엇입니까?", *daplus.net*, Oct. 15, 2021. [Online]. Available: [http://daplus.net/javascript-evt-preventdefault-의-반대는-무엇입니까/](http://daplus.net/javascript-evt-preventdefault-의-반대는-무엇입니까/) [Accessed May 26, 2022].
+
+bigbloger, "클릭시 버튼 텍스트 변경", *Tistory*, Jan. 14, 2021. [Online]. Available: [https://javaba.tistory.com/15](https://javaba.tistory.com/15) [Accessed May 26, 2022].
