@@ -1,7 +1,6 @@
 ---
 title: '[Spring Boot] 10. Security 로그인 실패 메세지 출력'
 uml: true
-# author_profile: true
 toc_label: '[Spring Boot] 10. Security 로그인 실패 메세지 출력'
 post-order: 10
 ---
@@ -103,6 +102,7 @@ LockedException | 잠긴 계정
 DisabledException | 비활성화된 계정
 AccountExpiredException | 유효 기간이 만료된 계정
 CredentialExpiredException | 유효 기간이 만료된 비밀번호
+{: .align-center}
 
 ### SecurityConfig
 ```java:/src/main/java/maemi.dr.SpringDemo.config.SecurityConfig:lineons
@@ -579,13 +579,13 @@ todyDev, "Spring Security - 로그인 실패 후 부가 작업", *Tistory*, Jan.
 
 더블에스, "Redirect VS, Forward(Redirect와 forward의 차이)", *Tistory*, Jan. 22, 2017. [Online]. Available: [https://doublesprogramming.tistory.com/63](https://doublesprogramming.tistory.com/63) [Accessed May 28, 2022].
 
-[https://codevang.tistory.com/268]
+코데방, "스프링 Security_로그인_로그인 실패 대응 로직 [3/9]", *Tistory*, Mar. 28, 2020. [Online]. Available: [https://codevang.tistory.com/268](https://codevang.tistory.com/268) [Accessed May 28, 2022].
 
-[https://velog.io/@tmdgh0221/스프링-시큐리티-기본편-정리]
+tmdgh0221, "스프링 시큐리티 기본편 정리", *Velog.io*, Mar. 1, 2021. [Online]. Available: [https://velog.io/@tmdgh0221/스프링-시큐리티-기본편-정리](https://velog.io/@tmdgh0221/스프링-시큐리티-기본편-정리)
 
-[https://u-it.tistory.com/entry/페이지출력-페이지전환-및-특정-url로-재-요청-을-해주는-RequestDispatcher-의-requestgetRequestDispatcherforward-HttpServletResponse의-responsesendRedirect]
+밀당하는It, "페이지출력, 페이지전환 및 특정 url로 재 요청을 해주는 RequestDispatcher 의 request.getRequestDispatcher()/forward() / HttpServletResponse의 responsesendRedirect()", *Tistory*, Aug. 30, 2020. [Online]. Available: [https://u-it.tistory.com/entry/페이지출력-페이지전환-및-특정-url로-재-요청-을-해주는-RequestDispatcher-의-requestgetRequestDispatcherforward-HttpServletResponse의-responsesendRedirect](https://u-it.tistory.com/entry/페이지출력-페이지전환-및-특정-url로-재-요청-을-해주는-RequestDispatcher-의-requestgetRequestDispatcherforward-HttpServletResponse의-responsesendRedirect) [Accessed May 28, 2022].
 
-[https://yangdongjue5510.github.io/2021/11/29/spring/boot/boot13/]
+yangdongjue5510, "REDIRECT와 FORWARD의 차이!!", *Github,io*, Jan. 23, 2022. [Online]. Available: [https://yangdongjue5510.github.io/2021/11/29/spring/boot/boot13/](https://yangdongjue5510.github.io/2021/11/29/spring/boot/boot13/) [Accessed May 28, 2022].
 
 cjhol2107, "[WEB] GET 방식과 POST 방식 개념, 요청 파라미터와 인코딩", *blog.naver.com*, Jan. 5, 2020. [Online]. Available: [https://m.blog.naver.com/cjhol2107/221760895968](https://m.blog.naver.com/cjhol2107/221760895968) [Accessed May 28, 2022].
 
