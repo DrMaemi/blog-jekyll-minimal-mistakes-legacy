@@ -84,7 +84,7 @@ facebook:
   username               :
   app_id                 :
   publisher              :
-og_image                 : # Open Graph/Twitter default site image
+og_image                 : "/assets/images/profile/2022-05-03-og-image.jpg" # Open Graph/Twitter default site image
 # For specifying social profiles
 # - https://developers.google.com/structured-data/customize/social-profiles
 social:
@@ -104,7 +104,7 @@ analytics:
 author:
   name             : "Dr.Maemi"
   avatar           : "/assets/images/profile/2022-01-21.jpg" # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
-  bio              : "Interested in * in Computer Science, Software Engineering."
+  bio              : "*어려울수록 기본에 미쳐라*"
   # location         : "Somewhere"
   email            :
   links:
@@ -150,7 +150,7 @@ footer:
       # url:
     - label: "Instagram"
       icon: "fab fa-fw fa-instagram"
-      url: "https://www.instagram.com/drmaemi__/"
+      url: "https://www.instagram.com/drmaemi/"
 
 
 # Reading Files
@@ -297,7 +297,7 @@ defaults:
       type: posts
     values:
       layout: single
-      author_profile: true
+      author_profile: false
       show_date: true
       show_header-meta: true
       read_time: false
@@ -306,8 +306,7 @@ defaults:
       related: true
       toc: true
       toc_sticky: true
-      sidebar:
-        nav: sidebar
+      sidebar: false
 
 footer_scripts:
   - /assets/js/main.min.js
