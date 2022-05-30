@@ -43,6 +43,14 @@ sidebar:
       - title: C++
         url: /Algorithm/Baekjoon-Online-Judge/C++
         children:
+        - title: 알고리즘 분류
+          url: /Algorithm/Baekjoon-Online-Judge/C++/Categorized
+          children:
+          - title: 구현
+            url: /Algorithm/Baekjoon-Online-Judge/C++/Categorized/Implementation
+            children:
+            - title: 골드 5
+              url: /Algorithm/Baekjoon-Online-Judge/C++/Categorized/Implementation/Gold-5
         - title: 단계별로 풀어보기
           url: /Algorithm/Baekjoon-Online-Judge/C++/Step-By-Step
           children:
