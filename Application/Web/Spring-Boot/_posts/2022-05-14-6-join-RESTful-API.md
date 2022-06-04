@@ -4,7 +4,7 @@ uml: true
 author_profile: true
 toc_label: '[Spring Boot] 6. 회원가입 기능 RESTful API 구현'
 post-order: 6
-last_modified_at: 2022-05-22 22:07:02 +0900
+last_modified_at: 2022-06-04 16:56:31 +0900
 ---
 
 웹 어플리케이션에서 사용자에 따라 컨텐츠를 구분하거나 접근 권한을 제어해야 하는 기능을 제공하기 위해 로그인 시스템을 사용한다. 로그인 시스템 기능 구현에 앞서 사용자는 회원가입을 통해 웹 서버에 정보를 등록한다. 본 포스트에서는 스프링부트, JPA로 MySQL을 회원가입 기능의 RESTful API를 구현하는 것에 대해 설명한다.
@@ -352,7 +352,11 @@ public class UserService{
 
 `readOnly=true` 옵션을 사용하면 트랜잭션 성능이 향상되는데, 이는 Hibernate의 Session Flush Mode를 FlushMode.MANUAL로 설정하고, 설정이 완료되면 강제로 플러시를 하지 않는 한 플러시가 일어나지 않는다. 이는 트랜잭션을 commit해도 영속성 문맥(Persistence Context)이 플러시되지 않아 엔티티의 등록/수정/삭제가 동작하지 않고, 영속성 문맥은 위와 같은 엔티티의 변경을 감지하기 위핸 스냅샷을 저장하지 않기 때문에 성능이 향상된다.
 
-영속성 문맥(Persistence Context)란 어플리케이션에서 생명주기를 관리하는 각각의 고유한 엔티티들의 집합을 말한다. 영속성 제공자(Persistence Providers)인 Hibernate 등은 엔티티의 생성, 수정, 삭제 등의 생명주기를 관리하는 기능을 제공한다.
+<div markdown="1">
+영속성 문맥(Persistence Context)이란 어플리케이션에서 생명주기를 관리하는, 인스턴스 상태의 각 고유한 엔티티들의 집합, 논리적 영역을 말한다. 영속성 제공자(Persistence Providers)인 Hibernate 등은 엔티티의 생성, 수정, 삭제 등의 생명주기를 관리하는 기능을 제공한다.
+
+영속화(Persistence)의 사전적 의미는 '사라지지 않고 지속되게 한다'이다. JPA에서 영속화한다는 개념은 쉽게 말해 DB에 저장하는 것이다. 영속성 문맥은 JVM에서 인스턴스로 관리되다가 영속화될 때 비로소 DB에 반영된다.
+</div>
 {: .notice--info}
 
 ## UserDto
