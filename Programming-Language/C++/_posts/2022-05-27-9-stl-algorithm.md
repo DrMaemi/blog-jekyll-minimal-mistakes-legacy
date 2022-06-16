@@ -3,6 +3,7 @@ title: '[C++] 9. STL - &lt;algorithm&gt;'
 author_profile: true
 toc_label: '[C++] 9. STL - &lt;algorithm&gt;'
 post-order: 9
+last_modified_at: 2022-06-16 01:42:38 +0900
 ---
 
 `<algorithm>` 헤더는 요소들(elements)의 범위(range)에 대해 사용되는 함수들을 모아놓은 라이브러리다. 여기서 범위란 반복자(iterator)와 포인터(pointer)를 통해 명시될 수 있으며 이는 배열이나 STL 컨테이너의 범위가 될 수 있다는 뜻이다. 유의할 점은 `<algorithm>` 헤더에 있는 함수들은 이러한 반복자와 포인터를 통해 자료구조에 접근하기 때문에 실제 값을 변경할 수 있다는 것과, 자료구조의 크기나 저장 공간 할당 등의 연산은 수행하지 못한다는 점이다.
@@ -311,6 +312,66 @@ After method < overriding sorting, students_3:
 (3, w, 234asdc)
 (2, xqw, c3w9)
 (1, f, adsf)
+```
+
+### `max_element`로 `unordered_map`의 값 기준 가장 큰 요소 가져오기
+
+<p class=short>백준 2108번 통계학 풀이 일부 코드</p>
+
+<p class=short>입력된 숫자 별로 개수를 세어 최다 입력 숫자 반환, 최다 입력 숫자가 1개 이상일 시 2번째로 작은 수 반환</p>
+
+```cpp::lineons
+#include <iostream>
+#include <vector>
+#include <unordered_map>
+#include <algorithm>
+using namespace std;
+
+int main() {
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+
+    int N;
+    vector<int> V;
+    unordered_map<int, int> M;
+
+    cin >> N;
+    V.resize(N);
+
+    for (int i=0; i<N; i++) {
+        cin >> V[i];
+
+        if (M.find(V[i]) == M.end()) {
+            M[V[i]] = 0;
+        }
+
+        M[V[i]]++;
+    }
+
+    auto maxFreqItr = max_element(M.begin(), M.end(), [](const auto& lhs, const auto& rhs) {
+        return lhs.second < rhs.second;
+    });
+    int range = *max_element(V.begin(), V.end())-*min_element(V.begin(), V.end());
+
+    vector<int> maxFreqNums;
+
+    for (auto itr=M.begin(); itr!=M.end(); itr++) {
+        if (itr->second == maxFreqItr->second) {
+            maxFreqNums.push_back(itr->first);
+        }
+    }
+
+    sort(maxFreqNums.begin(), maxFreqNums.end());
+    int maxFreqNum = 1 < maxFreqNums.size()? maxFreqNums[1]: maxFreqNums[0];
+
+    cout << mean << "\n";
+    cout << median << "\n";
+    cout << maxFreqNum << "\n";
+    cout << range << "\n";
+
+    return 0;
+}
 ```
 
 ## A. 참조
