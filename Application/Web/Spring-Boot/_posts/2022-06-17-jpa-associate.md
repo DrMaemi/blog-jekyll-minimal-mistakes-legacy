@@ -220,10 +220,10 @@ class TestApplicationTests {
 @SpringBootTest
 class TestApplicationTests {
     @Autowired
-    private StudentRepository studentRepository;
+    private DepartmentRepository departmentRepository;
 
     @Autowired
-    private DepartmentRepository departmentRepository;
+    private StudentRepository studentRepository;
 
     @Test
     void createDepartmentAndStudent() {
@@ -234,8 +234,6 @@ class TestApplicationTests {
 
         StudentEntity createdStudentEntity = studentRepository.save(studentDto.toEntity());
 
-        Assertions.assertEquals(createdStudentEntity.getName(), "testName1");
-
         DepartmentEntity departmentEntity = DepartmentEntity.builder()
                 .id2(100001L)
                 .studentEntities(new ArrayList<>())
@@ -243,9 +241,9 @@ class TestApplicationTests {
 
         departmentEntity.addStudentEntity(createdStudentEntity);
 
-        DepartmentEntity createdDepartmentEntity = departmentRepository.save(departmentEntity);
+        departmentRepository.save(departmentEntity);
 
-        Assertions.assertEquals(createdDepartmentEntity.getId2(), 100001L);
+        Assertions.assertEquals(departmentRepository.findById2(100001L).get().getStudentEntities().get(0).getNickName(), "testNickName1");
     }
 }
 ```
@@ -262,10 +260,10 @@ class TestApplicationTests {
 @SpringBootTest
 class TestApplicationTests {
     @Autowired
-    private StudentRepository studentRepository;
+    private DepartmentRepository departmentRepository;
 
     @Autowired
-    private DepartmentRepository departmentRepository;
+    private StudentRepository studentRepository;
 
     @Test
     void createDepartmentAndStudent() {
@@ -287,14 +285,12 @@ class TestApplicationTests {
 
         departmentRepository.save(createdDepartmentEntity);
 
-        DepartmentEntity savedDepartmentEntity = departmentRepository.findById2(100001L).get();
-        
-        Assertions.assertEquals(savedDepartmentEntity.getStudentEntities().get(0).getName(), "testName1");
+        Assertions.assertEquals(departmentRepository.findById2(100001L).get().getStudentEntities().get(0).getNickName(), "testNickName1");
     }
 }
 ```
 
-테스트 코드 실행 결과 성공 후 &lt;화면 3&gt;과 동일한 결과를 갖는다.
+테스트 코드 실행 결과 pass 후 &lt;화면 3&gt;과 동일한 결과를 갖는다. `departmentRepository.save()`가 두 번 호출되었다.
 
 ### 다대일 연관 관계 `@ManyToOne`
 작성 예정
