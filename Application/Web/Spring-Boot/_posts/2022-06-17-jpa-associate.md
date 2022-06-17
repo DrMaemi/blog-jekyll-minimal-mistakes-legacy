@@ -162,7 +162,7 @@ class TestApplicationTests {
 }
 ```
 
-실행해보니 `Caused by: java.lang.ClassCastException: class maemi.dev.test.entity.DepartmentEntity cannot be cast to class java.io.Serializable (maemi.dev.test.entity.DepartmentEntity is in unnamed module of loader 'app'; java.io.Serializable is in module java.base of loader 'bootstrap')` 이런 오류가 발생했다. Serializable 문제가 발생하는데, 이유를 찾아보니 PK가 아닌 필드를 FK로 참조할 때 이런 문제가 발생한다고 한다. 원인을 분석하려 하면 JPA를 깊게 파고들어야 할 것 같아서 나중에 알아보기로 했다. 일단 Serializable 문제를 하결하는 방법은 참조 당하는 필드를 갖고 있는 엔티티 클래스 DepartmentEntity에 `implements Serializable`를 다음과 같이 추가하면 된다.
+실행해보니 `Caused by: java.lang.ClassCastException: class maemi.dev.test.entity.DepartmentEntity cannot be cast to class java.io.Serializable (maemi.dev.test.entity.DepartmentEntity is in unnamed module of loader 'app'; java.io.Serializable is in module java.base of loader 'bootstrap')` 이런 오류가 발생했다. Serializable 문제가 발생하는데, 이유를 찾아보니 PK가 아닌 필드를 FK로 참조할 때 이런 문제가 발생한다고 한다. 원인을 분석하려 하면 JPA를 깊게 파고들어야 할 것 같아서 나중에 알아보기로 했다. 일단 Serializable 문제를 해결하는 방법은 참조 당하는 필드를 갖고 있는 엔티티 클래스 DepartmentEntity에 `implements Serializable`를 다음과 같이 추가하면 된다.
 
 ```java
 ...
@@ -170,16 +170,16 @@ public class DepartmentEntity implements Serializable {
 ...
 ```
 
-변경 후 다시 실행해보니 `Caused by: org.hibernate.TransientObjectException: object references an unsaved transient instance - save the transient instance before flushing` 이런 오류가 발생했다. 연관 관계가 있는 엔티티들을 영속화할 때 참조되는 엔티티가 영속화되지 않아 참조하는 엔티티 또한 영속화하지 못한다는 오류다. 테스트코드 변경 없이 이를 해결하려면 @OneToMany 어노테이션에 cascade 옵션으로 CascadeType.PERSIST 등을 사용하면 된다. 본문에서는 테스트 코드를 다음과 같이 엔티티의 필드를 수정하는 방향으로 변경하여 테스트를 진행했다.
+변경 후 다시 실행해보니 `Caused by: org.hibernate.TransientObjectException: object references an unsaved transient instance - save the transient instance before flushing` 이런 오류가 발생했다. 연관 관계가 있는 엔티티들을 영속화할 때 참조되는 엔티티가 영속화되지 않아 참조하는 엔티티 또한 영속화하지 못한다는 오류다. 테스트코드 변경 없이 이를 해결하려면 @OneToMany 어노테이션에 cascade 옵션으로 CascadeType.PERSIST 등을 사용하면 된다. 본문에서는 casacde 옵션을 사용하는 대신 각 엔티티를 영속화하는 방향으로 테스트 코드를 작성했다.
 
 ```java
 @SpringBootTest
 class TestApplicationTests {
     @Autowired
-    private StudentService studentService;
+    private DepartmentRepository departmentRepository;
 
     @Autowired
-    private DepartmentService departmentService;
+    private StudentRepository studentRepository;
 
     @Test
     void createDepartmentAndStudent() {
@@ -188,21 +188,33 @@ class TestApplicationTests {
                 .studentDtos(new ArrayList<>())
                 .build();
 
-        Assertions.assertEquals(departmentService.createDepartment(departmentDto).getId2(), 100001L);
+        DepartmentEntity createdDepartmentEntity = departmentRepository.save(departmentDto.toEntity());
 
         StudentDto studentDto = StudentDto.builder()
                 .name("testName1")
                 .nickName("testNickName1")
                 .build();
 
-        departmentService.addStudent(100001L, studentDto);
+        StudentEntity studentEntity = studentDto.toEntity();
 
-        Assertions.assertEquals(departmentService.getDepartmentById2(100001L).getStudentDtos().get(0).getName(), "testName1");
+        createdDepartmentEntity.addStudentEntity(studentEntity);
+
+        studentRepository.save(studentEntity);
+
+        Assertions.assertEquals(departmentRepository.findById2(100001L).get().getStudentEntities().get(0).getName(), "testName1");
     }
 }
 ```
 
-근데 이 테스트 코드도 여전히 같은 `Caused by: org.hibernate.TransientObjectException: object references an unsaved transient instance - save the transient instance before flushing` 오류가 발생했다. 확인해보니 학과 데이터는 잘 저장됐는데 학생 데이터를 영속화하는 과정에서 오류가 발생했다. 영속화되지 않은 학생 엔티티를 학과 엔티티의 학생 리스트에 넣으려 하니 발생한 오류였다. 테스트코드 작성 시 이런 실수가 발생하는 이유가 뭘까 생각해보니 관계형 데이터 모델의 이론과 상반되는 설계 방식을 지닌 일대다 단방향 연관 관계가 그 이유라고 생각이 들었다. 관계형 테이블에서 학생 테이블이 FK를 가지고 있으니 학생 테이블이 참조하는 테이블, 학과 테이블이 참조되는 테이블이므로 학과 엔티티가 먼저 영속화되어 있고, 영속화되지 않은 학생 엔티티를 학과 엔티티의 학생 리스트에 넣은 후 영속화하는 방향으로 코드를 작성했는데 오류가 발생한 것이다. 일대다 단방향 연관 관계에서는 반대로 참조하는 학생 엔티티를 먼저 영속화한 뒤, 영속화되지 않은 학과 엔티티를 생성하고 학생 리스트에 영속화된 학생 엔티티를 추가하여 학과 엔티티를 영속화한다. 이에 대한 테스트 코드는 아래와 같다.
+위 테스트 코드는 `java.lang.IndexOutOfBoundsException: Index 0 out of bounds for length 0` 오류를 반환한다. 단방향 일대다 연관 관계에서는 '일'에 해당하는 엔티티인 학과 엔티티가 '다'에 해당하는 엔티티인 학생 엔티티를 컬렉션 자료구조(List, Set, etc.)에 추가할 때 해당 학생 엔티티는 영속화되어 있어야 한다.
+
+![](https://drive.google.com/uc?export=view&id=1OTvWgcq74UbSz2J3GJVbMhDavtd1oBjk){: .align-center}
+&lt;화면 2. IndexOutOfBoundsException 테스트 코드 실행 결과&gt;
+{: style="text-align: center;"}
+
+&lt;화면 2&gt;를 보면 관계가 제대로 설정되지 않았음을 확인할 수 있다.
+
+<p class=short>성공 테스트 코드 1</p>
 
 ```java
 @SpringBootTest
@@ -238,11 +250,13 @@ class TestApplicationTests {
 }
 ```
 
-![](https://drive.google.com/uc?export=view&id=1UzIHQ5w-QNa10CNn_mDDNb0N7YDgcLd8){: .align-center}
-&lt;화면 2. 일대다 연관 관계 테스트 코드 pass 후 테이블 결과&gt;
+![](https://drive.google.com/uc?export=view&id=1GqebC8IHYVPiBqgIeNP4ZGNga_2C-uQ9){: .align-center}
+&lt;화면 3. 단방향 일대다 연관 관계 테스트 코드 pass 후 테이블 결과&gt;
 {: style="text-align: center;"}
 
-&lt;화면 2&gt;를 보면 학생 테이블의 department_id_naming이 정상적으로 학과 테이블의 id2 필드를 외래키로 참조하는 모습을 확인할 수 있다. 테스트 코드에서는 학과 엔티티를 생성하면서 학생 리스트를 추가하고 영속화했는데, 위에서 언급한 관계형 데이터 모델 이론에 좀 더 부합하는 방식은 학과 엔티티 생성-영속화, 학생 엔티티 생성-영속화, 이후 학생 엔티티를 리스트에 추가하는 방식이다. 테스트 코드는 다음과 같다.
+&lt;화면 3&gt;을 보면 학생 테이블의 department_id_naming이 정상적으로 학과 테이블의 id2 필드를 외래키로 참조하는 모습을 확인할 수 있다. 테스트 코드에서는 학과 엔티티를 생성하면서 학생 리스트를 추가하고 영속화했는데, 위에서 언급한 관계형 데이터 모델 이론에 좀 더 부합하는 방식은 학과 엔티티 생성-영속화, 학생 엔티티 생성-영속화, 이후 학생 엔티티를 리스트에 추가하는 방식이다. 테스트 코드는 다음과 같다.
+
+<p class=short>성공 테스트 코드 2</p>
 
 ```java
 @SpringBootTest
@@ -279,6 +293,8 @@ class TestApplicationTests {
     }
 }
 ```
+
+테스트 코드 실행 결과 성공 후 &lt;화면 3&gt;과 동일한 결과를 갖는다.
 
 ### 다대일 연관 관계 `@ManyToOne`
 작성 예정
