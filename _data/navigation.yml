@@ -17,6 +17,18 @@ main:
 # [권장]
 # 1. CSS 적용 문제로 children 깊이는 2까지만 하는것을 권장. 즉, children의 children까지만.
 sidebar:
+  - title: Review
+    url: /Review
+    children:
+    - title: Project
+      url: /Review/Project
+    - title: Job Interview
+      url: /Review/Job-Interview
+      children:
+        - title: 2022-1
+          url: /Review/Job-Interview/2022-1
+    - title: Others
+      url: /Review/Others
   - title: Github.io
     url: /Github.io
   - title: Programming Language
@@ -62,6 +74,8 @@ sidebar:
             url: /Algorithm/Baekjoon-Online-Judge/C++/Step-By-Step/12-set-map
           - title: 13. 정수론 및 조합론
             url: /Algorithm/Baekjoon-Online-Judge/C++/Step-By-Step/13-Number-Combinatorics
+          - title: 15. 백트래킹
+            url: /Algorithm/Baekjoon-Online-Judge/C++/Step-By-Step/15-back-tracking
       - title: Python
         url: /Algorithm/Baekjoon-Online-Judge/Python
         children:
@@ -156,10 +170,5 @@ sidebar:
     children:
       - title: MS Word
         url: /Documentation/MS-Word
-  - title: Job Interview
-    url: /Job-Interview
-    children:
-      - title: 2022-1
-        url: /Job-Interview/2022-1
   - title: Review
     url: /Review
