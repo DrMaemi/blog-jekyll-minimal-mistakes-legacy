@@ -212,24 +212,16 @@ hr {
 
 /* lists */
 
-ul, ol {
-  margin-block-start: 0;
-  margin-block-end: 0.75em;
-
-  li {
-    margin-bottom: 0.25em;
-  }
+ul li,
+ol li {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
 }
 
-// ul li,
-// ol li {
-//   margin-bottom: 0.25em;
-// }
-
-// li ul,
-// li ol {
-//   margin-top: 0.5em;
-// }
+li ul,
+li ol {
+  margin-bottom: 0.5em;
+}
 
 /*
    Media and embeds

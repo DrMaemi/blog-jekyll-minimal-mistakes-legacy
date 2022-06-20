@@ -3,6 +3,7 @@ title: '[회고] Spring Boot, JPA를 이용해 셀러 광고 플랫폼 API 서�
 uml: true
 author_profile: true
 toc_label: '[회고] Spring Boot, JPA를 이용해 셀러 광고 플랫폼 API 서버 만들기'
+last_modified_at: 2022-06-21 00:14:32 +0900
 ---
 
 <figure data-ke-type="opengraph"><a href="https://github.com/drmaemi/Ad-platform" data-source-url="https://github.com/drmaemi/Ad-platform">
@@ -916,18 +917,24 @@ Hibernate:
 #### 그래서 결론은
 많이 헤맸는데 결과적으로 결론은 다음과 같습니다.
 
-1. '다' 엔티티의 FK가 '일' 엔티티의 PK를 참조하는 경우
-    - '일' 엔티티의 PK로 조회하는 경우 **N+1 문제가 발생하지 않음**(FK(=1's PK)에 대해 LEFT OUTER JOIN한 SELECT문 한 번만 수행)
-    - '일' 엔티티의 PK가 아닌 필드로 조회하는 경우 **N+1 문제 발생**(FK(=1's PK)를 WHERE 조건으로 한 SELECT문이 1개 추가 발생)
-    - '일' 엔티티를 findAll()로 전체 조회하는 경우 **N+1 문제 발생**(FK(=1's PK)를 WHERE 조건으로 한 SELECT문이 '일' 엔티티 개수 K개 만큼 추가 발생)
-2. '다' 엔티티의 FK가 '일' 엔티티의 PK가 아닌 다른 필드를 참조하는 경우
-    - 1 하위 항목의 각 조회 상황과 동일할 때 결과 쿼리에 **추가적으로 '일' 엔티티 K개 각각에 대해 FK로 참조당하는 필드를 WHERE 조건으로 '다' 엔티티와 LEFT OUTER JOIN한 SELECT문이 추가됨**
-        - '다' 엔티티의 FK가 PK를 참조하지 않으니 앞선 쿼리에서 조회한 데이터들을 무시하고 다시 WHERE 조건에 FK를 사용하여 LEFT OUTER JOIN으로 가져오는 느낌
+1. '다' 엔티티의 FK가 '일' 엔티티의 PK를 참조하는 경우(FK -> PK, '일'.FK참조필드=PK필드)
+    - '일' 엔티티의 PK로 조회하는 경우 **N+1 문제가 발생하지 않음**
+        - SELECT '일', '다' FROM '일' LEFT OUTER JOIN '다' ON FK='일'.FK참조필드 WHERE '일'.PK필드=? (1번)
+    - '일' 엔티티의 PK가 아닌 필드로 조회하는 경우 **N+1 문제 발생**
+        - SELECT '일' WHERE 임의필드=? (1번)
+        - SELECT '다' WHERE FK='일'.FK참조필드값 (1번)
+    - '일' 엔티티를 findAll()로 전체 조회하는 경우 **N+1 문제 발생**
+        - SELECT '일' (1번) (전체 조회)
+        - SELECT '다' WHERE FK='일'.FK참조필드값 ('일' 엔티티 개수 K개 각각에 대해 발생, K번)
+2. '다' 엔티티의 FK가 '일' 엔티티의 PK가 아닌 다른 필드를 참조하는 경우(FK -> !PK, '일'.FK참조필드≠PK필드)
+    - 1 하위 항목의 각 조회 상황과 동일할 때 결과 쿼리에 다음 쿼리가 추가됨
+        - SELECT '일', '다' FROM '일' LEFT OUTER JOIN '다' ON FK='일'.FK참조필드 WHERE '일'.FK참조필드='일'.FK참조필드값 ('일' 엔티티 개수 K개 각각에 대해 발생, K번)
+    - '다' 엔티티의 FK가 PK를 참조하지 않으니 앞선 쿼리에서 조회한 '일' 데이터의 FK참조필드값을 WHERE 조건에 사용하여 LEFT OUTER JOIN으로 다시 가져오는 느낌으로 **N+1 문제가 아님**
 3. 위 모든 경우에 대해 Fetch Join을 사용하면, 명시한 N+1 문제 상황에 대해 해결됨
 
 FK로 PK를 참조하지 않는 것이 추가 SELECT - LEFT OUTER JOIN문을 발생시키는 것으로 보입니다. 그런데 **기존에 알려져 있는 N+1 문제처럼 '다' 엔티티의 개수 N개의 추가 SELECT 쿼리가 발생하진 않았습니다.** '일'의 엔티티 개수 K개 만큼만 '다' 엔티티에 대한 SELECT문이 발생했다는 것이 차이점입니다. 제가 감히 재명명을 해보자면 1+1 문제('일' 엔티티 조회 1건에 대해서 추가 1건의 SELECT문 발생)가 될 것 같습니다.
 
-
+2번에 대해서 고찰을 해봤는데, 2번과 같은 상황이 벌어지는 이유를 짐작하기가 어려웠습니다. 추측해보자면 혹시나 유일성을 보장하지 못하는 필드를 FK로 참조하고 있는 경우를 위한 조치일 수도 있고, 또는 예전의 N+1 문제의 원인이었던 것처럼 SQL 생성 시 엔티티 간 참조 관계를 고려하지 않은 것일 수도 있고 이 부분은 JPA 구현체 Hibernate의 코드를 전부 뜯어봐야 알 것 같습니다..
 
 #### 다시 돌아와서
 1+1 문제는 여전히 남아있으므로, N+1 문제에 대해서 조사하다보니 [Hibernate 공식 가이드 문서](https://docs.jboss.org/hibernate/orm/6.0/userguide/html_single/Hibernate_User_Guide.html#fetching)에서 Fetch Join으로 문제를 해결할 수 있다는 것을 확인했습니다. JPQL을 `@Query` 어노테이션을 통해 직접 작성하고 이 때 Fetch Join 구문을 활용하는 방법입니다. 제가 겪는 문제가 예전부터 이슈가 됐던 N+1문제랑은 조금 다르지만 쿼리문에 변화가 생기는지, 결과적으로 성능 향상이 기대되는지 확인하기 위해 Fetch Join을 적용했습니다.
