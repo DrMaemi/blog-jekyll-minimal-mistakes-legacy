@@ -3,7 +3,7 @@ title: '[회고] Spring Boot, JPA를 이용해 셀러 광고 플랫폼 API 서�
 uml: true
 author_profile: true
 toc_label: '[회고] Spring Boot, JPA를 이용해 셀러 광고 플랫폼 API 서버 만들기'
-last_modified_at: 2022-06-21 00:14:32 +0900
+last_modified_at: 2022-06-23 22:11:24 +0900
 ---
 
 <figure data-ke-type="opengraph"><a href="https://github.com/drmaemi/Ad-platform" data-source-url="https://github.com/drmaemi/Ad-platform">
@@ -18,7 +18,7 @@ last_modified_at: 2022-06-21 00:14:32 +0900
 
 2번 과제에 필요한 기술 스택에 대해서, 스프링부트와 JPA를 이용한 소규모 웹 어플리케이션 토이 프로젝트를 해본 경험이 있는데 그 외에 나머지 기술 스택에 대해서는 다뤄본 적이 없고 검색해보니 한 번 경험해보고 싶은 매우 흥미로운 것들이라 생각이 들어서 과감하게 도전했습니다.
 
-결과적으로 경험해보지 못한 기술 스택을 사용하며 정말 많은 것들을 배울 수 있었습니다. 특히 Spring REST Docs를 이용한 TDD, ORM 프레임워크 JPA와 관계형 DB 설계, JPA 쿼리와 Native Query, QueryDSL 성능 최적화, 커스텀 유효성 검증, Spring Batch 처리에 대해서 고민해볼 수 있는 기회였고 포스트에서 다룰 회고 또한 이런 부분들을 중심적으로 서술해나갈 생각입니다.
+결과적으로 경험해보지 못한 기술 스택을 사용하며 정말 많은 것들을 배울 수 있었습니다. 특히 Spring REST Docs를 이용한 TDD, ORM 프레임워크 JPA와 관계형 DB 설계, N+1 성능 개선, Spring Batch 처리, 복잡한 쿼리를 위한 Native Query와 Type-safe한 QueryDSL, 커스텀 유효성 검증, 에 대해서 고민해볼 수 있는 기회였고 포스트에서 다룰 회고 또한 이런 부분들을 중심적으로 서술해나갈 생각입니다.
 
 ## 도메인 분석 단계
 개발환경과 화면/기능 요구사항은 다음과 같았습니다.
@@ -1102,7 +1102,102 @@ ID로 조회하는 쿼리는 여전히 2개의 SELECT 쿼리가 발생했는데,
 
 그리고 현재 광고 플랫폼 도메인의 설계와 달리, 일대다 관계에서 '다' 엔티티가 FK로 '일' 엔티티의 PK를 참조한다면 리스트 전체 조회에 Fetch Join문을 사용했을 때 **쿼리가 단 한개**만 발생합니다. 따라서 FK가 반드시 PK를 참조하도록 설계해야 JPA의 성능이 극대화될 수 있음을 알 수 있습니다.
 
-## 배치 처리에 필요한 복잡한 쿼리와 Native Query
+## 배치 처리에 필요한 복잡한 쿼리와 Native Query, QueryDSL
+비즈니스 로직에 대한 코딩도 끝나갈 무렵 마지막 로직인 정산 도메인의 일별 집계 데이터 생성에서 JPA를 어떻게 작성해야 하는지 고민했었습니다. 정산 집계한 데이터는 여러 테이블의 필드를 참조해야 했으며 집계 함수를 적용한 값을 필드 값으로서 사용해야 한다는 점이 JPA를 작성하는데 어려움을 주었습니다. 그리고 이런 문제는 JPA 사용자들의 공통적인 어려움이어서, 비즈니스 로직에 이런 복잡한 쿼리가 필요할 때는 JPQL, 또는 SQL을 직접 작성할 수 있는 Native Query를 이용한다는 것을 알게 됐습니다.
+
+일별 광고 정산 시 생성되는 집계 데이터에는 클릭일자, 업체 ID, 업체명, 광고입찰 ID, 상품 ID, 상품명, 클릭수, 총과금액 을 가지고 있어야 하고, 총과금액은 클릭일자, 광고입찰 ID 별 클릭수 x 광고입찰가 이어야 한다는 요구사항이 있었습니다. 저는 이를 보고 (클릭일자, 광고입찰 ID) 두 개의 필드를 테이블의 기본 키로 적용해야 한다는 의미로 생각했고(즉, 복합키), 필요한 필드를 살펴봤을 때 광고과금 테이블의 FK(광고입찰 ID)로 광고입찰 테이블을 참조하고, 광고입찰 테이블의 FK2(상품 ID)로 상품 테이블을 참조하고, 상품 테이블의 FK(업체명)로 업체 테이블을 참조하여 업체 ID, 업체명, 상품 ID, 상품명을 알아내고 이를 엔티티로 담아내야 한다고 결정했습니다.
+
+<p class=short>AdChargeCalEntity</p>
+
+```java
+/**
+ * JPA에서 엔티티의 복합키를 정의하는 클래스
+ */
+@Data
+@NoArgsConstructor(access=AccessLevel.PROTECTED)
+@Embeddable
+public class AdChargeCalId implements Serializable {
+    @Column(name="clicked_date")
+    private LocalDate clickedDate;
+
+    @Column(name="bid_id")
+    private Long bidId;
+
+    @Builder
+    public AdChargeCalId(LocalDate clickedDate, Long bidId) {
+        this.clickedDate = clickedDate;
+        this.bidId = bidId;
+    }
+}
+
+/**
+ * DB 테이블 'ADVERTISEMENT_CHARGE_CAL'에 매핑되는 엔티티 클래스
+ * 클릭일자, 광고입찰 ID 두 개 컬럼을 복합키로 가짐
+ */
+@Getter
+@Setter
+@NoArgsConstructor(access=AccessLevel.PROTECTED)
+@Entity
+@Table(name="ADVERTISEMENT_CHARGE_CAL")
+public class AdChargeCalEntity {
+    @EmbeddedId
+    private AdChargeCalId adChargeCalId;
+
+    @Column
+    private Long companyId;
+
+    @Column
+    private String companyName;
+
+    @Column
+    private Long productId;
+
+    @Column
+    private String productName;
+
+    @Column
+    private Long cntClicked;
+
+    @Column
+    private Long totalCharge;
+    ...
+}
+```
+
+그리고 수행해야 될 쿼리를 생각해보면, 일별 정산이면서 클릭 횟수 등을 집계해야 하기 때문에 GROUP BY와 집계 함수 COUNT를 사용해야 함을 알 수 있습니다. 여기서 작일 날짜를 조건으로 사용해야 하는데, GROUP BY의 HAVING 절에 사용할지 WHERE 절에 사용할지 인라인 뷰(inline-view)로 사용할지 다양한 선택지가 있었습니다. 저는 인라인 뷰가 테이블 조인 전에 조건을 검사하면서 쿼리의 로직도 단순화시킬 수 있는 좋은 선택지일 것이란 생각이 들었는데, 문득 HAVING 절에 사용하는 것과 인라인 뷰/WHERE 절을 사용하는 것에 성능 차이가 있는지 궁금했습니다. 조사해보니 SQL 표준 이론에 의하면 WHERE 절은 테이블 집계 전 결과 집합을 반환하기 전에 조건을 적용하는 것이고, HAVING 절은 결과 집합을 반환받은 전체 행에 조건을 적용하는 것으로 WHERE 절을 사용하는 것이 성능에 유리하며, 가급적 WHERE 절을 사용할 수 없는 상황에서 HAVING 절을 사용하는 것이 좋다고 합니다([stackoverflow, 2008.](https://stackoverflow.com/questions/328636/which-sql-statement-is-faster-having-vs-where)).
+
+결과적으로 다음과 같은 SQL 쿼리문을 사용해서 광고 플랫폼에서의 광고과금 일별 정산 집계 데이터를 얻을 수 있었습니다. H2 데이터베이스의 SQL 문법이 MySQL 문법과 다소 달라 [H2 공식 문서 - SQL 문법](https://www.h2database.com/html/grammar.html)을 참조했습니다.
+
+```sql
+SELECT AC.CLICKED_DATE, AC.BID_ID, C.ID AS COMPANY_ID, C.NAME AS COMPANY_NAME, P.ID AS PRODUCT_ID, P.PRODUCT_NAME, COUNT(*) AS CNT_CLICKED, COUNT(*)*AB.BID_PRICE AS TOTAL_CHARGE
+FROM (SELECT ID, FORMATDATETIME(CLICKED_DATE, 'yyyy-MM-dd') AS CLICKED_DATE, BID_ID, BID_PRICE FROM ADVERTISEMENT_CHARGE WHERE FORMATDATETIME(CLICKED_DATE, 'yyyy-MM-dd')=DATEADD('DAY', -1, CURRENT_DATE)) AC, ADVERTISEMENT_BID AB, COMPANY C, PRODUCT P
+WHERE AC.BID_ID = AB.ID AND AB.COMPANY_ID = C.ID AND AB.PRODUCT_ID = P.ID
+GROUP BY CLICKED_DATE, BID_ID
+```
+
+<p class=short>Native Query를 사용하는 AdChargeCalRepository</p>
+
+```java
+/**
+ * AdChargeCalEntity의 영속성을 관리하며 엔티티에 매핑된 DB 테이블 'ADVERTISEMENT_CHARGE_CAL'에 CRUD 기능 수행
+ * 복잡한 집계 쿼리를 처리하기 위한 Native Query 사용
+ */
+public interface AdChargeCalRepository extends JpaRepository<AdChargeCalEntity, AdChargeCalId> {
+    @Query(value="SELECT AC.CLICKED_DATE, AC.BID_ID, C.ID AS COMPANY_ID, C.NAME AS COMPANY_NAME, P.ID AS PRODUCT_ID, P.PRODUCT_NAME, COUNT(*) AS CNT_CLICKED, COUNT(*)*AB.BID_PRICE AS TOTAL_CHARGE " +
+            "FROM (SELECT ID, FORMATDATETIME(CLICKED_DATE, 'yyyy-MM-dd') AS CLICKED_DATE, BID_ID, BID_PRICE FROM ADVERTISEMENT_CHARGE WHERE FORMATDATETIME(CLICKED_DATE, 'yyyy-MM-dd')=DATEADD('DAY', -1, CURRENT_DATE)) AC, " +
+            "ADVERTISEMENT_BID AB, COMPANY C, PRODUCT P " +
+            "WHERE AC.BID_ID = AB.ID AND AB.COMPANY_ID = C.ID AND AB.PRODUCT_ID = P.ID " +
+            "GROUP BY CLICKED_DATE, BID_ID"
+            , nativeQuery=true)
+    public List<AdChargeCalEntity> dailyCal();
+}
+```
+
+이후에 별다른 수정이 없었는데, 당시에 인지하고 있었던 Native Query의 문제점이 있었습니다. JPQL을 직접 작성하거나 이와 같이 Native Query의 SQL을 직접 작성했을 때 겪었던 문제점으로, 쿼리가 전부 문자열로 작성되기 때문에 Type-safe 하지 않아 컴파일 과정에서 오류를 발견하지 못하고 런타임 환경에서 코드가 실행된 뒤에 오류를 발견할 수 있다는 것이었습니다. 특히 본문에서 다룬 위 쿼리처럼 쿼리가 복잡하고 길 수록 오타가 있거나 문법 오류 때문에 이런 문제를 겪을 가능성이 큽니다.
+
+과제를 끝낸 뒤 위 문제에 대해서 고민하고 조사하다가, JPQL과 Native Query가 Type-safe 하지 못하다는 점을 해결할 수 있는 방법으로 QueryDSL을 사용하는 방법이 있다는 것을 알게됐습니다. 
+
+### QueryDSL
 작성 예정
 
 ## TDD, 그리고 Spring REST Docs
@@ -1119,3 +1214,11 @@ jongmin92, "Spring Boot에서의 Bean Validation (1)", *Github.io*, Nov. 18, 201
 soojong, "[JPA] mappedBy 이해하기", *Tistory*, Nov. 16, 2021. [Online]. Available: [https://soojong.tistory.com/entry/JPA-mappedBy-이해하기](https://soojong.tistory.com/entry/JPA-mappedBy-이해하기) [Accessed Jun. 19, 2022].
 
 Developer RyanKim, "(JPA) JPA 성능개선이란? 성능개선 적용기 (fetch join/BatchSize)", *Tistory*, Mar. 9, 2020. [Online]. Available: [https://lion-king.tistory.com/53](https://lion-king.tistory.com/53) [Accessed Jun. 19, 2022].
+
+M_1, "Which SQL statement is faster? (HAVING vs. WHERE...)", *stackoverflow.com*, Nov. 30, 2008. [Online]. Available: [https://stackoverflow.com/questions/328636/which-sql-statement-is-faster-having-vs-where](https://stackoverflow.com/questions/328636/which-sql-statement-is-faster-having-vs-where) [Accessed Jun. 23, 2022].
+
+Felix, "WHERE vs. HAVING performance with GROUP BY", *stackoverflow.com*, Apr. 10, 2018. [Online]. Available: [https://stackoverflow.com/questions/49758446/where-vs-having-performance-with-group-by](https://stackoverflow.com/questions/49758446/where-vs-having-performance-with-group-by) [Accessed Jun. 23, 2022].
+
+JeongHoeWoon, "https://hoestory.tistory.com/33", *Tistory*, Apr. 22, 2022. [Online]. Available: []() [Accessed Jun. 23, 2022].
+
+nathan29849, "JUnit 5 Test가 생성자 의존성 주입을 하는 방법", *Tistory*, May. 13, 2022. [Online]. Available: [https://velog.io/@nathan29849/JUnit-Test-구조](https://velog.io/@nathan29849/JUnit-Test-구조) [Accessed Jun. 23, 2022].
