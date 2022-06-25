@@ -17,18 +17,6 @@ main:
 # [권장]
 # 1. CSS 적용 문제로 children 깊이는 2까지만 하는것을 권장. 즉, children의 children까지만.
 sidebar:
-  - title: Review
-    url: /Review
-    children:
-    - title: Project
-      url: /Review/Project
-    - title: Job Interview
-      url: /Review/Job-Interview
-      children:
-        - title: 2022-1
-          url: /Review/Job-Interview/2022-1
-    - title: Others
-      url: /Review/Others
   - title: Github.io
     url: /Github.io
   - title: Programming Language
@@ -69,13 +57,15 @@ sidebar:
           - title: 6. 문자열
             url: /Algorithm/Baekjoon-Online-Judge/C++/Step-By-Step/6-String
           - title: 11. 정렬
-            url: /Algorithm/Baekjoon-Online-Judge/C++/Step-By-Step/11-sort
+            url: /Algorithm/Baekjoon-Online-Judge/C++/Step-By-Step/11-Sort
           - title: 12. 집합과 맵
-            url: /Algorithm/Baekjoon-Online-Judge/C++/Step-By-Step/12-set-map
+            url: /Algorithm/Baekjoon-Online-Judge/C++/Step-By-Step/12-Set-Map
           - title: 13. 정수론 및 조합론
             url: /Algorithm/Baekjoon-Online-Judge/C++/Step-By-Step/13-Number-Combinatorics
           - title: 15. 백트래킹
-            url: /Algorithm/Baekjoon-Online-Judge/C++/Step-By-Step/15-back-tracking
+            url: /Algorithm/Baekjoon-Online-Judge/C++/Step-By-Step/15-Back-Tracking
+          - title: 26. 최단 경로
+            url: /Algorithm/Baekjoon-Online-Judge/C++/Step-By-Step/26-Shortest-Path
       - title: Python
         url: /Algorithm/Baekjoon-Online-Judge/Python
         children:
@@ -172,3 +162,13 @@ sidebar:
         url: /Documentation/MS-Word
   - title: Review
     url: /Review
+    children:
+    - title: Project
+      url: /Review/Project
+    - title: Job Interview
+      url: /Review/Job-Interview
+      children:
+        - title: 2022-1
+          url: /Review/Job-Interview/2022-1
+    - title: Others
+      url: /Review/Others

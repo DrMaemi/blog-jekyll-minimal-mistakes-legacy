@@ -3,7 +3,7 @@ title: '[C++] 9. STL - &lt;algorithm&gt;'
 author_profile: true
 toc_label: '[C++] 9. STL - &lt;algorithm&gt;'
 post-order: 9
-last_modified_at: 2022-06-16 01:42:38 +0900
+last_modified_at: 2022-06-24 13:03:42 +0900
 ---
 
 `<algorithm>` 헤더는 요소들(elements)의 범위(range)에 대해 사용되는 함수들을 모아놓은 라이브러리다. 여기서 범위란 반복자(iterator)와 포인터(pointer)를 통해 명시될 수 있으며 이는 배열이나 STL 컨테이너의 범위가 될 수 있다는 뜻이다. 유의할 점은 `<algorithm>` 헤더에 있는 함수들은 이러한 반복자와 포인터를 통해 자료구조에 접근하기 때문에 실제 값을 변경할 수 있다는 것과, 자료구조의 크기나 저장 공간 할당 등의 연산은 수행하지 못한다는 점이다.
@@ -130,6 +130,27 @@ All the elements of myArr[] are even numbers.
 All the elements of myArr[] are odd numbers.
 myArr: 13 25 9 5 19 15 7 21
 After sorting, v:5 7 9 13 15 19 21 25
+```
+
+### `all_of` 2차원 배열
+
+```cpp::lineons
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+int main() {
+    vector<vector<int>> v(2, vector<int>(2, 1));
+
+    cout << all_of(&v[0][0], &v[2][3], [](const int& x){ return x; });
+
+    return 0;
+}
+```
+```txt
+1
 ```
 
 ### `copy`, 구조체와 다중 조건 정렬
