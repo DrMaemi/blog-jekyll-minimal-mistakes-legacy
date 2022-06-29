@@ -124,16 +124,21 @@ sidebar:
             url: /Algorithm/Baekjoon-Online-Judge/Python/Step-By-Step/33-String-Algorithm-1
           - title: 38. 세그먼트 트리
             url: /Algorithm/Baekjoon-Online-Judge/Python/Step-By-Step/38-Segment-Tree
+    - title: Programmers
+      url: /Algorithm/Programmers
+      children:
+      - title: 2017 카카오 코드 본선
+        url: /Algorithm/Programmers/2017-Kakao-Code-Final
   - title: Application
     url: /Application
     children:
-      - title: Web
-        url: /Application/Web
-        children:
-        - title: JSP
-          url: /Application/Web/JSP
-        - title: Spring Boot
-          url: /Application/Web/Spring-Boot
+    - title: Web
+      url: /Application/Web
+      children:
+      - title: JSP
+        url: /Application/Web/JSP
+      - title: Spring Boot
+        url: /Application/Web/Spring-Boot
   - title: Dev-Ops
     url: /Dev-Ops
     children:
