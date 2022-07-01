@@ -1,7 +1,7 @@
 # main links
 main:
   - title: "About"
-    url: /About
+    url: https://chalk-wood-96c.notion.site/SangHyun-Lee-1e9c556026b648fd8e8332517a50e1c3
   # - title: "Sample Posts"
   #   url: /year-archive/
   # - title: "Sample Collections"
@@ -60,16 +60,14 @@ sidebar:
             url: /Algorithm/Baekjoon-Online-Judge/C++/Step-By-Step/11-Sort
           - title: 12. 집합과 맵
             url: /Algorithm/Baekjoon-Online-Judge/C++/Step-By-Step/12-Set-Map
-          - title: 13. 정수론 및 조합론
-            url: /Algorithm/Baekjoon-Online-Judge/C++/Step-By-Step/13-Number-Combinatorics
+          - title: 14. 정수론 및 조합론
+            url: /Algorithm/Baekjoon-Online-Judge/C++/Step-By-Step/14-Number-Combinatorics
           - title: 15. 백트래킹
             url: /Algorithm/Baekjoon-Online-Judge/C++/Step-By-Step/15-Back-Tracking
           - title: 26. 최단 경로
             url: /Algorithm/Baekjoon-Online-Judge/C++/Step-By-Step/26-Shortest-Path
       - title: Python
         url: /Algorithm/Baekjoon-Online-Judge/Python
-        children:
-        - title: 
         children:
         - title: 알고리즘 분류
           url: /Algorithm/Baekjoon-Online-Judge/Python/Categorized
@@ -127,8 +125,14 @@ sidebar:
     - title: Programmers
       url: /Algorithm/Programmers
       children:
+      - title: 2018 카카오 블라인드 채용
+        url: /Algorithm/Programmers/2018-Kakao-Blind-Recruitment
       - title: 2017 카카오 코드 본선
         url: /Algorithm/Programmers/2017-Kakao-Code-Final
+      - title: 레벨 2
+        url: /Algorithm/Programmers/Level-2
+      - title: 레벨 3
+        url: /Algorithm/Programmers/Level-3
   - title: Application
     url: /Application
     children:
