@@ -64,8 +64,32 @@ sidebar:
             url: /Algorithm/Baekjoon-Online-Judge/C++/Step-By-Step/14-Number-Combinatorics
           - title: 15. 백트래킹
             url: /Algorithm/Baekjoon-Online-Judge/C++/Step-By-Step/15-Back-Tracking
+          - title: 16. 동적 계획법 1
+            url: /Algorithm/Baekjoon-Online-Judge/C++/Step-By-Step/16-Dynamic-Programming-1
+          - title: 17. 누적합
+            url: /Algorithm/Baekjoon-Online-Judge/C++/Step-By-Step/17-Cumulative-Sum
+          - title: 20. 큐와 덱
+            url: /Algorithm/Baekjoon-Online-Judge/C++/Step-By-Step/20-Queue-Deque
+          - title: 21. 분할 정복
+            url: /Algorithm/Baekjoon-Online-Judge/C++/Step-By-Step/21-Divide-Conquer
+          - title: 22. 이분 탐색
+            url: /Algorithm/Baekjoon-Online-Judge/C++/Step-By-Step/22-Binary-Search
+          - title: 23. 우선순위 큐
+            url: /Algorithm/Baekjoon-Online-Judge/C++/Step-By-Step/23-Priority-Queue
+          - title: 24. 동적 계획법 2
+            url: /Algorithm/Baekjoon-Online-Judge/C++/Step-By-Step/24-Dynamic-Programming-2
+          - title: 25. 그래프와 순회
+            url: /Algorithm/Baekjoon-Online-Judge/C++/Step-By-Step/25-Graph-Traversal
           - title: 26. 최단 경로
             url: /Algorithm/Baekjoon-Online-Judge/C++/Step-By-Step/26-Shortest-Path
+          - title: 29. 트리
+            url: /Algorithm/Baekjoon-Online-Judge/C++/Step-By-Step/29-Tree
+          - title: 30. 유니온 파인드
+            url: /Algorithm/Baekjoon-Online-Judge/C++/Step-By-Step/30-Union-Find
+          - title: 31. 최소 신장 트리
+            url: /Algorithm/Baekjoon-Online-Judge/C++/Step-By-Step/31-Minimum-Spanning-Tree
+          - title: 35. 문자열 알고리즘 1
+            url: /Algorithm/Baekjoon-Online-Judge/C++/Step-By-Step/35-String-Algorithm-1
       - title: Python
         url: /Algorithm/Baekjoon-Online-Judge/Python
         children:
