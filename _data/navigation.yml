@@ -149,6 +149,8 @@ sidebar:
     - title: Programmers
       url: /Algorithm/Programmers
       children:
+      - title: 2022 카카오 블라인드 채용
+        url: /Algorithm/Programmers/2022-Kakao-Blind-Recruitment
       - title: 2018 카카오 블라인드 채용
         url: /Algorithm/Programmers/2018-Kakao-Blind-Recruitment
       - title: 2017 카카오 코드 본선
