@@ -17,23 +17,6 @@ main:
 # [권장]
 # 1. CSS 적용 문제로 children 깊이는 2까지만 하는것을 권장. 즉, children의 children까지만.
 sidebar:
-  - title: Github.io
-    url: /Github.io
-  - title: Programming Language
-    url: /Programming-Language
-    children:
-    - title: C++
-      url: /Programming-Language/C++
-    - title: Python
-      url: /Programming-Language/Python
-    - title: Java
-      url: /Programming-Language/Java
-    - title: MySQL
-      url: /Programming-Language/MySQL
-    - title: Markdown
-      url: /Programming-Language/Markdown
-    - title: CSS
-      url: /Programming-Language/CSS
   - title: Algorithm
     url: /Algorithm
     children:
@@ -148,12 +131,12 @@ sidebar:
     - title: Programmers
       url: /Algorithm/Programmers
       children:
-      - title: 2022 카카오 블라인드 채용
-        url: /Algorithm/Programmers/2022-Kakao-Blind-Recruitment
-      - title: 2018 카카오 블라인드 채용
-        url: /Algorithm/Programmers/2018-Kakao-Blind-Recruitment
       - title: 2017 카카오 코드 본선
         url: /Algorithm/Programmers/2017-Kakao-Code-Final
+      - title: 2018 카카오 블라인드 채용
+        url: /Algorithm/Programmers/2018-Kakao-Blind-Recruitment
+      - title: 2022 카카오 블라인드 채용
+        url: /Algorithm/Programmers/2022-Kakao-Blind-Recruitment
       - title: 레벨 2
         url: /Algorithm/Programmers/Level-2
       - title: 레벨 3
@@ -168,32 +151,43 @@ sidebar:
         url: /Application/Web/JSP
       - title: Spring Boot
         url: /Application/Web/Spring-Boot
-  - title: Dev-Ops
-    url: /Dev-Ops
-    children:
-    - title: Git
-      url: /Dev-Ops/Git
   - title: Cloud Platform
     url: /Cloud-Platform
     children:
     - title: AWS
       url: /Cloud-Platform/AWS
-  - title: Tools
-    url: /Tools
+  - title: Computer Science
+    url: /Computer-Science
     children:
-      - title: Eclipse
-        url: /Tools/Eclipse
-      - title: IntelliJ
-        url: /Tools/IntelliJ
-      - title: MinGW
-        url: /Tools/MinGW
-      - title: Window
-        url: /Tools/Window
+    - title: 자료구조
+      url: /Computer-Science/Data-Structure
+  - title: Dev-Ops
+    url: /Dev-Ops
+    children:
+    - title: Git
+      url: /Dev-Ops/Git
   - title: Documentation
     url: /Documentation
     children:
       - title: MS Word
         url: /Documentation/MS-Word
+  - title: Github.io
+    url: /Github.io
+  - title: Programming Language
+    url: /Programming-Language
+    children:
+    - title: C++
+      url: /Programming-Language/C++
+    - title: Python
+      url: /Programming-Language/Python
+    - title: Java
+      url: /Programming-Language/Java
+    - title: MySQL
+      url: /Programming-Language/MySQL
+    - title: Markdown
+      url: /Programming-Language/Markdown
+    - title: CSS
+      url: /Programming-Language/CSS
   - title: Review
     url: /Review
     children:
@@ -206,3 +200,14 @@ sidebar:
           url: /Review/Job-Interview/2022-1
     - title: Others
       url: /Review/Others
+  - title: Tools
+    url: /Tools
+    children:
+      - title: Eclipse
+        url: /Tools/Eclipse
+      - title: IntelliJ
+        url: /Tools/IntelliJ
+      - title: MinGW
+        url: /Tools/MinGW
+      - title: Window
+        url: /Tools/Window
