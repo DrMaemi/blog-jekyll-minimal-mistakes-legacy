@@ -191,13 +191,15 @@ sidebar:
   - title: Review
     url: /Review
     children:
-    - title: Project
-      url: /Review/Project
     - title: Job Interview
       url: /Review/Job-Interview
       children:
-        - title: 2022-1
-          url: /Review/Job-Interview/2022-1
+      - title: 2022-1
+        url: /Review/Job-Interview/2022-1
+    - title: Others
+      url: /Review/Others
+    - title: Project
+      url: /Review/Project
     - title: Others
       url: /Review/Others
   - title: Tools
