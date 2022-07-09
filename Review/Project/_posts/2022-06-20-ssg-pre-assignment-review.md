@@ -3,7 +3,7 @@ title: '[회고] Spring Boot, JPA를 이용해 셀러 광고 플랫폼 API 서�
 uml: true
 author_profile: true
 toc_label: '[회고] Spring Boot, JPA를 이용해 셀러 광고 플랫폼 API 서버 만들기'
-last_modified_at: 2022-06-23 22:11:24 +0900
+last_modified_at: 2022-07-09 23:06:14 +0900
 ---
 
 <figure data-ke-type="opengraph"><a href="https://github.com/drmaemi/Ad-platform" data-source-url="https://github.com/drmaemi/Ad-platform">
@@ -18,7 +18,7 @@ last_modified_at: 2022-06-23 22:11:24 +0900
 
 2번 과제에 필요한 기술 스택에 대해서, 스프링부트와 JPA를 이용한 소규모 웹 어플리케이션 토이 프로젝트를 해본 경험이 있는데 그 외에 나머지 기술 스택에 대해서는 다뤄본 적이 없고 검색해보니 한 번 경험해보고 싶은 매우 흥미로운 것들이라 생각이 들어서 과감하게 도전했습니다.
 
-결과적으로 경험해보지 못한 기술 스택을 사용하며 정말 많은 것들을 배울 수 있었습니다. 특히 Spring REST Docs를 이용한 TDD, ORM 프레임워크 JPA와 관계형 DB 설계, N+1 성능 개선, Spring Batch 처리, 복잡한 쿼리를 위한 Native Query와 Type-safe한 QueryDSL, 커스텀 유효성 검증, 에 대해서 고민해볼 수 있는 기회였고 포스트에서 다룰 회고 또한 이런 부분들을 중심적으로 서술해나갈 생각입니다.
+결과적으로 경험해보지 못한 기술 스택을 사용하며 정말 많은 것들을 배울 수 있었습니다. 특히 Spring REST Docs를 이용한 TDD, ORM 프레임워크 JPA와 관계형 DB 설계, N+1 성능 개선, Spring Batch 처리, 복잡한 쿼리를 위한 Native Query와 Type-safe한 QueryDSL, 비즈니스와 관련된 복잡한 유효성 검증에 대해서 고민해볼 수 있는 기회였고 포스트에서 다룰 회고 또한 이런 부분들을 중심적으로 서술해나갈 생각입니다.
 
 ## 도메인 분석 단계
 개발환경과 화면/기능 요구사항은 다음과 같았습니다.
@@ -1203,14 +1203,286 @@ public interface AdChargeCalRepository extends JpaRepository<AdChargeCalEntity, 
 ## TDD, 그리고 Spring REST Docs
 작성 예정
 
-## Bean validation과 커스텀 유효성 검증
-작성 예정
+## 비즈니스와 관련된 복잡한 유효성 검증
+본 프로젝트에서 눈여겨 보았던 것들 중 하나가 데이터 유효성 검증에 대한 요구사항이었습니다. 도메인 종류가 적지 않은 상황에서 비즈니스 로직에 따른 데이터 관계에 대한 특별한 유효성 검증이 필요했는데, 요구사항에서 이런 특별한 유효성 검증이 필요한 부분을 살펴보면 다음과 같았습니다.
+
+- 업체
+    - 상품에 세팅된 업체만 등록 가능(최초 등록 시 업체명 기준 체크)
+        - 등록 후 상품정보와의 연계성을 가진 업체명을 제외한 업체정보만 업데이트 가능
+    - 사업자번호, 업체전화번호 등의 데이터 세팅 시 자릿수, 숫자 여부 Validation
+- 계약
+    - 업체 생성을 통해 업체 Master 정보가 생성된 업체에 한해 계약 생성 가능
+    - 업체별 계약 기간이 중복되지 않도록 Validation
+- 광고입찰
+    - 계약생성 및 계약기간이 유효한 업체에 한해 광고입찰 가능
+    - 입력된 상품ID가 광고입찰 업체가 등록한 상품ID인지 Vadliation
+
+Spring에서는 데이터의 유효성 검증을 위해서 `@Valid` 어노테이션을 사용할 수 있는 의존성을 제공하는데 기본적인 유효성 검증 기능 Bean Validation을 제공합니다(이에 대한 내용은 [[Spring Boot] 8. 회원가입 시 유효성 검사 - 스프링 유효성 검증 기본 어노테이션 종류]({{site.url}}/application/web/spring-boot/8-join-validation/#스프링-유효성-검증-기본-어노테이션-종류) 참조). 그러나 데이터 관계에 따른 유효성 검증 기능은 제공하지 않으므로 별도로 구현해야 했습니다.
+
+### 사용자 정의 제약(Custom Constraint)
+필요한 제약을 코드로 직접 정의해서 사용할 수 있는 방법에 대해 고민하면서 관련 내용을 조사하다가 Spring Boot Validation 의존성의 ConstraintValidator 인터페이스의 존재에 대해 알게되었습니다. 해당 인터페이스는 스프링 프레임워크에서 임의의 제약(Constraint)과 검증자(Vadliator)를 구현할 수 있도록 해줍니다.
+
+예를 들어 업체 도메인에서 업체 등록 시 해당 업체가 상품 리스트에 세팅되어 있는 업체인지 아닌지 검증하는 검증자를 다음과 같이 구현할 수 있습니다. ConstraintValidator의 제네릭(Generic) 인자에는 구현한 검증자를 사용할 어노테이션 인터페이스와 검증할 대상의 타입을 전달합니다.
+
+```java:/src/main/.../CompanyNameExistInRepoValidator
+/**
+ * 업체 등록 시 상품 리스트에 셋팅된 업체명인지 아닌지 유효성 검사 진행
+ * 입력된 업체명에 대해 DB에 등록되어 있는지 검사
+ */
+@RequiredArgsConstructor
+public class CompanyNameExistInRepoValidator implements ConstraintValidator<CompanyNameExistInRepo, String> {
+    private final CompanyRepository companyRepository;
+
+    @Override
+    public boolean isValid(String value, ConstraintValidatorContext context) {
+        return companyRepository.existsByName(value);
+    }
+}
+```
+
+어노테이션 인터페이스는 `@interface`로 정의할 수 있습니다. 이 때 `@Target`, `@Retention`, `@Contraint`라는 메타 어노테이션을 사용하는데, 모두 중요한 어노테이션이지만 소스코드를 작성할 당시에 관련 내용을 자세히 숙지한 채 작성하진 못했습니다. 간단하게 해당 어노테이션이 적용될 위치를 지정하는 것이 `@Target`, 해당 어노테이션 정보에 대한 유지(retention) 정책을 지정하는 것이 `@Retention`의 역할이라고 추측했습니다. `@Constraint` 어노테이션이 유효성 검증 처리를 위해 사용하는 어노테이션으로, `validatedBy` 인자에 검증자 클래스를 넘기면 검증자 내부에서 오버라이딩된 `isValid` 메서드를 수행합니다.
+
+```java:/src/main/.../CompanyNameExistInRepo
+/**
+ * 업체 등록 시 상품 리스트에 셋팅된 업체명인지 아닌지 검사하기 위한 유효성 검사 어노테이션 정의
+ */
+@Target({METHOD, FIELD, ANNOTATION_TYPE, CONSTRUCTOR, PARAMETER, TYPE_USE})
+@Retention(RUNTIME)
+@Constraint(validatedBy=CompanyNameExistInRepoValidator.class)
+@Documented
+public @interface CompanyNameExistInRepo {
+    String message() default "상품 리스트에 존재하는 업체명이 아닙니다. 다시 한 번 확인해주세요.";
+
+    Class<?>[] groups() default {};
+
+    Class<? extends Payload>[] payload() default {};
+}
+```
+
+제약 어노테이션과 검증자를 모두 구현했으면 다음과 같이 DTO 클래스 내부에서 유효성 검증이 필요한 필드에 직접 정의한 어노테이션을 사용하여 DTO가 컨트롤러나 서비스 빈에 전달될 때 유효성 검증을 수행할 수 있습니다.
+
+```java
+/**
+ * 클라이언트가 업체 도메인 관련 HTTP 요청 시 전송하는 DTO 클래스
+ * Client ↔ CompanyRestController 레이어 간 전송 데이터 객체
+ */
+@Getter
+@Setter
+@ToString
+@NoArgsConstructor
+public class CompanyReqDto {
+    @NotBlank(message="업체명을 입력해주세요.")
+    @CompanyNameExistInRepo
+    private String companyName;
+
+    ...
+}
+
+/**
+ * 업체 도메인 관련 HTTP request 매핑 및 처리를 위한 컨트롤러 클래스
+ */
+@RestController
+@RequiredArgsConstructor
+public class CompanyRestController {
+    ...
+
+    /**
+     * 업체 등록 요청 API
+     * 요청 데이터를 받아 DB에 생성, 생성된 데이터 반환
+     * @param companyReqDto
+     * @return ResponseEntity
+     */
+    @PostMapping("/api/company")
+    public ResponseEntity<?> registerCompany(@RequestBody @Valid CompanyReqDto companyReqDto) {
+        ...
+    }
+
+    ...
+}
+```
+
+### 클래스 단위 제약(Class Level Constraint)
+위에서 구현한 사용자 정의 제약은 하나의 필드에 적용되는 것이었습니다. 하지만 광고입찰 도메인에서 입력한 상품ID가 광고입찰을 요청한 업체가 등록했던 상품의 ID인지 검증하는 기능, 즉 두 개 이상의 필드를 참조한 유효성 검증을 위한 제약도 구현해야 합니다. 이는 클래스 단위 제약을 구현해서 해결할 수 있었습니다.
+
+클래스 단위 제약은 유효성 검증을 위한 어노테이션을 필드가 아닌 클래스에 사용하면서, ConstraintValidator를 상속하여 구현한 검증자의 제네릭 인자에 클래스 타입을 명시하고 이후 오버라이딩한 `isValid` 메서드에서 클래스에서 참조가 필요한 필드에 접근해 유효성 검증을 수행하는 로직을 구현하면 됩니다.
+
+```java:/src/main/.../CompanyOwnsProductValidator
+/**
+ * 광고 입찰 생성 시 입력된 업체 ID와 상품 ID에 대해 해당 업체가 해당 상품을 소유하고 있는지 검사
+ * 입력받은 상품 ID로부터 상품 엔티티를 조회하고 해당 엔티티의 업체 ID가 입력받은 업체 ID와 일치하는지 검사
+ */
+@RequiredArgsConstructor
+public class CompanyOwnsProductValidator implements ConstraintValidator<CompanyOwnsProduct, AdBidReqDto> {
+    private final ProductService productService;
+    private String message;
+
+    @Override
+    public void initialize(CompanyOwnsProduct constraintAnnotation) {
+        message = constraintAnnotation.message();
+    }
+
+    @Override
+    public boolean isValid(AdBidReqDto value, ConstraintValidatorContext context) {
+        ProductDto productDto = productService.getProduct(value.getProductId());
+
+        if (productDto.getCompanyDto().getId().equals(value.getCompanyId())) {
+            return true;
+        }
+
+        context.disableDefaultConstraintViolation();
+        context.buildConstraintViolationWithTemplate(message)
+                .addPropertyNode("productId")
+                .addConstraintViolation();
+
+        return false;
+    }
+}
+```
+
+한 가지 유의할 점으로, 여러 필드를 검사한 결과를 ConstraintValidatorContext에 반영할 때 특정 필드를 선택해서 유효성 검증 결과를 반영하기 위해 `.disableDefaultConstraintViolation()`와 `.buildConstraintViolationWithTemplate()` 메서드를 이용했습니다. 클래스 단위 제약에서 유효성 검증에 실패했을 때 이와 같은 처리를 하지 않으면 특정 데이터 필드에 대한 오류가 아니라 클래스에 대한 오류를 반환받게 됩니다. 이는 클라이언트에게 유효성 검증 실패에 대한 오류 메세지를 반환받았을 때 오해할 수도 있기 때문에 위와 같이 구현했습니다.
+
+```java:/src/main/.../CompanyOwnsProduct
+/**
+ * 광고 입찰 생성 시 입력된 업체 ID와 상품 ID에 대해 해당 업체가 해당 상품을 소유하고 있는지 검사하기 위한 유효성 검사 어노테이션 정의
+ */
+@Target({METHOD, FIELD, ANNOTATION_TYPE, CONSTRUCTOR, PARAMETER, TYPE_USE})
+@Retention(RUNTIME)
+@Constraint(validatedBy=CompanyOwnsProductValidator.class)
+@Documented
+public @interface CompanyOwnsProduct {
+    String message() default "업체가 해당 상품을 소유하고 있지 않습니다. 업체와 상품의 소유 관계를 다시 한 번 확인해주세요.";
+
+    Class<?>[] groups() default {};
+
+    Class<? extends Payload>[] payload() default {};
+}
+```
+
+마찬가지로 제약 어노테이션 정의와 검증자까지 구현한 뒤 클래스에 유효성 검증 어노테이션을 사용할 수 있었습니다.
+
+```java
+/**
+ * 클라이언트가 광고입찰 도메인 관련 HTTP 요청 시 전송하는 DTO 클래스
+ * Client ↔ AdBidRestController 레이어 간 전송 데이터 객체
+ */
+@Getter
+@Setter
+@ToString
+@NoArgsConstructor
+@CompanyOwnsProduct
+public class AdBidReqDto {
+    @NotNull(message="업체 ID를 입력해주세요.")
+    @Min(value=(long)1e9+1, message="업체 ID는 최소 10자리로 입력해주세요.")
+    @InContract
+    private Long companyId;
+
+    @NotNull(message="상품 ID를 입력해주세요.")
+    @Min(value=(long)1e9+1, message="상품 ID는 최소 10자리로 입력해주세요.")
+    private Long productId;
+
+    ...
+}
+
+/**
+ * 광고입찰 도메인 관련 HTTP request 매핑 및 처리를 위한 컨트롤러 클래스
+ */
+@RestController
+@RequiredArgsConstructor
+public class AdBidRestController {
+    ...
+
+    /**
+     * 광고입찰 생성 요청 API
+     * 요청 데이터를 받아 DB에 생성, 생성된 데이터 반환
+     * @param adBidReqDto
+     * @return ResponseEntity
+     */
+    @PostMapping("/api/ad/bid")
+    public ResponseEntity<?> createAdBid(@RequestBody @Valid AdBidReqDto adBidReqDto) {
+        ...
+    }
+
+    ...
+}
+```
+
+### 제약 그룹(Grouping)
+한 가지 또 어려웠던 점은 업체(COMPANY) 도메인에서 상품 리스트에 세팅된 업체명에 대해서만 등록 가능하도록 구현하는 것이었는데, 클라이언트로부터 전달받는 업체 데이터는 동일한 DTO 객체를 사용하면서 업체 등록 요청에 대해서만 업체 사업자번호나 전화번호에 대한 유효성 검증을 수행하도록 구현하고자 했습니다. 동일한 도메인에서 상황에 따라 유효성 검증이 필요한 필드가 달라지는 경우 어떻게 구현해야 할지 이번 프로젝트를 통해 학습하고 적용해보고 싶었습니다(실제 서비스에서는 이와 같은 상황을 더 많이 마주할테니까요).
+
+각 상황에 대해 별도로 DTO 객체를 사용하게 되면 기능 구현에 큰 문제가 없겠지만 이런 경우 중복되는 코드가 많이 발생할 것이라 예상했습니다. 조사해보니 마커 인터페이스를 활용하면 동일한 DTO 객체를 사용하면서도 상황(그룹)에 따라 원하는 필드에 대해서만 유효성 검증이 가능하다는 것을 알게됐습니다.
+
+마커 인터페이스란 어떤 메서드도 선언하지 않은 인터페이스를 말합니다. '업체 등록' 이라는 상황을 나타내는 마커 인터페이스 `CompanyRegister`를 다음과 같이 작성해줬습니다.
+
+```java:/src/main/.../CompanyRegister
+public interface CompanyRegister {
+}
+```
+
+그리고 유효성 검증을 마커 인터페이스에 해당하는 상황에 대해서 수행하겠다는 뜻으로 유효성 검증 어노테이션의 `groups` 인자에 마커 인터페이스의 클래스 정보를 넘기도록 코딩합니다.
+
+```java:/src/main/.../CompanyReqDto
+/**
+ * 클라이언트가 업체 도메인 관련 HTTP 요청 시 전송하는 DTO 클래스
+ * Client ↔ CompanyRestController 레이어 간 전송 데이터 객체
+ */
+@Getter
+@Setter
+@ToString
+@NoArgsConstructor
+public class CompanyReqDto {
+    @NotBlank(message="업체명을 입력해주세요.")
+    @CompanyNameExistInRepo
+    private String companyName;
+
+    @NotBlank(message="사업자번호를 입력해주세요.", groups=CompanyRegister.class)
+    @BusinessRegNum(groups=CompanyRegister.class)
+    @BusinessRegNumNotDuplicated(groups=CompanyRegister.class)
+    private String businessRegistrationNumber;
+
+    @NotBlank(message="업체전화번호를 입력해주세요.", groups=CompanyRegister.class)
+    @PhoneNum(groups=CompanyRegister.class)
+    private String phoneNumber;
+
+    @NotBlank(message="주소지를 입력해주세요.", groups=CompanyRegister.class)
+    @NullOrNotBlank(message="주소지를 입력해주세요.", groups=CompanyRegister.class)
+    private String address;
+
+    ...
+}
+```
+
+이후에 해당 상황에 대한 요청을 처리하는 메서드에 `@Validated` 어노테이션을 사용하고, 어노테이션의 인자에 마커 인터페이스의 클래스 정보를 넘겨서 해당 메서드가 마커 인터페이스에 해당하는 상황을 처리하는 메서드임을 명시하면 전달받는 데이터에 대해 상황에 따른 유효성 검증을 수행하게 됩니다.
+
+```java
+/**
+ * 업체 도메인 관련 HTTP request 매핑 및 처리를 위한 컨트롤러 클래스
+ */
+@RestController
+@RequiredArgsConstructor
+public class CompanyRestController {
+    ...
+
+    /**
+     * 업체 등록 요청 API
+     * 요청 데이터를 받아 DB에 생성, 생성된 데이터 반환
+     * @param companyReqDto
+     * @return ResponseEntity
+     */
+    @Validated(CompanyRegister.class)
+    @PostMapping("/api/company")
+    public ResponseEntity<?> registerCompany(@RequestBody @Valid CompanyReqDto companyReqDto) {
+        ...
+    }
+}
+```
+
+추가로 특정 1개 상황(그룹)이 아니라 2개 이상의 상황에서 동일하게 유효성 검증을 수행하려면 어떻게 해야 할까 궁금해서 찾아보니 `groups` 인자에 다음과 같이 `{}`를 이용해서 list initialization으로 여러 개의 마커 인터페이스 클래스 정보를 넘기면 된다고 합니다. 
+
+```java
+@NotEmpty(groups={A.class, B.class}) 
+```
 
 ## A. 참조
-신진호, "Validation 어디까지 해봤니?", *NHN Cloud Meetup!*, Mar. 4, 2020. [Online]. Available: [https://meetup.toast.com/posts/223](https://meetup.toast.com/posts/223) [Accessed Jun. 19, 2022].
-
-jongmin92, "Spring Boot에서의 Bean Validation (1)", *Github.io*, Nov. 18, 2019. [Online]. Available: [https://jongmin92.github.io/2019/11/18/Spring/bean-validation-1/](https://jongmin92.github.io/2019/11/18/Spring/bean-validation-1/) [Accessed Jun. 19, 2022].
-
 soojong, "[JPA] mappedBy 이해하기", *Tistory*, Nov. 16, 2021. [Online]. Available: [https://soojong.tistory.com/entry/JPA-mappedBy-이해하기](https://soojong.tistory.com/entry/JPA-mappedBy-이해하기) [Accessed Jun. 19, 2022].
 
 Developer RyanKim, "(JPA) JPA 성능개선이란? 성능개선 적용기 (fetch join/BatchSize)", *Tistory*, Mar. 9, 2020. [Online]. Available: [https://lion-king.tistory.com/53](https://lion-king.tistory.com/53) [Accessed Jun. 19, 2022].
@@ -1219,6 +1491,14 @@ M_1, "Which SQL statement is faster? (HAVING vs. WHERE...)", *stackoverflow.com*
 
 Felix, "WHERE vs. HAVING performance with GROUP BY", *stackoverflow.com*, Apr. 10, 2018. [Online]. Available: [https://stackoverflow.com/questions/49758446/where-vs-having-performance-with-group-by](https://stackoverflow.com/questions/49758446/where-vs-having-performance-with-group-by) [Accessed Jun. 23, 2022].
 
-JeongHoeWoon, "https://hoestory.tistory.com/33", *Tistory*, Apr. 22, 2022. [Online]. Available: []() [Accessed Jun. 23, 2022].
+JeongHoeWoon, "https://hoestory.tistory.com/33", *Tistory*, Apr. 22, 2022. [Online]. Available: [https://hoestory.tistory.com/33](https://hoestory.tistory.com/33) [Accessed Jun. 23, 2022].
 
 nathan29849, "JUnit 5 Test가 생성자 의존성 주입을 하는 방법", *Tistory*, May. 13, 2022. [Online]. Available: [https://velog.io/@nathan29849/JUnit-Test-구조](https://velog.io/@nathan29849/JUnit-Test-구조) [Accessed Jun. 23, 2022].
+
+신진호, "Validation 어디까지 해봤니?", *NHN Cloud Meetup!*, Mar. 4, 2020. [Online]. Available: [https://meetup.toast.com/posts/223](https://meetup.toast.com/posts/223) [Accessed Jun. 19, 2022].
+
+jongmin92, "Spring Boot에서의 Bean Validation (1)", *Github.io*, Nov. 18, 2019. [Online]. Available: [https://jongmin92.github.io/2019/11/18/Spring/bean-validation-1/](https://jongmin92.github.io/2019/11/18/Spring/bean-validation-1/) [Accessed Jun. 19, 2022].
+
+dahye-jeong, "ITEM 41: 정의하려는 것이 타입이라면 마커 인터페이스를 사용해라", *gitbook.io*, Jun. 14, 2021. [Online]. Available: [https://dahye-jeong.gitbook.io/java/java/effective_java/2021-06-14-use-marker-interfaces-to-define-types](https://dahye-jeong.gitbook.io/java/java/effective_java/2021-06-14-use-marker-interfaces-to-define-types) [Accessed Jul. 9, 2022].
+
+망나니개발자, "[Spring] @Valid와 @Validated를 이용한 유효성 검증의 동작 원리 및 사용법 예시 - (1/2)", *Tistory*, Jul. 19, 2021. [Online]. Available: [https://mangkyu.tistory.com/174](https://mangkyu.tistory.com/174) [Accessed Jul. 9, 2022].
