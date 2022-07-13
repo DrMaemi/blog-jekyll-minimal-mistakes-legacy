@@ -395,6 +395,32 @@ int main() {
 }
 ```
 
+### 이분 탐색 `lower_bound`, `upper_bound` 색인 결과 차이
+
+```cpp::lineons
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+int main() {
+    vector<int> v = {1, 1, 1, 2, 2, 2, 2, 3, 3};
+
+    vector<int>::iterator lowerIterator = lower_bound(v.begin(), v.end(), 2);
+    vector<int>::iterator upperIterator = upper_bound(v.begin(), v.end(), 2);
+
+    printf("Lower Index: %d\n", lowerIterator-v.begin());
+    printf("Upper Index: %d\n", upperIterator-v.begin());
+
+    return 0;
+}
+```
+```txt
+Lower Index: 3
+Upper Index: 7
+```
+
 ## A. 참조
 cplusplus.com, "&lt;algorithm&gt;", *cplusplus.com*, [Online]. Available: [https://m.cplusplus.com/reference/algorithm/](https://m.cplusplus.com/reference/algorithm/) [Accessed May 26, 2022].
 
