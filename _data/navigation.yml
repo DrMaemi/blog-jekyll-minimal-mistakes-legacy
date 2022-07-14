@@ -159,6 +159,8 @@ sidebar:
   - title: Computer Science
     url: /Computer-Science
     children:
+    - title: Computer Network
+      url: /Computer-Science/Computer-Network
     - title: Data Structure
       url: /Computer-Science/Data-Structure
     - title: Operating System

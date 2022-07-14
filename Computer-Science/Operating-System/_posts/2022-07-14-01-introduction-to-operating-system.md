@@ -6,7 +6,7 @@ toc_label: '[운영체제] 01. 운영체제란?'
 post-order: 1
 ---
 
-*본문은 2019년도 하반기에 아주대학교의 컴퓨터공학과 교수로 재직하셨던 김상훈 교수님의 운영체제 과목 강의 자료를 기반으로 작성되었음을 알립니다.*
+*본문은 2019년도 하반기 아주대학교의 컴퓨터공학과 교수로 재직하셨던 김상훈 교수님의 운영체제 과목 강의 자료를 기반으로 작성되었음을 알립니다.*
 
 ## 1. 운영체제란 무엇인가?
 운영체제란 사용자 어플리케이션(User Application)과 컴퓨터 하드웨어 사이의 중개자(Intermediary)로서 동작하는 프로그램을 말한다.
@@ -69,6 +69,7 @@ CPU(Central Processing Unit)는 프로세서(Processor)라고도 불린다. 대�
 
 ![](https://drive.google.com/uc?export=view&id=1RSlGZgCmhGl5iQHFWWSqAGGBUo3sUNTO){: .align-center}
 &lt;그림 6. 멀티코어 구조(Core i7 die)&gt;
+{: style="text-align: center;"}
 
 ### 4.3. 메모리 접근 관점 - UMA·NUMA
 UMA는 균등 메모리 접근(Uniform Memory Access) 아키텍처를, NUMA는 비균등 메모리 접근(Non-Uniform Memory Access) 아키텍처를 말한다. 
