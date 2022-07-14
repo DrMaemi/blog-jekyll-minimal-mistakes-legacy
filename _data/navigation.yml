@@ -159,8 +159,10 @@ sidebar:
   - title: Computer Science
     url: /Computer-Science
     children:
-    - title: 자료구조
+    - title: Data Structure
       url: /Computer-Science/Data-Structure
+    - title: Operating System
+      url: /Computer-Science/Operating-System
   - title: Dev-Ops
     url: /Dev-Ops
     children:
