@@ -1,8 +1,8 @@
 ---
-title: '[컴퓨터네트워크] 01. 컴퓨터 네트워크 개요 1'
+title: '[컴퓨터네트워크] 01. 컴퓨터 네트워크 개요'
 author_profile: true
 uml: true
-toc_label: '[컴퓨터네트워크] 01. 컴퓨터 네트워크 개요 1'
+toc_label: '[컴퓨터네트워크] 01. 컴퓨터 네트워크 개요'
 post-order: 1
 ---
 
@@ -72,7 +72,7 @@ E.g., Biological network, Business network, Computer network, Social network, ..
 - Network core
     - 상호 연결된 라우터들과 ISPs
 
-우리는 인터넷 망에 접속하기 위해 Home network(Residential access nets), Mobile network(Wireless access network), Institutional network(Enterprise access nets)를 이용할 수 있다. Institutional network는 학교나 기업 환경의 네트워크를 뜻한다.
+인터넷 망에 접속하기 위한 단말 네트워크를 환경에 따라 Home network(Residential access nets), Mobile network(Wireless access network), Institutional network(Enterprise access nets)로 분류할 수 있다. Institutional network는 학교나 기업 환경의 네트워크를 뜻한다.
 
 ### 4.1. Home network
 ![](https://drive.google.com/uc?export=view&id=1mW6wFlkJNz8L9vTIie-LeB_UXWhUQ6Pg){: .align-center}
