@@ -111,3 +111,5 @@ TCP는 신뢰성이 높고 느리며, UDP는 신뢰성이 낮고 빠르다. UDP�
 
 ## A. 참조
 달나라 곰돌이, "[기본] 소켓(SOCKET)통신 이란? - 곰돌이 놀이터", *Tistory*, Oct. 23, 2019. [Online]. Available: [https://helloworld-88.tistory.com/215](https://helloworld-88.tistory.com/215) [Accessed Jul. 20, 2022].
+
+Evan Moon, "HTTP/3는 왜 UDP를 선택한 것일까?", *Github.io*, Oct. 8, 2019. [Online]. Available: [https://evan-moon.github.io/2019/10/08/what-is-http3/](https://evan-moon.github.io/2019/10/08/what-is-http3/) [Accessed Jul. 20, 2022].
