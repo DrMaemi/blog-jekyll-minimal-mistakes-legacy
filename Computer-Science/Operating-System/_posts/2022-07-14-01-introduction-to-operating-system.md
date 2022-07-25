@@ -9,9 +9,9 @@ post-order: 1
 *본문은 2019년도 하반기 아주대학교의 컴퓨터공학과 교수로 재직하셨던 김상훈 교수님의 운영체제 과목 강의 자료를 기반으로 작성되었음을 알립니다.*
 
 ## 1. 운영체제란 무엇인가?
-운영체제란 사용자 어플리케이션(User Application)과 컴퓨터 하드웨어 사이의 중개자(Intermediary)로서 동작하는 프로그램을 말한다.
+운영체제란 컴퓨터 시스템의 자원들을 효율적으로 관리하며 사용자가 컴퓨터를 편리하고 효과적으로 사용할 수 있도록 환경을 제공하는 여러 프로그램의 모임을 말한다. 사용자 어플리케이션(User Application)과 컴퓨터 하드웨어 사이의 중개자(Intermediary)로서 동작한다.
 
-다중 사용자, 다중 프로그램 상에서 발생하는 컴퓨팅 문제를 해결하기 위한 목적으로 탄생되었다. 컴퓨터 자원(CPU, memory, I/O devices 등)을 제어해서 다중 사용자와 다중 프로그램이 동등하게 자원을 사용할 수 있도록 도와준다.
+다중 사용자, 다중 프로그램 상에서 발생하는 컴퓨팅 문제를 해결하기 위한 목적으로 탄생되었다. 컴퓨터 자원(CPU, memory, I/O devices 등)을 제어해서 다중 사용자와 다중 프로그램이 원활하게 자원을 사용할 수 있도록 도와준다.
 
 <div class="mxgraph" style="max-width:100%; margin:auto;" data-mxgraph="{&quot;highlight&quot;:&quot;#0000ff&quot;,&quot;lightbox&quot;:false,&quot;nav&quot;:true,&quot;edit&quot;:&quot;_blank&quot;,&quot;xml&quot;:&quot;&lt;mxfile host=\&quot;app.diagrams.net\&quot; modified=\&quot;2022-07-13T11:16:38.450Z\&quot; agent=\&quot;5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36\&quot; etag=\&quot;RhBYeZ-BZETGhjH13l69\&quot; version=\&quot;20.1.1\&quot; type=\&quot;google\&quot;&gt;&lt;diagram id=\&quot;d2SEbJC2drt5J7BlVScy\&quot; name=\&quot;그림 1. 컴퓨팅 계층 구조\&quot;&gt;7ZjRcqIwFIafxsvtCBGES3Xtdi+cuuvu7GUnkgNkGggTYtU+/UZIBETH1rWu7dQLh/w5OSHff4BAB42S1TeBs3jCCbCO3SWrDvrasW3HR+p/I6xLAfndUogEJaVkVcKMPoMWTdiCEsgbgZJzJmnWFAOephDIhoaF4MtmWMhZc9YMR9ASZgFmbfUPJTIuVc/uV/od0Cg2M1uuX/Yk2ATrleQxJnxZk9C4g0aCc1keJasRsA07w6Ucd3ugd3tiAlL5kgGT5+HY+zGn338OnNnQE/cPk19fdJYnzBZ6wSOeZAsJQql3WJClyq/PX64NFMEXKYFN3m4HDZcxlTDLcLDpXaoqUFosE6ZaljoMKWMjzrgoxiKCwQsDpedS8Eeo9biBB/NQ9ehzAiFhdXCx1hahKj3gCUixViFmgKFuyq6r28vKxK0zcc1AV2tY1020TV2hVQea7itI2y3S9xkILGkaKXm2ziUkHwC03fvfoFEL9CDLGA0Uap6qjqngkcBJ/gFgW14bttW/JOxeC/bvvLh3WGfFG4ahHezFS9y567hvhNdu43X20O29FV3nEF37PdL1royue4hu+g7p2v6V0e236LaoQkoGmy2aaqU8VeKQ4DwuMFtNpBt9iqXalqSFYnfRFqjZlik4w6ZP5YRAWju8o1CPQDOaAKaeKk/N9PtI6hmmnKqJK8+cHc+Qf+M0k+R8IQLQ4+qbu91UuxfXrq8SiwhkK1Fh7Xbhp7vtvcrtOePBY2EgFnJXrNnetLOIvqXM9KqEzZZ+e0Amtta+9lKwer0bp+9XP69p5+4D/KV1cSyvd9ky8T/L5N/uGN3ejW/V7HTPUybH8l64TMzL/2ednFgnyFJ+2uepjT25WruGk+tBNasvIGV49RkJjf8C&lt;/diagram&gt;&lt;/mxfile&gt;&quot;}"></div>
 &lt;그림 1. 컴퓨팅 계층 구조&gt;
