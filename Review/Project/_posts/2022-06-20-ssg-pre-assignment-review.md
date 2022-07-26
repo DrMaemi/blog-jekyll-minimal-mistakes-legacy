@@ -1201,7 +1201,89 @@ public interface AdChargeCalRepository extends JpaRepository<AdChargeCalEntity, 
 작성 예정
 
 ## TDD, 그리고 Spring REST Docs
-작성 예정
+Spring 어플리케이션의 REST API를 문서화할 때 보통 Swagger와 REST Docs를 사용한다고 알고 있습니다. 과제 전달을 받았을 때도 둘 중 하나를 선택하여 개발한 API를 문서화하도록 했는데 저는 결과적으로 REST Docs를 선택했습니다.
+
+<p class=short>Swagger는 마치 Postman처럼 API를 직접 요청하고 테스트하고 이를 볼 수 있는 화면을 제공하여 동작 테스트하는 용도에 특화되어 있습니다. 이런 장점이 있음에도 불구하고 다음과 같은 단점을 가지고 있습니다.</p>
+
+- 프로덕션 코드, 즉 비즈니스 로직에 어노테이션을 추가하여 명세를 작성함
+    - 어플리케이션 동작과는 무관한 코드들이 추가되어 가독성이 떨어짐
+- 테스트 기반이 아니기 때문에 명세된 문서가 100% 정확하다고 확신할 수 없음
+- 모든 오류에 대한 여러 가지 응답을 문서화할 수 없음
+
+<p class=short>반면 REST Docs는 다음과 같은 장점을 가집니다.</p>
+
+- 테스트 기반으로 문서가 작성되고, 테스트에 실패하면 문서가 작성되지 않기 때문에 작성된 문서에 대한 신뢰 가능
+- 테스트 코드에서 명세를 작성하기 때문에 비즈니스 로직의 가독성에 영향을 미치지 않음
+
+또한 본 프로젝트에서는 비즈니스와 관련된 복잡한 유효성 검증 기능을 구현해야 했기 때문에 Spring REST Docs를 이용해 API 문서를 작성했습니다.
+
+그리고 Spring REST Docs를 이용해 개발을 진행하니 자연스럽게 TDD 방식으로 개발을 진행할 수 있었고, 프로젝트 개발 기간 2주라는 비교적 짧은 기간에 목표했던 기능들을 빠르고 정확하게 개발할 수 있었던 원동력이 되었습니다.
+
+<p class=short>다음 코드는 업체 등록 시 유효하지 않은 입력 값(ex. 등록되지 않은 업체 이름, 잘못된 형식의 사업자 번호 등)에 대해 404 결과를 응답하는 API를 테스트하는 코드입니다.</p>
+
+```java:/src/test/java/.../ApiTests
+@SpringBootTest
+@TestMethodOrder(MethodOrderer.DisplayName.class)
+@AutoConfigureMockMvc
+@AutoConfigureRestDocs
+@Import(RestDocsConfig.class)
+public class ApiTests {
+    @Autowired
+    private MockMvc mockMvc;
+
+    private ObjectMapper objectMapper = new ObjectMapper();
+
+    ...
+
+    @Test
+    @DisplayName("05. 업체 등록 시 유효성 검사")
+    void registerCompanyValidation() throws Exception {
+        CompanyReqDto companyReqDto = CompanyReqDto.builder()
+                .companyName("등록되지 않은 업체 이름")
+                .businessRegistrationNumber("123456-78901")
+                .phoneNumber("010-1234567")
+                .build();
+
+        this.mockMvc.perform(
+                        post("/api/company")
+                                .contentType(MediaType.APPLICATION_JSON)
+                                .content(objectMapper.writeValueAsString(companyReqDto))
+                )
+                .andExpect(status().isBadRequest())
+                .andDo(
+                        document("POST_api-company-validation",
+                                requestFields(
+                                        fieldWithPath("companyName").description("Company name which is not appeared in product list"),
+                                        fieldWithPath("businessRegistrationNumber").description("Company's business registration number"),
+                                        fieldWithPath("phoneNumber").description("Company's phone number"),
+                                        fieldWithPath("address").description("Company's address")
+                                ),
+                                responseFields(
+                                        fieldWithPath("timestamp").description("API requested time"),
+                                        fieldWithPath("code").description("HTTP status code"),
+                                        fieldWithPath("status").description("HTTP status"),
+                                        fieldWithPath("result").description("An array of validation result"),
+                                        fieldWithPath("result.[].field").description("The field which is invalid"),
+                                        fieldWithPath("result.[].message").description("Description message"),
+                                        fieldWithPath("result.[].rejectedValue").description("The value rejected").optional()
+                                )
+                        )
+                );
+    }
+
+    ...
+}
+```
+
+위와 같이 Spring Boot Test의 MockMvc 객체를 이용한 테스트 코드와 함께 REST Docs를 작성하도록 했습니다. 기능 개발에 앞서 해당 API를 통해 클라이언트가 반환받아야 할 응답이 어떤 식일지 고민하여 테스트 코드를 작성하고 이후 실제 기능을 개발했습니다.
+
+![](https://drive.google.com/uc?export=view&id=1KDVyXdHyFgLY6-GBZiM6OLDfbgsa494x){: .align-center}
+&lt;화면 4. 화면 4. REST Docs - mockMvc 테스트 결과&gt;
+{: style="text-align: center;"}
+
+기능을 개발하고 테스트할 때 &lt;화면 4&gt;와 같이 새로 추가한 기능이 잘 동작하는지, 또한 기존에 작성된 기능이 여전히 잘 동작하는지 회귀 테스트를 진행했습니다.
+
+한 편 Spring REST Docs와 함께 TDD로 개발을 하면서 스프링 부트가 제공하는 테스트 종류가 정말 다양함을 알게 됐습니다. @SpringBootTest 어노테이션부터 Assertion 모듈, Mockito 객체를 활용한 테스트 방법과 도커 컨테이너를 테스트 환경에서 실행시킬 수 있는 라이브러리 Testcontainers 등 나중에 이들에 대한 내용을 정리할 기회를 가져야 할 듯 합니다.
 
 ## 비즈니스와 관련된 복잡한 유효성 검증
 본 프로젝트에서 눈여겨 보았던 것들 중 하나가 데이터 유효성 검증에 대한 요구사항이었습니다. 도메인 종류가 적지 않은 상황에서 비즈니스 로직에 따른 데이터 관계에 대한 특별한 유효성 검증이 필요했는데, 요구사항에서 이런 특별한 유효성 검증이 필요한 부분을 살펴보면 다음과 같았습니다.
@@ -1494,6 +1576,8 @@ Felix, "WHERE vs. HAVING performance with GROUP BY", *stackoverflow.com*, Apr. 1
 JeongHoeWoon, "https://hoestory.tistory.com/33", *Tistory*, Apr. 22, 2022. [Online]. Available: [https://hoestory.tistory.com/33](https://hoestory.tistory.com/33) [Accessed Jun. 23, 2022].
 
 nathan29849, "JUnit 5 Test가 생성자 의존성 주입을 하는 방법", *Tistory*, May. 13, 2022. [Online]. Available: [https://velog.io/@nathan29849/JUnit-Test-구조](https://velog.io/@nathan29849/JUnit-Test-구조) [Accessed Jun. 23, 2022].
+
+backtony, "Spring REST Docs 적용 및 최적화 하기", *github.com*, Jun. 18, 2021. [Online]. Available: [https://github.com/backtony/blog-code/tree/master/spring-rest-docs](https://github.com/backtony/blog-code/tree/master/spring-rest-docs) [Accessed Jul. 26, 2022].
 
 신진호, "Validation 어디까지 해봤니?", *NHN Cloud Meetup!*, Mar. 4, 2020. [Online]. Available: [https://meetup.toast.com/posts/223](https://meetup.toast.com/posts/223) [Accessed Jun. 19, 2022].
 
