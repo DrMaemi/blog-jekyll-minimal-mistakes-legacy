@@ -175,6 +175,8 @@ sidebar:
     children:
       - title: MS Word
         url: /Documentation/MS-Word
+      - title: UML
+        url: /Documentation/UML
   - title: Github.io
     url: /Github.io
   - title: Programming Language
