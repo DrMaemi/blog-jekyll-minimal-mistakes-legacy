@@ -163,6 +163,8 @@ sidebar:
       url: /Computer-Science/Computer-Network
     - title: Data Structure
       url: /Computer-Science/Data-Structure
+    - title: Design Pattern
+      url: /Computer-Science/Design-Pattern
     - title: Operating System
       url: /Computer-Science/Operating-System
   - title: Dev-Ops
