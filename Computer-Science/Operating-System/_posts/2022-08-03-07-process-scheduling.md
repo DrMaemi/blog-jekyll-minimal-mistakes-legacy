@@ -37,18 +37,18 @@ post-order: 7
 그런데 이 문맥 교환을 하는 중에는 CPU를 사용하지 않는 idle 상태가 됩니다. 프로세스 스케줄링의 목적이 CPU의 사용률을 최대화하는 것이므로 적절한 빈도로 문맥 교환을 하여 idle 상태의 시간을 최소화하는 것이 좋습니다.
 
 ![](https://drive.google.com/uc?export=view&id=1VBRL0FPgR3VRtsmgmDO6Zk03aS7XCBm2){: .align-center}
-&lt;그림 1. 문맥 교환(Context-switch)&gt;
+&lt;그림 3. 문맥 교환(Context-switch)&gt;
 {: style="text-align: center;"}
 
 ## 3. 스케줄링 시점과 개요
 프로세스 스케줄링 시점은 프로세스 상태 다이어그램에서 상태 전이에 해당하는 모든 구간에 해당합니다. 
 
 <div class="mxgraph" style="max-width:100%; margin:auto;" data-mxgraph="{&quot;highlight&quot;:&quot;#0000ff&quot;,&quot;lightbox&quot;:false,&quot;nav&quot;:true,&quot;edit&quot;:&quot;_blank&quot;,&quot;xml&quot;:&quot;&lt;mxfile host=\&quot;app.diagrams.net\&quot; modified=\&quot;2022-08-02T12:25:17.916Z\&quot; agent=\&quot;5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36\&quot; etag=\&quot;inJpRCsXFW5pH1QNhoLQ\&quot; version=\&quot;20.2.2\&quot; type=\&quot;google\&quot;&gt;&lt;diagram id=\&quot;bzSGDfPCPLQ6wK0j2PPz\&quot; name=\&quot;Page-1\&quot;&gt;7Ztbc6M2FMc/jR/rQTcEj7ltd2e6babJTPZVBtlWC8gD8i2fvsIIbBCOSeqYJLYnD3AQB9Dvr4N0Dhmgm3j1e8pm058y5NEAOuFqgG4HEAIM4SD/c8J1YaEEF4ZJKkLTaGt4EM/cGB1jnYuQZ7WGSspIiVndGMgk4YGq2ViaymW92VhG9avO2IRbhoeARbb1SYRqWlg9SLf271xMpuWVgesXR2JWNjZPkk1ZKJc7JnQ3QDeplKrYilc3PMo7r+yX4rxve45WN5byRHU5IXt8+gWvfv18Hl3/c7eYPD3yyY/fjJcFi+bmgf/kS3O/al12gnak+1vvXC+nQvGHGQvyI0uNXNumKo70HtCbY5mobywWUU77O48WXImA6QOZSuW/VQ9umoooupGRTDeXQGMv4EFgXBgZALc6c6flyCOYOPqIuXWeKr7a2yeg6mktUS5jrtK1bmJO8AybdX13uSXtG9N0B7JrbMxoa1L53Xa/3jAEXkEDWjT+5ixc98JjzN1uPELqj5wj8YBOHQjomwiyicyTRCSTPpiEjHvjTkzcwOOj8XGYYPTBmGCLyRMTqicm4/EYdhwn7sgl7nGYIIBrTJDTMxNiMXnkaSwSpnjYy1Ah3AtxFyweHCH3SFgI+VjvE9eiYrNIwqt8mqT3gohlmQg6Imh2rHZkdvO9YJ4ueGh8FBfloTXTavSrvjE5TwN+eL6iWDrh6tCb1Oa0A4K0gChtKY+YEov67bbRMVe4l0I/yHZ0wroMIGoALh7TnLU7ZWs6ontCb+mo6AfL0UYs1WO/XT/0y+kHfQb9ABcNAQCQUoB8nzg+rasAoyHWQcPF0EPQh9h7m7p04Bl6nkd1nHIdB/uNdwrw3SGhyEeEApc6lMBO2tNqYOudZrO8QfbCYHEbGke1ZYzeKDweVdje2Qob9xoYG/GsWhu/WrrYH9L8hxFFgHqw4ZYMqee6BFDgU0w98i7KxY3VIwInUK7/5ZQLOyoX9ancat5WSgy/UbnYOTAE3imsQnoCcZZJuy+kTvwZJgxVtrQB+/UTTugMoeN7nq8nBYTgRlyldAgc4rk+dQnRkdd9F+lWY+uUcRXYmdDPLt2uUwLS65Sg8RIFbw6s/kvSBfhN0j2auqClLhbGQrVlRxRfqbquWCQmSS46LQGeakOepNDKiq7MgViEYX76dcoz8cxGG1d5StYMNe2XXA/Ibe5rrmRmpGilQxKZ8EYupTQ1FLxX6uY5/08WBTRXvWV021Gk16LI5ir7aGkUYGeBRU4inc/UBZ+dm/Tr+Ny+8dkJ4yyY8nAeaRrQCUU2YyqYXkha1RhaJwlbBmJF9zQo7TzzD+3oL22SOUu+4Jt3QiDjWaR7QiYXqlZ4baxA2moHoC1N/X5U7Tx1K9UlE5d421Kf8w/zxCflaeeN+eqCrqVe1Cx3Qxtd29z7/ch1SIyWSP5gIx7d6y7ehFl0O5JKybiFmZKNsl42ZbPcWbya5B8NDUdML6WGY72kmtqVPE4A3nxeYFXurqHjbI7kiOolWf07UrDctzzZIQRPSai82IVQOd3E/gcj1CGTcNaEYO+E7PXceRMijYI1IH0T6vDlwlkRwnvS+f0R6vBtwFkRguSjEbLncuF5I2pOt1HL91mnRWRXcx+KzNTma0bnvqqUfJJ1k7lHcBRY/kFY5bcip6GFOky9UzlPwk0xJ+/cQ5832r14jFdFo1SNWgIReKmi84qO07vbf2AoiiXbfwNBd/8B&lt;/diagram&gt;&lt;/mxfile&gt;&quot;}"></div>
-&lt;그림 2. Scheduling points&gt;
+&lt;그림 4. Scheduling points&gt;
 {: style="text-align: center;"}
 
 ![](https://drive.google.com/uc?export=view&id=1GM6EDcNwkkzy3DAO-FPyLcSnum8EF2F-){: .align-center}
-&lt;그림 3. 스케줄링 개요&gt;
+&lt;그림 5. 스케줄링 개요&gt;
 {: style="text-align: center;"}
 
 시스템은 CPU와 같은 프로세서를 통해 프로세스를 실행하다가 I/O 요청이나 시분할 알고리즘, 프로세스 생성(fork child process), 인터럽트 등의 이벤트에 의해 프로세스의 상태 전이가 발생하면 스케줄러는 다음으로 실행할 프로세스를 전달(dispatch)하여 문맥 교환이 발생합니다.
@@ -113,7 +113,7 @@ Convoy effect란 처리 시간이 긴 프로세스가 대기 큐에 먼저 입�
 {: .notice--info}
 
 ![](https://drive.google.com/uc?export=view&id=1mA0SmVzRrTVKRYK1YH1xNg5rCIAnMW-a){: .align-center}
-&lt;그림 4. FCFS 스케줄링 성능 계산&gt;
+&lt;그림 6. FCFS 스케줄링 성능 계산&gt;
 {: style="text-align: center;"}
 
 ### 6.2. SJF
@@ -130,7 +130,7 @@ SJF는 Shortest Job First의 약자로, 그 뜻대로 예상 CPU burst(프로세
         - 미래의 CPU burst를 합리적으로 추측할 수 있는 방법 필요
 
 ![](https://drive.google.com/uc?export=view&id=1Mnv7DmPkm8WU8J9KfdtEgbznI7DHNS-C){: .align-center}
-&lt;그림 5. SJF 스케줄링 성능 계산&gt;
+&lt;그림 7. SJF 스케줄링 성능 계산&gt;
 {: style="text-align: center;"}
 
 ### 6.3. SRTF
@@ -139,7 +139,7 @@ SRTF는 Shortest Remaining Time First의 약자로, 그 뜻대로 남은 처리 
 대기 큐에 새 프로세스가 입력될 때마다 대기 큐에 존재하는 모든 프로세스와 실행중인 프로세스 중 남은 처리 시간이 가장 짧은 프로세스를 선택하여 실행합니다.
 
 ![](https://drive.google.com/uc?export=view&id=1ZNE4MmUTntmi_7gN4JNgd9s-qajQaygQ){: .align-center}
-&lt;그림 6. SRTF 스케줄링 성능 계산&gt;
+&lt;그림 8. SRTF 스케줄링 성능 계산&gt;
 {: style="text-align: center;"}
 
 ### RR
