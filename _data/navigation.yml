@@ -208,8 +208,6 @@ sidebar:
       url: /Review/Others
     - title: Project
       url: /Review/Project
-    - title: Others
-      url: /Review/Others
   - title: Tools
     url: /Tools
     children:
