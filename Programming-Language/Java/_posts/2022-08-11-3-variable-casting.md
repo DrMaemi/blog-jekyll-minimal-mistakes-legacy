@@ -1,8 +1,8 @@
 ---
-title: '[JAVA] 2.5. 변수(Variable) - 형변환(Casting)'
+title: '[JAVA] 3. 형변환(Casting)'
 author_profile: true
 uml: true
-toc_label: '[JAVA] 2.5. 변수(Variable) - 형변환(Casting)'
+toc_label: '[JAVA] 3. 형변환(Casting)'
 post-order: 3
 ---
 
