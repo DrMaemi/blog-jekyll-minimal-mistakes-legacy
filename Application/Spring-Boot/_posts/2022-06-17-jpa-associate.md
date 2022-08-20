@@ -1,39 +1,10 @@
 ---
-title: '[Spring Boot] ORM 프레임워크 JPA와 연관 관계 코딩'
+title: '[Spring Boot] JPA 연관 관계 코딩'
 uml: true
 author_profile: true
-toc_label: '[Spring Boot] ORM 프레임워크 JPA와 연관 관계 코딩'
+toc_label: '[Spring Boot] JPA 연관 관계 코딩'
 post-order: 100
 ---
-
-## 관계형 DB와 ORM
-DBMS가 발전해온 과정을 살펴보면 관계형 DB가 가장 오래 사용되었고 그만큼 많은 장점을 가지고 있다. 여기에 객체지향 프로그래밍에서 도입한 객체라는 개념을 이용해 DB를 관리하는 것으로 객체지향 DBMS, 객체관계 DBMS가 생겨났다.
-
-JPA는 ORM 프레임워크라는 표현을 쓰는데, 이 때 ORM은 Object Relational Mapping의 약자로서 어플리케이션의 객체와 DB의 데이터를 자동으로 연결한다는 뜻을 가진다. 객체지향 프로그래밍은 클래스를 사용하고, 관계형 DB는 테이블을 사용하기 때문에, 객체지향 프로그래밍이 사용하는 객체 모델과 관계형 DB가 사용하는 관계형 데이터 모델 간 불일치가 존재한다. 이를 ORM 프레임워크가 어플리케이션에서 정의한 객체 간 관계를 바탕으로 SQL 등을 자동으로 생성하여 불일치를 해결한다. 이를 봤을 때 관계형 DB를 사용하면서 객체관계 패러다임의 프로그래밍 방식을 가져가기 위해 사용하는 것이 ORM 프레임워크라는 생각이 든다.
-
-## JPA 구조
-
-<div class="mxgraph" style="max-width:100%; margin:auto;" data-mxgraph="{&quot;highlight&quot;:&quot;#0000ff&quot;,&quot;lightbox&quot;:false,&quot;nav&quot;:true,&quot;edit&quot;:&quot;_blank&quot;,&quot;xml&quot;:&quot;&lt;mxfile host=\&quot;app.diagrams.net\&quot; modified=\&quot;2022-06-16T06:59:38.023Z\&quot; agent=\&quot;5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.0.0 Safari/537.36\&quot; etag=\&quot;v7f4mpoVdfVknBSge49V\&quot; version=\&quot;20.0.0\&quot; type=\&quot;google\&quot;&gt;&lt;diagram id=\&quot;jcJ8BJUcvm0o9dkq-Rwy\&quot; name=\&quot;JPA Architecture(Class Level)\&quot;&gt;7Zlbb5swGIZ/TS4bAYYcLts03UGr1Kqb1lsXHPBqbGSckuzXz4BxDCZLW7Wlp0SK8OsD8D6fzYczAot084XDLDlnESIjz4k2I3A68rzAd+VvKWxrYTJTQsxxVEuGcIX/IiU6Sl3jCOWthoIxInDWFkNGKQpFS4Ocs6LdbMVI+6wZjJElXIWQ2OpvHImkVmfedKd/RThOmjO7k3ldk8KmsbqTPIERKwwJLEdgwRkT9VG6WSBSetf4Uvc721OrL4wjKu7TIcPRn+xb8QtcX+dT9+iHV1yujtQod5Cs1Q0fZxnBIRSYUXXdYtuYkRc4JZDK0skKE7JghPGqBiz88lvqjApDrz9SzwVnt8iomVQfWaOuAHGBNntvzdWGyUBDLEWCb2UT1aGxWMWYO1flYkfMc5SWGLS8QIlQRUmsh94ZKQ+Ulw/w1bd8XVKBxdaylLM1jVA5lCu9KBIs0FUGw7K2kBNKaolIiaquTWzi0H15DPtjaC+bIGix8W008x4y4LnABJ9g+sHMBgYz+QTTD8b1BibjWWS+wzu4GWeI5zgXiErv38yTYvrqHhXAsvf0xPbTimMzyBOYle3STVzmYOMVYUWYQC7GERTwBuZoz0R5VWiCzlNczwMDjZ4LJhotPjmaqYXGAoNodFymmbJEWRXvEcwTvTwZlEr9AgqBOK0UzwHWAiXtOdmtb442FkVWlnrQVsO2oMe1RuOIyGTvrj18n5PqDBcMyxNram6HGph1YORszUOkepnp6aGBuhNOQB4jYQ1UgdW3/XjWswexviEsvK3wyWnWFQ3obZhV6zNMmlo5oFG6L2p5TZWnh9P62rJDS/tQoaNDpSHuPDJ0fNBdOV42dObvKXS8e4YOGDJ0usR9/7GhMzsw0DOHTrPN0ZP2OueQwhhxeXQGQ8H4W0+FD2Rmc3/cTnx1RmsmAIFrB9WzZb6uvT2i6fzkkOaSS98+yTvnMh2ci/1KYs+aD8UEuIMzsd9jLtfowy1aOm0dDoS993jxnzf1d46j5/3+qXDI4m73vk4Idn+BgOU/&lt;/diagram&gt;&lt;/mxfile&gt;&quot;}"></div>
-&lt;그림 1. Class-level JPA 아키텍처&gt;
-{: style="text-align: center;"}
-
-- EntityManagerFactory
-    - EntityManager의 factory class. 팩토리 메서드 패턴에 따라 EntityManager 인스턴스 생성 및 관리
-- EntityManager
-    - Entity 객체의 영속성을 관리하는 인터페이스. Query 인스턴스에 대한 추상 팩토리 패턴을 따름
-- Entity
-    - 영속성 객체로 DB에 저장되어 있는 데이터에 매핑되는 객체
-- EntityTransaction
-    - EntityManager와 1대1 관계를 가지며, EntityManager의 연산 기능들을 가지고 기능들을 관리하는 객체
-- Persistence
-    - EntityManagerFactory 인스턴스를 얻기 위한 static 메서드를 포함하는 객체
-    - JPA의 영속성 관리 기능을 사용할 때 이 클래스의 static 메서드를 사용하는 것부터 시작하는 듯하다
-- Query
-    - JPA vendor들에 따라 제공되는 JPA 구현체(코드에 따른 쿼리 구현 등)에 대한 인터페이스
-
-<div class="mxgraph" style="max-width:100%; margin:auto;" data-mxgraph="{&quot;highlight&quot;:&quot;#0000ff&quot;,&quot;lightbox&quot;:false,&quot;nav&quot;:true,&quot;edit&quot;:&quot;_blank&quot;,&quot;xml&quot;:&quot;&lt;mxfile host=\&quot;app.diagrams.net\&quot; modified=\&quot;2022-06-16T07:17:51.094Z\&quot; agent=\&quot;5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.0.0 Safari/537.36\&quot; etag=\&quot;pZPt_SS7KJtwFfPcq3Ep\&quot; version=\&quot;20.0.0\&quot; type=\&quot;google\&quot;&gt;&lt;diagram id=\&quot;a447QFqTvRkIgofb9SSp\&quot; name=\&quot;JPA Class Relations\&quot;&gt;7Vldb5swFP01vEzaBBhI8tjQtNWmbp26ac8euGANbGpMPvrrZwfzTdpso9BmVaQEjvG1fc714RI04MbbSwaT8Jr6KNJM3d9q4FwzTdsyxLcEdjngzBUQMOznUA24xQ9IgbpCM+yjtHEhpzTiOGmCHiUEebyBQcbopnnZHY2aoyYwQB3g1oNRF/2BfR7m6NycVfgVwkFYjGw4i7wlhsXFaiVpCH26qUFgpQGXUcrzo3jrokhyV/CS97s40FpOjCHCj+mQrS/gynM/f6Jf7nTXvLq/vPr+3syjrGGUqQVrphOJeMs0gUTOmu8UFc59Jqe6bBwF8ndFOOa7a0gEGewCepyyXRFGzCePlF+qqCiDmoxmxEdyioZo3oSYo9sEerJ1IxJKYCGPI9WcckZ/lTpI5A5HkUsjyvbRgGvJTznOGjGOtgf5MkoVRPYiGiMu560XHQrhdq3zTZUHhqWwsJYDjsKgSr2gDF2pIw6UQH8g1mw4sU5PHsuaWp55R56PcA23HxLEUpxyRARtbX7TDY4jSNDY7C2a5Dld7iyjhztgPRd5YHAjeg0pfjiPDioHWq5kT532Rle6dx2SBQm8ySSMcEDEsSfIEGKBpaQKixvvmWqIse/L7kuGUvwAf+5D6eI8oZjw/SrspWafy1gZp2leOlQiFaIQut9edZ0KiBKuKg7jOSWbtyQDXcnMHsXM51LMGm6vfWOQpOKOjyk50f3W3nA9VjnyftN75GtxjIh/JovfKtdrnFYC6CVvyO+UwcewJgalGfPQ08bOIQvQY/GsfhVqNNs9LBcYQxHkeN1cQx/1aoQb6SG1YsJobdFFS718mapXvch+KhBoBcp56ATaZ0K57H9Iju7eNt7MuLGf2wrpE7uxPYQbf83Q63jmGsCBX0DJY5ykBduTWvBsIAtuP9uMbsHd58C3evhxC+6pqUa1YGcIC76pP+b/F0ZsTv6Xy2JsHy6KqaEs15zScoHd1BPM/9JyLb0VaGzLfbF5MDsyD8CkeWA15bPa+/XYPOgEGjkPzG5ddsq33if+IG8VVFbP+4uB7rLitHqPlYtZvQwEq98=&lt;/diagram&gt;&lt;/mxfile&gt;&quot;}"></div>
-&lt;그림 2. JPA 클래스 관계&gt;
-{: style="text-align: center;"}
 
 ## 단방향 연관 관계
 ### 일대다 연관 관계 `@OneToMany`

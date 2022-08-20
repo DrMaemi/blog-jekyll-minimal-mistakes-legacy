@@ -1,11 +1,16 @@
 ---
-title: '[Spring Boot] 스프링 JPA(Java Persistence API)'
+title: '[Spring Boot] 스프링 JPA(Java Persistence API) 개요'
 uml: true
 author_profile: true
-toc_label: '[Spring Boot] 스프링 JPA(Java Persistence API)'
+toc_label: '[Spring Boot] 스프링 JPA(Java Persistence API) 개요'
 post-order: 100
 last_modified_at: 2022-08-17 20:44:39 +0900
 ---
+
+## 0. 들어가며, 관계형 DB와 ORM
+DBMS가 발전해온 과정을 살펴보면 관계형 DB가 가장 오래 사용되었고 그만큼 많은 장점을 가지고 있습니다. 여기에 객체지향 프로그래밍에서 도입한 객체라는 개념을 이용해 DB를 관리하는 것으로 객체지향 DBMS, 객체관계 DBMS가 생겨났습니다.
+
+JPA는 ORM 프레임워크라는 표현을 쓰는데, 이 때 ORM은 Object Relational Mapping의 약자로서 어플리케이션의 객체와 DB의 데이터를 자동으로 연결한다는 뜻을 가집니다. 객체지향 프로그래밍은 클래스를 사용하고, 관계형 DB는 테이블을 사용하기 때문에, 객체지향 프로그래밍이 사용하는 객체 모델과 관계형 DB가 사용하는 관계형 데이터 모델 간 불일치가 존재합니다. 이를 ORM 프레임워크가 어플리케이션에서 정의한 객체 간 관계를 바탕으로 SQL 등을 자동으로 생성하여 불일치를 해결합니다. 이를 봤을 때 관계형 DB를 사용하면서 객체관계 패러다임의 프로그래밍 방식을 가져가기 위해 사용하는 것이 ORM 프레임워크라는 생각이 들었습니다.
 
 ## 1. JPA란?
 - Java에서 제공하는 ORM 기술에 대한 표준 명세
