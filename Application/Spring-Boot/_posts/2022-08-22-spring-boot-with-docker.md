@@ -51,7 +51,7 @@ public class DockerDemoApplication {
 이후 배포하고자 하는 어플리케이션을 .jar 파일로 빌드해야 합니다. 빌드하는 방법은 크게 IDE를 이용하거나 CLI로 하는 방법 두 가지가 있습니다. 저는 IntelliJ IDE를 이용해서 빌드했습니다.
 
 ![](https://drive.google.com/uc?export=view&id=108ebxGo0Qdnl_X5beO2-_YsdlavQJA3D){: .align-center}
-&lt;&gt;
+&lt;그림 2. IntelliJ Gradle 프로젝트 빌드&gt;
 {: style="text-align: center;"}
 
 성공적으로 빌드를 마치면 프로젝트 루트 디렉토리 하위에 `/build` 디렉토리가 생성되며 jar 파일은 `/build/libs` 하위에 위치하게 됩니다.
