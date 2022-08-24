@@ -58,7 +58,7 @@ public class DockerDemoApplication {
 성공적으로 빌드를 마치면 프로젝트 루트 디렉토리 하위에 `/build` 디렉토리가 생성되며 jar 파일은 `/build/libs` 하위에 위치하게 됩니다.
 
 ## 2. Dockerfile 작성 및 도커 이미지 빌드
-스프링부트 프로젝트 디렉토리에서 Dockerfile이란 이름의 파일을 생성하고 다음과 같이 작성합니다. 프로젝트 JDK 버전에 따라 [https://hub.docker.com/_/openjdk](https://hub.docker.com/_/openjdk)를 참고하여 필요한 JDK 버전을 FROM 구문에 작성합니다.
+스프링부트 프로젝트 디렉토리에서 Dockerfile이란 이름의 파일을 생성하고 다음과 같이 작성합니다. 프로젝트 JDK 버전에 따라 <a href="https://hub.docker.com/_/openjdk">https://hub.docker.com/_/openjdk</a>를 참고하여 필요한 JDK 버전을 FROM 구문에 작성합니다.
 
 ```txt:Dockerfile:lineons
 FROM openjdk:17-jdk-alpine
