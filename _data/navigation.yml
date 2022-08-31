@@ -142,7 +142,7 @@ sidebar:
       - title: 레벨 3
         url: /Algorithm/Programmers/Level-3
   - title: AWS
-    url: /Cloud-Platform/AWS
+    url: /AWS
   - title: Computer Science
     url: /Computer-Science
     children:
