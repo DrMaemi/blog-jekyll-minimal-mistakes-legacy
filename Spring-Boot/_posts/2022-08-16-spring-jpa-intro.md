@@ -3,7 +3,6 @@ title: '[Spring Boot] 스프링 JPA(Java Persistence API) 개요'
 uml: true
 author_profile: true
 toc_label: '[Spring Boot] 스프링 JPA(Java Persistence API) 개요'
-post-order: 100
 last_modified_at: 2022-08-17 20:44:39 +0900
 ---
 

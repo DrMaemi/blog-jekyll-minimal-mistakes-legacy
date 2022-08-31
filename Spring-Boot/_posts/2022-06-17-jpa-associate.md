@@ -3,7 +3,6 @@ title: '[Spring Boot] JPA 연관 관계 코딩'
 uml: true
 author_profile: true
 toc_label: '[Spring Boot] JPA 연관 관계 코딩'
-post-order: 100
 ---
 
 ## 단방향 연관 관계

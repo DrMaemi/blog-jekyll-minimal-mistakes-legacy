@@ -3,7 +3,6 @@ title: '[Spring Boot] JPA 영속성 문맥(Persistence Context)'
 uml: true
 author_profile: true
 toc_label: '[Spring Boot] JPA 영속성 문맥(Persistence Context)'
-post-order: 100
 ---
 
 ## 1. 영속성이란

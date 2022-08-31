@@ -3,7 +3,6 @@ title: '[Spring Boot] Annotation 동작 원리와 사용법'
 uml: true
 author_profile: true
 toc_label: '[Spring Boot] Annotation 동작 원리와 사용법'
-post-order: 100
 ---
 
 ## 1. 어노테이션(Annotation)이란?

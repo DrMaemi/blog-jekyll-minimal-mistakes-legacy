@@ -3,7 +3,6 @@ title: '[Spring Boot] 스프링 부트와 도커 - 어플리케이션 배포'
 uml: true
 author_profile: true
 toc_label: '[Spring Boot] 스프링 부트와 도커 - 어플리케이션 배포'
-post-order: 100
 last_modified_at: 2022-08-23 12:50:34 +0900
 ---
 

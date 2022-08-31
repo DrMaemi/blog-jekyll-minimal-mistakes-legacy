@@ -141,18 +141,8 @@ sidebar:
         url: /Algorithm/Programmers/Level-2
       - title: 레벨 3
         url: /Algorithm/Programmers/Level-3
-  - title: Application
-    url: /Application
-    children:
-    - title: JSP
-      url: /Application/JSP
-    - title: Spring Boot
-      url: /Application/Spring-Boot
-  - title: Cloud Platform
-    url: /Cloud-Platform
-    children:
-    - title: AWS
-      url: /Cloud-Platform/AWS
+  - title: AWS
+    url: /Cloud-Platform/AWS
   - title: Computer Science
     url: /Computer-Science
     children:
@@ -193,6 +183,13 @@ sidebar:
       url: /Programming-Language/Markdown
     - title: CSS
       url: /Programming-Language/CSS
+  - title: Projects
+    url: /Projects
+    children:
+    - title: JSP - 게시판 만들기
+      url: /Projects/JSP-Bulletin-Board
+    - title: 스프링부트 - 게시판 만들기 
+      url: /Projects/Spring-Boot-Bulletin-Board
   - title: Review
     url: /Review
     children:

@@ -3,7 +3,6 @@ title: '[Spring Boot] 스프링 AOP(Aspect Oriented Programming)'
 uml: true
 author_profile: true
 toc_label: '[Spring Boot] 스프링 AOP(Aspect Oriented Programming)'
-post-order: 100
 ---
 
 ## 1. AOP란?
