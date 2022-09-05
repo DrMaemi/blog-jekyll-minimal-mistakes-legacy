@@ -148,6 +148,10 @@ dependencies {
 ```
 
 ### TestConfiguration 작성
+![](https://drive.google.com/uc?export=view&id=1SU7ynlCo7IvobZbUjbJsEBzAFTN9HN5_){: .align-center}
+&lt;화면 1. test 디렉토리 구조&gt;
+{: style="text-align: center;"}
+
 ```java:src/test/java/.../config/RestDocsConfig.java
 @TestConfiguration
 public class RestDocsConfig {
@@ -300,7 +304,7 @@ public class BackendSpringBootApplicationTests {
 src/docs/asciidoc 하위에 디렉토리나 .adoc 파일을 작성해야 합니다. 경로를 지키지 않으면 Rest Docs가 생성되지 않습니다.
 
 ![](https://drive.google.com/uc?export=view&id=1qB_2ytplw-H_w2-jnVK1cFGllTbegscU){: .align-center}
-&lt;화면 1. .adoc 파일 작성 경로&gt;
+&lt;화면 2. .adoc 파일 작성 경로&gt;
 {: style="text-align: center;"}
 
 ```txt
@@ -345,7 +349,7 @@ operation::GET-board-list[snippets='http-request,http-response,response-fields']
 내용이 많아지면 특정 헤더부터 하위 헤더까지의 내용을 별도의 .adoc 파일로 분리하여 포함(include)시킬 수 있습니다.
 
 ![](https://drive.google.com/uc?export=view&id=1o8j5lDjJaysIezeJcic0uQ-Ft0DILbiR){: .align-center}
-&lt;화면 2. .adoc 내용 분리&gt;
+&lt;화면 3. .adoc 내용 분리&gt;
 {: style="text-align: center;"}
 
 #### 링크 걸기
@@ -417,7 +421,7 @@ BUILD SUCCESSFUL in 13s
 프로젝트 빌드 시 테스트 코드가 실행되고 `build.gradle`에 작성한 asciidoctor Task가 실행된 모습입니다. 이후 프로젝트 폴더를 확인해보면 src/main/resources/static/docs에 API 명세 html 파일이 src/docs/asciidoc 하위에 작성한 각 .adoc 파일에 대응하여 생성된 모습을 확인할 수 있습니다.
 
 ![](https://drive.google.com/uc?export=view&id=19EUQQm8G-PUltdQFZsZWknYDdY-xLx1B){: .align-center}
-&lt;화면 3. 각 .adoc 파일에 대응하여 생성된 html 파일들&gt;
+&lt;화면 4. 각 .adoc 파일에 대응하여 생성된 html 파일들&gt;
 {: style="text-align: center;"}
 
 ### DocsController 작성 후 URL로 접속하여 생성된 Rest Docs API 명세서 확인
@@ -443,7 +447,7 @@ public class DocsController {
 ```
 
 ![](https://drive.google.com/uc?export=view&id=1pPvZ5oi0HJfygmVFCYUrXkraIttJAqLD){: .align-center}
-&lt;화면 4. 생성된 RestDocs index 페이지&gt;
+&lt;화면 5. 생성된 RestDocs index 페이지&gt;
 {: style="text-align: center;"}
 
 ## A. 참조
