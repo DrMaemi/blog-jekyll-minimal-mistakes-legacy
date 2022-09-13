@@ -38,14 +38,16 @@ sidebar:
           children:
           - title: 6. 문자열
             url: /Algorithm/Baekjoon-Online-Judge/C++/Step-By-Step/6-String
+          - title: 9. 재귀
+            url: /Algorithm/Baekjoon-Online-Judge/C++/Step-By-Step/9-recursive
           - title: 11. 정렬
-            url: /Algorithm/Baekjoon-Online-Judge/C++/Step-By-Step/11-Sort
+            url: /Algorithm/Baekjoon-Online-Judge/C++/Step-By-Step/11-sort
           - title: 12. 집합과 맵
-            url: /Algorithm/Baekjoon-Online-Judge/C++/Step-By-Step/12-Set-Map
+            url: /Algorithm/Baekjoon-Online-Judge/C++/Step-By-Step/12-set-map
           - title: 14. 정수론 및 조합론
             url: /Algorithm/Baekjoon-Online-Judge/C++/Step-By-Step/14-Number-Combinatorics
           - title: 15. 백트래킹
-            url: /Algorithm/Baekjoon-Online-Judge/C++/Step-By-Step/15-Back-Tracking
+            url: /Algorithm/Baekjoon-Online-Judge/C++/Step-By-Step/15-back-tracking
           - title: 16. 동적 계획법 1
             url: /Algorithm/Baekjoon-Online-Judge/C++/Step-By-Step/16-Dynamic-Programming-1
           - title: 17. 누적합
@@ -55,7 +57,7 @@ sidebar:
           - title: 21. 분할 정복
             url: /Algorithm/Baekjoon-Online-Judge/C++/Step-By-Step/21-Divide-Conquer
           - title: 22. 이분 탐색
-            url: /Algorithm/Baekjoon-Online-Judge/C++/Step-By-Step/22-Binary-Search
+            url: /Algorithm/Baekjoon-Online-Judge/C++/Step-By-Step/22-binary-search
           - title: 23. 우선순위 큐
             url: /Algorithm/Baekjoon-Online-Judge/C++/Step-By-Step/23-Priority-Queue
           - title: 24. 동적 계획법 2
@@ -139,6 +141,8 @@ sidebar:
         url: /Algorithm/Programmers/2019-Kakao-Blind-Recruitment
       - title: 2020 카카오 블라인드 채용
         url: /Algorithm/Programmers/2020-Kakao-Blind-Recruitment
+      - title: 2021 카카오 블라인드 채용
+        url: /Algorithm/Programmers/2021-Kakao-Blind-Recruitment
       - title: 2022 카카오 블라인드 채용
         url: /Algorithm/Programmers/2022-Kakao-Blind-Recruitment
       - title: 레벨 2
@@ -219,3 +223,5 @@ sidebar:
         url: /Tools/MinGW
       - title: Window
         url: /Tools/Window
+  - title: Vue.js
+    url: /Vue-js
