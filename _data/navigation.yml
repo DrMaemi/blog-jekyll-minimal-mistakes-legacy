@@ -194,10 +194,12 @@ sidebar:
   - title: Projects
     url: /Projects
     children:
-    - title: JSP - 게시판 만들기
+    - title: JSP - 게시판
       url: /Projects/JSP-Bulletin-Board
-    - title: 스프링부트 - 게시판 만들기 
+    - title: Spring Boot - 게시판
       url: /Projects/Spring-Boot-Bulletin-Board
+    - title: Vue & Spring Boot - 게시판
+      url: /Projects/Vue-Spring-Bulletin-Board
   - title: Review
     url: /Review
     children:
