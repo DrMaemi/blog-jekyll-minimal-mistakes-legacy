@@ -3,7 +3,7 @@ title: '[JAVA] 4. 변수·메서드 종류'
 author_profile: true
 uml: true
 toc_label: '[JAVA] 4. 변수·메서드 종류'
-post-order: 63
+post-order: 4
 last_modified_at: 2022-08-13 21:17:21 +0900
 ---
 
