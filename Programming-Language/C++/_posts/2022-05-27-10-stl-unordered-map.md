@@ -1,19 +1,12 @@
 ---
-title: '[C++] 8. STL - &lt;map&gt;, &lt;unordered_map&gt;'
+title: '[C++] 10. STL - &lt;unordered_map&gt;'
 author_profile: true
-toc_label: '[C++] 8. STL - &lt;map&gt;, &lt;unordered_map&gt;'
-post-order: 8
+toc_label: '[C++] 10. STL - &lt;unordered_map&gt;'
+post-order: 10
+last_modified_at: 2022-09-23 22:44:00 +0900
 ---
 
-## 맵(map)과 비정렬 맵(unordered_map) 컨테이너
-
-```cpp
-template <class Key, // map::key_type
-    class T, // map::mapped_type
-    class Compare = less<Key>, // map::key_compare
-    class Alloc = allocator<pair<const Key,T>> // map::allocator_type
-> class map;
-```
+## 비정렬 맵(unordered_map) 컨테이너
 
 ```cpp
 template<class Key, // unordered_map::key_type
@@ -28,169 +21,12 @@ template<class Key, // unordered_map::key_type
 
 `typedef pair<const Key, T> value_type;`
 
-맵은 내부적으로 *strict weak ordering* 기준에 따라 언제나 정렬되어 있으며 해당 기준은 집합 내부 비교 객체(comparison object)에 따라 결정된다.
-
 맵(`map`)은 비정렬 맵(`unordered_map`)보다 요소 접근에 더 큰 시간복잡도를 가지지만(맵은 Binary Search Tree를 사용하여 탐색 시간복잡도가 *O(log n)*, 비정렬 맵은 해쉬 테이블을 사용하여 *O(1)*) 대신 정렬 순서에 따른 순회를 할 수 있다.
 
-맵과 비정렬 맵에서는 고유한 키 값에 따라 값을 얻을 수 있지만 여러 개의 키를 가진 맵 자료구조를 사용하고 싶다면 다중맵(`multimap`)과 비정렬 다중맵(`unordered_multimap`) 컨테이너를 사용해야 한다. 각각 맵과 비정렬 맵의 특성을 가지지만 여러 개의 키를 가질 수 있으며 요소 접근 `operator[]`, `at()`을 사용할 수 없다.
+## 멤버 함수
+각 멤버함수의 예제 코드를 작성하기엔 양이 매우 많기 때문에 [cplusplus.com](https://cplusplus.com/reference/unordered_map/unordered_map/)에서 각 멤버 함수 링크를 클릭하여 예제를 확인하자.
 
-## 맵 컨테이너 멤버 함수
-각 멤버함수의 예제 코드를 작성하기엔 양이 매우 많기 때문에 [cplusplus.com](https://m.cplusplus.com/reference/map/map/)에서 각 멤버 함수 링크를 클릭하여 예제를 확인하자.
-
-### 생성자(Constructor)
-- *empty container constructor*
-- *range constructor*
-- *copy constructor*
-
-### 소멸자(Destructor)
-- ~map
-
-### 반복자(Iterator)
-- begin
-- end
-- rbegin
-- rend
-- cbegin
-- cend
-- crbegin
-- crend
-
-### 용량(Capacity)
-- empty
-- size
-- max_size
-
-### 요소 접근(Element access)
-- operater[]
-- at
-
-### 수정자(Modifier)
-- insert
-- erase
-- swap
-- clear
-- emplace
-- emplace_hint
-
-### 관찰자(Observer)
-- key_comp
-- value_comp
-
-### 연산(Operation)
-- find
-- count
-- lower_bound
-- upper_bound
-- equal_range
-
-### 할당자(Allocator)
-- get_allocator
-
-## 맵 컨테이너 예제
-
-### 생성자, [], 삽입(insert)
-
-```cpp::lineons
-#include <iostream>
-#include <map>
-
-using namespace std;
-
-bool fncomp(char lhs, char rhs) { return lhs < rhs; }
-
-struct classcomp {
-    bool operator()(const char& lhs, const char& rhs) const {
-        return lhs > rhs;
-    }
-};
-
-int main() {
-    map<char, int> first; // empty constructor
-    first['a'] = 10;
-    first['b'] = 20;
-    first['c'] = 50;
-    first['d'] = 70;
-
-    map<char, int> second(first.begin(), first.end()); // range constructor
-    map<char, int> third(second); // copy constructor
-    map<char, int, classcomp> fourth; // class as Compare
-    
-    bool(*fn_pt)(char, char) = fncomp;
-    map<char, int, bool(*)(char, char)> fifth(fn_pt); // function pointer as Compare
-
-    cout << "The content of third:\n";
-    for (auto it=third.begin(); it!=third.end(); it++) {
-        cout << it->first << " => " << it->second << '\n';
-        fourth[(*it).first] = (*it).second;
-        fifth[(*it).first] = (*it).second;
-    }
-    cout << "Before insert, the content of fourth:\n";
-    for (map<char, int>::iterator it=fourth.begin(); it!=fourth.end(); it++)
-        cout << it->first << " => " << it->second << '\n';
-
-    fourth.insert(pair<char, int>('z', 100));
-    pair<map<char, int>::iterator, int> ret = fourth.insert(pair<char, int>('z', 200));
-
-    if (ret.second == false) {
-        cout << "key '" << ret.first->first << "' is already existed in fourth with value " << ret.first->second << '\n';
-    }
-
-    cout << "After insert, the content of fourth:\n";
-    for (map<char, int>::iterator it=fourth.begin(); it!=fourth.end(); it++)
-        cout << it->first << " => " << it->second << '\n';
-    
-    cout << "Before insert, the content of fifth:\n";
-    for (map<char, int>::iterator it=fifth.begin(); it!=fifth.end(); it++)
-        cout << it->first << " => " << it->second << '\n';
-    
-    fifth['z'] = 100;
-    fifth['z'] = 200;
-
-    cout << "After insert, the content of fifth:\n";
-    for (map<char, int>::iterator it=fifth.begin(); it!=fifth.end(); it++)
-        cout << it->first << " => " << it->second << '\n';
-
-    return 0;
-}
-```
-
-```txt
-The content of third:
-a => 10
-b => 20
-c => 50
-d => 70
-Before insert, the content of fourth:
-d => 70
-c => 50
-b => 20
-a => 10
-key 'z' is already existed in fourth with value 100
-After insert, the content of fourth:
-z => 100
-d => 70
-c => 50
-b => 20
-a => 10
-Before insert, the content of fifth:
-a => 10
-b => 20
-c => 50
-d => 70
-After insert, the content of fifth:
-a => 10
-b => 20
-c => 50
-d => 70
-z => 200
-```
-
-## 비정렬 맵 컨테이너 멤버 함수
-비정렬 맵은 맵과 달리 내부 정렬 기준에 필요한 비교 함수에 대한 멤버 함수가 없고 대신 해쉬 변환과 관련된 멤버 함수들이 있다(예를 들면 해쉬 버킷(Bucket)). 그 외엔 맵의 멤버 함수를 그대로 가지고 있다.
-
-비정렬 맵 컨테이너의 멤버 함수 종류와 예제 코드에 대한 자세한 내용은 [cplusplus.com](https://m.cplusplus.com/reference/map/map/)에서 확인하자.
-
-## 비정렬 맵 컨테이너 예제
+## 예제
 
 ### 생성자, [], 삽입(insert)
 
@@ -464,8 +300,6 @@ myMap['h']: 102
 ```
 
 ## A. 참조
-cplusplus.com, "std::map", *cplusplus.com*, [Online]. Available: [https://m.cplusplus.com/reference/map/map/](https://m.cplusplus.com/reference/map/map/) [Accessed May 26, 2022].
-
 cplusplus.com, "std::unordered_map", *cplusplus.com*, [Online]. Available: [https://m.cplusplus.com/reference/unordered_map/unordered_map/](https://m.cplusplus.com/reference/unordered_map/unordered_map/) [Accessed May 26, 2022].
 
 BlockDMask, "[C++] map container 정리 및 사용법", *Tistory*, Jul. 28, 2017. [Online]. Available: [https://blockdmask.tistory.com/87](https://blockdmask.tistory.com/87) [Accessed May 27, 2022].

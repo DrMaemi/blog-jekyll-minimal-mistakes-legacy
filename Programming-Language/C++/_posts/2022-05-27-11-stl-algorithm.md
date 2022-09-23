@@ -1,8 +1,8 @@
 ---
-title: '[C++] 9. STL - &lt;algorithm&gt;'
+title: '[C++] 11. STL - &lt;algorithm&gt;'
 author_profile: true
-toc_label: '[C++] 9. STL - &lt;algorithm&gt;'
-post-order: 9
+toc_label: '[C++] 11. STL - &lt;algorithm&gt;'
+post-order: 11
 last_modified_at: 2022-06-24 13:03:42 +0900
 ---
 
