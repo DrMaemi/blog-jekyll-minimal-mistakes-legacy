@@ -3,7 +3,7 @@ title: '[C++] 11. STL - &lt;algorithm&gt;'
 author_profile: true
 toc_label: '[C++] 11. STL - &lt;algorithm&gt;'
 post-order: 11
-last_modified_at: 2022-06-24 13:03:42 +0900
+last_modified_at: 2022-09-24 23:05:00 +0900
 ---
 
 `<algorithm>` 헤더는 요소들(elements)의 범위(range)에 대해 사용되는 함수들을 모아놓은 라이브러리다. 여기서 범위란 반복자(iterator)와 포인터(pointer)를 통해 명시될 수 있으며 이는 배열이나 STL 컨테이너의 범위가 될 수 있다는 뜻이다. 유의할 점은 `<algorithm>` 헤더에 있는 함수들은 이러한 반복자와 포인터를 통해 자료구조에 접근하기 때문에 실제 값을 변경할 수 있다는 것과, 자료구조의 크기나 저장 공간 할당 등의 연산은 수행하지 못한다는 점이다.
@@ -68,6 +68,30 @@ operation on sorted ranges
 ...
 
 ## 예제
+
+### 정렬 sort
+```cpp
+vector<int> v = {3, 2, 1};
+
+sort(v.begin(), v.end()); // {1, 2, 3}
+```
+
+```cpp
+struct Student {
+    long long id;
+    string name;
+};
+
+struct StudentCompare {
+    bool operator()(const Student& lhs, const Student& rhs) {
+        if (lhs.id != rhs.id) return lhs.id < rhs.id;
+        return lhs.name < rhs.name;
+    }
+};
+
+sort(v.begin(), v.end(), StudentCompare);
+```
+
 ### 조건 검사 `all_of`와 각 요소에 대해 함수 적용 `for_each`, 기본 정렬
 
 ```cpp::lineons
